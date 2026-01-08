@@ -126,7 +126,7 @@ func _physics_process(delta: float) -> void:
 	orientation_controller(delta)
 	social_controller()
 	
-	if Input.is_action_just_pressed("a_drop"):
+	if Input.is_action_just_pressed("d_action_01"):
 		if not nearby_smart_objects.is_empty():
 			var tasks_sequence = nearby_smart_objects.pick_random().get_interaction_tasks(self)
 			for task in tasks_sequence:
@@ -250,6 +250,12 @@ func process_tasks() -> void:
 			PedTask.Type.ROTATE_TO:
 				if task_rotate_to(current_task.target_value):
 					pass
+			PedTask.Type.PLAY_ANIM:
+				if task_play_animation(current_task.target_name, current_task.target_value):
+					pass
+			PedTask.Type.WAIT:
+				if await task_wait(current_task.target_value):
+					pass
 #endregion
 
 #region TASKS
@@ -280,9 +286,15 @@ func task_rotate_to(value:Vector3) -> bool:
 	look_current_path_target = value
 	tasks_queue.pop_front()
 	return true
+	
+func task_play_animation(target_name:String, target_value:bool) -> bool:
+	self.set(target_name, target_value)
+	tasks_queue.pop_front()
+	return true
 
 func task_wait(value:int) -> bool:
 	await get_tree().create_timer(value).timeout
+	tasks_queue.pop_front()
 	return true
 #endregion
 

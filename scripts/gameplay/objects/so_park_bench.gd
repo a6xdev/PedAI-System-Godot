@@ -17,8 +17,10 @@ func get_interaction_tasks(actor:actor_npc) -> Array[PedTask]:
 		# Task move to
 		var t1 = new_task(PedTask.Type.MOVE_TO, slot.global_position)
 		var t2 = new_task(PedTask.Type.ROTATE_TO, Vector3(0.0, slot.global_rotation.y, 0.0))
+		var t3 = new_task(PedTask.Type.WAIT, 1.0)
+		var t4 = new_task(PedTask.Type.PLAY_ANIM, true,  "is_sitting")
 		
-		sequence.append_array([t1, t2])
+		sequence.append_array([t1, t2, t3, t4])
 	return sequence
 
 func get_empty_slot() -> EventSlot:

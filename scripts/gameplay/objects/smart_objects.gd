@@ -6,10 +6,11 @@ var tasks_queue:Array[PedTask] = []
 func get_interaction_tasks(actor:actor_npc) -> Array[PedTask]:
 	return []
 
-func new_task(type:PedTask.Type, value:Variant) -> PedTask:
+func new_task(type:PedTask.Type, target_value:Variant, target_name:String = "") -> PedTask:
 	var new_task = PedTask.new()
 	new_task.type = type
-	new_task.target_value = value
+	new_task.target_name = target_name
+	new_task.target_value = target_value
 	new_task.is_action = true
 	tasks_queue.append(new_task)
 	return new_task
