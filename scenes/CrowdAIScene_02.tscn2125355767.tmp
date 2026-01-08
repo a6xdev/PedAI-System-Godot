@@ -1,0 +1,68 @@
+[gd_scene load_steps=14 format=3 uid="uid://dugpcfhubpqy6"]
+
+[ext_resource type="PackedScene" uid="uid://j5nwodo50yh3" path="res://assets/prefabs/characters/actor_player.tscn" id="1_ekwld"]
+[ext_resource type="Texture2D" uid="uid://cxuejfat7wko5" path="res://assets/textures/GroundPrototype/dark/texture_08.png" id="1_kum2y"]
+[ext_resource type="Script" uid="uid://bchdkode3ag7t" path="res://scripts/core/nodes/FreeLookCamera.gd" id="2_lgepe"]
+[ext_resource type="PackedScene" uid="uid://bxwxflsejagit" path="res://assets/prefabs/UI/crowd_ai_interface.tscn" id="3_y6oen"]
+[ext_resource type="PackedScene" uid="uid://bbquwaao37aja" path="res://assets/prefabs/characters/actor_ped.tscn" id="4_kum2y"]
+[ext_resource type="Texture2D" uid="uid://4pxnh1mqg4f6" path="res://assets/textures/hdri/qwantani_noon_puresky_2k.exr" id="6_8qm4k"]
+[ext_resource type="PackedScene" uid="uid://c8ss606rlj773" path="res://assets/prefabs/environments/park_bench/so_park_bench.tscn" id="7_8qm4k"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8lu1j"]
+albedo_texture = ExtResource("1_kum2y")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_8pae6"]
+material = SubResource("StandardMaterial3D_8lu1j")
+size = Vector2(50, 50)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_p6fdj"]
+data = PackedVector3Array(25, 0, 25, -25, 0, 25, 25, 0, -25, -25, 0, 25, -25, 0, -25, 25, 0, -25)
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_o75dy"]
+panorama = ExtResource("6_8qm4k")
+
+[sub_resource type="Sky" id="Sky_alfe8"]
+sky_material = SubResource("PanoramaSkyMaterial_o75dy")
+
+[sub_resource type="Environment" id="Environment_gm40l"]
+background_mode = 2
+sky = SubResource("Sky_alfe8")
+
+[node name="CrowdAIScene02" type="Node3D"]
+
+[node name="map" type="Node" parent="."]
+
+[node name="plane" type="MeshInstance3D" parent="map"]
+mesh = SubResource("PlaneMesh_8pae6")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="map/plane"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="map/plane/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_p6fdj")
+
+[node name="so_park_bench" parent="map" instance=ExtResource("7_8qm4k")]
+transform = Transform3D(-6.556708e-08, 0, -1.5, 0, 1.5, 0, 1.5, 0, -6.556708e-08, 4.8610396, 0.0069764853, 0.010839045)
+
+[node name="actors" type="Node" parent="."]
+
+[node name="actor_player" parent="actors" instance=ExtResource("1_ekwld")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -3)
+
+[node name="FreeLookCamera" type="Camera3D" parent="actors"]
+process_mode = 4
+script = ExtResource("2_lgepe")
+metadata/_custom_type_script = "uid://bchdkode3ag7t"
+
+[node name="RuntimeCreatedBodies" type="Node" parent="actors"]
+
+[node name="actor_ped" parent="actors/RuntimeCreatedBodies" instance=ExtResource("4_kum2y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="CrowdAIInterface" parent="." instance=ExtResource("3_y6oen")]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_gm40l")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
+shadow_enabled = true

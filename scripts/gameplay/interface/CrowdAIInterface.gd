@@ -15,5 +15,5 @@ func _process(delta: float) -> void:
 	active_peds.text = "Active Peds: " + str(NpcManager.active_peds.size())
 	inactive_peds.text = "Inactive Peds: " + str(NpcManager.inactive_peds.size())
 	
-	spawn_radius.text = "Spawn Radius: " + str(ped_spawner_controller.spawn_radius)
-	despawn_radius.text = "Despawn Radius: " + str(ped_spawner_controller.despawn_radius)
+	#spawn_radius.text = "Spawn Radius: " + str(ped_spawner_controller.spawn_radius)
+	#despawn_radius.text = "Despawn Radius: " + str(ped_spawner_controller.despawn_radius)

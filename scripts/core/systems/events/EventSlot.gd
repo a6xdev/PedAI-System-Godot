@@ -15,5 +15,5 @@ func _ready() -> void:
 		w_mesh.mesh = BoxMesh.new()
 		w_mesh.mesh.size = Vector3(0.1, 0.1, 0.1)
 		w_mesh.set_surface_override_material(0, w_mesh_material)
-			
+		
 		add_child(w_mesh)

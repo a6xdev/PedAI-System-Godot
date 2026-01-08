@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://cw0bk0h1o70ne"]
+[gd_scene load_steps=24 format=3 uid="uid://cw0bk0h1o70ne"]
 
 [ext_resource type="PackedScene" uid="uid://bbquwaao37aja" path="res://assets/prefabs/characters/actor_ped.tscn" id="2_1nv3g"]
 [ext_resource type="Script" uid="uid://bysxpb73lr46b" path="res://addons/FlowAI/scripts/core/FlowAIController.gd" id="2_cv82n"]
@@ -12,7 +12,10 @@
 [ext_resource type="PackedScene" uid="uid://c8jl2vxh0ppio" path="res://assets/prefabs/environments/road_pack/road_l_intersection.tscn" id="7_1dh4r"]
 [ext_resource type="Texture2D" uid="uid://4pxnh1mqg4f6" path="res://assets/textures/hdri/qwantani_noon_puresky_2k.exr" id="7_72xuw"]
 [ext_resource type="Script" uid="uid://c8oqvjek0jr6i" path="res://scripts/core/systems/PedSpawner/PedSpawnerSlot.gd" id="7_alfe8"]
-[ext_resource type="Script" uid="uid://c465r45f5mv57" path="res://scripts/gameplay/interface/CrowdAIInterface.gd" id="13_t6m7v"]
+[ext_resource type="Script" uid="uid://csbl3jypfxtwg" path="res://addons/FlowAI/scripts/runtime/FlowAIAreaNode.gd" id="9_51afu"]
+[ext_resource type="Script" uid="uid://i1dbg8h2x6sq" path="res://addons/FlowAI/scripts/runtime/FlowAIPathNode.gd" id="10_k6nio"]
+[ext_resource type="Script" uid="uid://bchdkode3ag7t" path="res://scripts/core/nodes/FreeLookCamera.gd" id="11_exg0k"]
+[ext_resource type="PackedScene" uid="uid://bxwxflsejagit" path="res://assets/prefabs/UI/crowd_ai_interface.tscn" id="13_exg0k"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_cv82n"]
 vertices = PackedVector3Array(-6.61917, 0.499665, -59.2128, -5.61917, 0.499665, -59.4628, -5.86917, 0.499665, -60.7128, -7.11917, 0.499665, -60.9628, -43.8692, 0.499665, -51.9628, -7.11917, 0.499665, -62.7128, -6.86917, 0.499665, -52.9628, -5.86917, 0.499665, -52.9628, -5.61917, 0.499665, -55.2128, -6.61917, 0.499665, -55.4628, -6.11917, 0.499665, -62.9628, -6.11917, 0.499665, -80.7128, -7.11917, 0.499665, -51.9628, -43.8692, 0.499665, -80.7128, -4.86917, 0.499665, -62.7128, 3.88083, 0.499665, -62.7128, 5.13083, 0.499665, -62.9628, 5.13083, 0.499665, -80.7128, 6.13083, 0.499665, -60.9628, 5.13083, 0.499665, -60.7128, 5.13083, 0.499665, -59.4628, 6.13083, 0.499665, -59.2128, 6.13083, 0.499665, -52.7128, 6.13083, 0.499665, -50.9628, 43.8808, 0.499665, -43.9628, 6.13083, 0.499665, -55.4628, 5.13083, 0.499665, -55.2128, 5.13083, 0.499665, -52.9628, 5.13083, 0.499665, -50.7128, 5.13083, 0.499665, -48.4628, 6.13083, 0.499665, -48.2128, 6.13083, 0.499665, -62.7128, 43.8808, 0.499665, -80.7128, 6.13083, 0.499665, -44.4628, 5.63083, 0.499665, -44.2128, -4.86917, 0.499665, -60.9628, -4.61917, 0.499665, -59.2128, 3.88083, 0.499665, -60.9628, 4.13083, 0.499665, -59.2128, 4.13083, 0.499665, -55.4628, -4.61917, 0.499665, -55.4628, -5.11917, 0.499665, -52.9628, 4.13083, 0.499665, -52.9628, -4.86917, 0.499665, -51.9628, 3.88083, 0.499665, -51.9628, -6.61917, 0.499665, -48.2128, -5.61917, 0.499665, -48.4628, -5.86917, 0.499665, -50.7128, -7.11917, 0.499665, -50.9628, -43.8692, 0.499665, -43.9628, -6.11917, 0.499665, -44.2128, -6.61917, 0.499665, -44.4628, -4.86917, 0.499665, -50.9628, -4.61917, 0.499665, -48.2128, 4.13083, 0.499665, -48.2128, 3.88083, 0.499665, -50.9628, 4.13083, 0.499665, -46.2128, -4.61917, 0.499665, -46.2128, 4.13083, 0.499665, -44.4628, -4.61917, 0.499665, -44.4628, -5.61917, 0.499665, -44.2128, -5.61917, 0.499665, -28.4628, 4.13083, 0.499665, -28.2128, 5.13083, 0.499665, -28.4628, 5.13083, 0.499665, -44.2128, -4.61917, 0.499665, -28.2128, -43.8692, 0.499665, -26.9628, -6.61917, 0.499665, -28.2128, -6.61917, 0.499665, -26.7128, 5.63083, 0.499665, -28.4628, 43.8808, 0.499665, -28.7128, 6.13083, 0.499665, -24.4628, 5.13083, 0.499665, -24.2128, 5.13083, 0.499665, -22.9628, 6.13083, 0.499665, -22.7128, 6.13083, 0.499665, -14.4628, 6.13083, 0.499665, -12.7128, 5.13083, 0.499665, -14.2128, 5.13083, 0.499665, -12.9628, 6.13083, 0.499665, -18.2128, 6.13083, 0.499665, -20.9628, 5.13083, 0.499665, -20.7128, 5.13083, 0.499665, -18.4628, 6.13083, 0.499665, -10.9628, 5.13083, 0.499665, -10.7128, 5.13083, 0.499665, 7.03723, 6.13083, 0.499665, -28.2128, 43.8808, 0.499665, 7.03723, -5.61917, 0.499665, -24.2128, -5.86917, 0.499665, -22.9628, -4.86917, 0.499665, -22.7128, -4.61917, 0.499665, -24.4628, -4.86917, 0.499665, -20.9628, 3.88083, 0.499665, -20.9628, 3.88083, 0.499665, -22.7128, 4.13083, 0.499665, -24.4628, -6.61917, 0.499665, -24.4628, -7.11917, 0.499665, -22.7128, -43.8692, 0.499665, -20.4628, -6.86917, 0.499665, -20.7128, -5.86917, 0.499665, -20.7128, -5.61917, 0.499665, -18.4628, 4.13083, 0.499665, -18.2128, -4.61917, 0.499665, -18.2128, -5.86917, 0.499665, -12.9628, -5.61917, 0.499665, -14.2128, -6.61917, 0.499665, -14.4628, -7.11917, 0.499665, -12.7128, -6.11917, 0.499665, 7.03723, -6.11917, 0.499665, -10.7128, -7.11917, 0.499665, -10.9628, -6.61917, 0.499665, -18.2128, -43.8692, 0.499665, 7.03723, -4.86917, 0.499665, -12.7128, -4.61917, 0.499665, -14.4628, -4.86917, 0.499665, -10.9628, 3.88083, 0.499665, -10.9628, 3.88083, 0.499665, -12.7128, 4.13083, 0.499665, -14.4628)
@@ -245,7 +248,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_k6nio")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="map/NavigationRegion3D/MeshInstance3D/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_1yy8o")
 
-[node name="FlowAIController" type="Node" parent="map"]
+[node name="FlowAIController" type="Node" parent="map" node_paths=PackedStringArray("all_areas", "all_pathnodes")]
 process_priority = 1
 process_physics_priority = 1
 process_thread_group = 1
@@ -253,7 +256,59 @@ process_thread_group_order = 0
 process_thread_messages = 0
 script = ExtResource("2_cv82n")
 DataPath = "res://data/CrowdAIScenePathnodesData.json"
+all_areas = [NodePath("area_1")]
+all_pathnodes = [NodePath("area_1/pathnode_1"), NodePath("area_1/pathnode_2"), NodePath("area_1/pathnode_3"), NodePath("area_1/pathnode_4"), NodePath("area_1/pathnode_5"), NodePath("area_1/pathnode_6"), NodePath("area_1/pathnode_7"), NodePath("area_1/pathnode_8"), NodePath("area_1/pathnode_9")]
 metadata/_custom_type_script = "uid://bysxpb73lr46b"
+
+[node name="area_1" type="Node3D" parent="map/FlowAIController" node_paths=PackedStringArray("flowAI_controller")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -37)
+script = ExtResource("9_51afu")
+flowAI_controller = NodePath("..")
+
+[node name="pathnode_1" type="Marker3D" parent="map/FlowAIController/area_1" node_paths=PackedStringArray("flowAI_controller")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.16143608, 0, 0)
+script = ExtResource("10_k6nio")
+flowAI_controller = NodePath("../..")
+
+[node name="pathnode_2" type="Marker3D" parent="map/FlowAIController/area_1" node_paths=PackedStringArray("flowAI_controller")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.16143608, 0, 30.262075)
+script = ExtResource("10_k6nio")
+flowAI_controller = NodePath("../..")
+
+[node name="pathnode_3" type="Marker3D" parent="map/FlowAIController/area_1" node_paths=PackedStringArray("flowAI_controller")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.026857, 0, 30.262075)
+script = ExtResource("10_k6nio")
+flowAI_controller = NodePath("../..")
+
+[node name="pathnode_4" type="Marker3D" parent="map/FlowAIController/area_1" node_paths=PackedStringArray("flowAI_controller")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.027, 0, 0)
+script = ExtResource("10_k6nio")
+flowAI_controller = NodePath("../..")
+
+[node name="pathnode_5" type="Marker3D" parent="map/FlowAIController/area_1" node_paths=PackedStringArray("flowAI_controller")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.027, 0, -29.89859)
+script = ExtResource("10_k6nio")
+flowAI_controller = NodePath("../..")
+
+[node name="pathnode_6" type="Marker3D" parent="map/FlowAIController/area_1" node_paths=PackedStringArray("flowAI_controller")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -29.899002)
+script = ExtResource("10_k6nio")
+flowAI_controller = NodePath("../..")
+
+[node name="pathnode_7" type="Marker3D" parent="map/FlowAIController/area_1" node_paths=PackedStringArray("flowAI_controller")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.215351, 0, -29.899002)
+script = ExtResource("10_k6nio")
+flowAI_controller = NodePath("../..")
+
+[node name="pathnode_8" type="Marker3D" parent="map/FlowAIController/area_1" node_paths=PackedStringArray("flowAI_controller")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.215, 0, 0)
+script = ExtResource("10_k6nio")
+flowAI_controller = NodePath("../..")
+
+[node name="pathnode_9" type="Marker3D" parent="map/FlowAIController/area_1" node_paths=PackedStringArray("flowAI_controller")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.215, 0, 30.262)
+script = ExtResource("10_k6nio")
+flowAI_controller = NodePath("../..")
 
 [node name="PedSpawnerController" type="Node" parent="map" node_paths=PackedStringArray("SpawnerSlotsPath", "SpawnerNpcPath", "FlowAIControllerNode", "PlayerRef")]
 process_priority = 1
@@ -263,56 +318,455 @@ SpawnerNpcPath = NodePath("../../actor")
 FlowAIControllerNode = NodePath("../FlowAIController")
 PlayerRef = NodePath("../../actor/actor_player")
 NpcScene = ExtResource("2_1nv3g")
-peds_pool_size = 60
+peds_pool_size = 50
 despawn_radius = 105.0
 metadata/_custom_type_script = "uid://mk0cs7tsd178"
 
 [node name="Spawners" type="Node" parent="map/PedSpawnerController"]
 
-[node name="PedSpawnerSlot" type="Marker3D" parent="map/PedSpawnerController/Spawners"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, -16)
+[node name="PedSpawnerSlot11" type="Marker3D" parent="map/PedSpawnerController/Spawners"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 0, -61.3026)
 script = ExtResource("7_alfe8")
 ped_spawner_type = 1
 peds_size = 3
 metadata/_custom_type_script = "uid://c8oqvjek0jr6i"
 
-[node name="PedSpawnerSlot2" type="Marker3D" parent="map/PedSpawnerController/Spawners"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24, 0, -10)
-script = ExtResource("7_alfe8")
-ped_spawner_type = 1
-peds_size = 2
-metadata/_custom_type_script = "uid://c8oqvjek0jr6i"
-
-[node name="PedSpawnerSlot3" type="Marker3D" parent="map/PedSpawnerController/Spawners"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, -24)
+[node name="PedSpawnerSlot12" type="Marker3D" parent="map/PedSpawnerController/Spawners"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19, 0, -61.3026)
 script = ExtResource("7_alfe8")
 ped_spawner_type = 1
 peds_size = 3
 metadata/_custom_type_script = "uid://c8oqvjek0jr6i"
 
-[node name="PedSpawnerSlot4" type="Marker3D" parent="map/PedSpawnerController/Spawners"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17, 0, -11)
+[node name="PedSpawnerSlot13" type="Marker3D" parent="map/PedSpawnerController/Spawners"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 0, -61.3026)
 script = ExtResource("7_alfe8")
 ped_spawner_type = 1
-peds_size = 2
+peds_size = 3
 metadata/_custom_type_script = "uid://c8oqvjek0jr6i"
 
-[node name="PedSpawnerSlot5" type="Marker3D" parent="map/PedSpawnerController/Spawners"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 0, -19)
+[node name="PedSpawnerSlot14" type="Marker3D" parent="map/PedSpawnerController/Spawners"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, -62.4145)
 script = ExtResource("7_alfe8")
 ped_spawner_type = 1
-peds_size = 2
+peds_size = 3
 metadata/_custom_type_script = "uid://c8oqvjek0jr6i"
 
-[node name="PedSpawnerSlot9" type="Marker3D" parent="map/PedSpawnerController/Spawners"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17, 0, -45)
+[node name="PedSpawnerSlot15" type="Marker3D" parent="map/PedSpawnerController/Spawners"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 0, -53.4145)
 script = ExtResource("7_alfe8")
 ped_spawner_type = 1
-peds_size = 5
+peds_size = 3
 metadata/_custom_type_script = "uid://c8oqvjek0jr6i"
 
-[node name="PedSpawnerSlot10" type="Marker3D" parent="map/PedSpawnerController/Spawners"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 0, -53)
+[node name="PedSpawnerSlot16" type="Marker3D" parent="map/PedSpawnerController/Spawners"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19, 0, -53.4145)
+script = ExtResource("7_alfe8")
+ped_spawner_type = 1
+peds_size = 3
+metadata/_custom_type_script = "uid://c8oqvjek0jr6i"
+
+[node name="PedSpawnerSlot17" type="Marker3D" parent="map/PedSpawnerController/Spawners"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 0, -53.4145)
+script = ExtResource("7_alfe8")
+ped_spawner_type = 1
+peds_size = 3
+metadata/_custom_type_script = "uid://c8oqvjek0jr6i"
+
+[node name="PedSpawnerSlot18" type="Marker3D" parent="map/PedSpawnerController/Spawners"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, -53.4145)
+script = ExtResource("7_alfe8")
+ped_spawner_type = 1
+peds_size = 3
+metadata/_custom_type_script = "uid://c8oqvjek0jr6i"
+
+[node name="PedSpawnerSlot19" type="Marker3D" parent="map/PedSpawnerController/Spawners"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 0, -46.4145)
+script = ExtResource("7_alfe8")
+ped_spawner_type = 1
+peds_size = 3
+metadata/_custom_type_script = "uid://c8oqvjek0jr6i"
+
+[node name="PedSpawnerSlot20" type="Marker3D" parent="map/PedSpawnerController/Spawners"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19, 0, -46.4145)
+script = ExtResource("7_alfe8")
+ped_spawner_type = 1
+peds_size = 3
+metadata/_custom_type_script = "uid://c8oqvjek0jr6i"
+
+[node name="PedSpawnerSlot21" type="Marker3D" parent="map/PedSpawnerController/Spawners"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 0, -46.4145)
+script = ExtResource("7_alfe8")
+ped_spawner_type = 1
+peds_size = 3
+metadata/_custom_type_script = "uid://c8oqvjek0jr6i"
+
+[node name="PedSpawnerSlot22" type="Marker3D" parent="map/PedSpawnerController/Spawners"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, -46.4145)
+script = ExtResource("7_alfe8")
+ped_spawner_type = 1
+peds_size = 3
+metadata/_custom_type_script = "uid://c8oqvjek0jr6i"
+
+[node name="PedSpawnerSlot23" type="Marker3D" parent="map/PedSpawnerController/Spawners"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 0, -39.4145)
+script = ExtResource("7_alfe8")
+ped_spawner_type = 1
+peds_size = 3
+metadata/_custom_type_script = "uid://c8oqvjek0jr6i"
+
+[node name="PedSpawnerSlot24" type="Marker3D" parent="map/PedSpawnerController/Spawners"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19, 0, -39.4145)
+script = ExtResource("7_alfe8")
+ped_spawner_type = 1
+peds_size = 3
+metadata/_custom_type_script = "uid://c8oqvjek0jr6i"
+
+[node name="PedSpawnerSlot25" type="Marker3D" parent="map/PedSpawnerController/Spawners"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 0, -39.4145)
+script = ExtResource("7_alfe8")
+ped_spawner_type = 1
+peds_size = 3
+metadata/_custom_type_script = "uid://c8oqvjek0jr6i"
+
+[node name="PedSpawnerSlot26" type="Marker3D" parent="map/PedSpawnerController/Spawners"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, -39.4145)
+script = ExtResource("7_alfe8")
+ped_spawner_type = 1
+peds_size = 3
+metadata/_custom_type_script = "uid://c8oqvjek0jr6i"
+
+[node name="PedSpawnerSlot27" type="Marker3D" parent="map/PedSpawnerController/Spawners"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 0, -32.4145)
+script = ExtResource("7_alfe8")
+ped_spawner_type = 1
+peds_size = 3
+metadata/_custom_type_script = "uid://c8oqvjek0jr6i"
+
+[node name="PedSpawnerSlot28" type="Marker3D" parent="map/PedSpawnerController/Spawners"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19, 0, -32.4145)
+script = ExtResource("7_alfe8")
+ped_spawner_type = 1
+peds_size = 3
+metadata/_custom_type_script = "uid://c8oqvjek0jr6i"
+
+[node name="PedSpawnerSlot29" type="Marker3D" parent="map/PedSpawnerController/Spawners"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 0, -32.4145)
+script = ExtResource("7_alfe8")
+ped_spawner_type = 1
+peds_size = 3
+metadata/_custom_type_script = "uid://c8oqvjek0jr6i"
+
+[node name="PedSpawnerSlot30" type="Marker3D" parent="map/PedSpawnerController/Spawners"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, -32.4145)
+script = ExtResource("7_alfe8")
+ped_spawner_type = 1
+peds_size = 3
+metadata/_custom_type_script = "uid://c8oqvjek0jr6i"
+
+[node name="PedSpawnerSlot31" type="Marker3D" parent="map/PedSpawnerController/Spawners"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 0, -25.4145)
+script = ExtResource("7_alfe8")
+ped_spawner_type = 1
+peds_size = 3
+metadata/_custom_type_script = "uid://c8oqvjek0jr6i"
+
+[node name="PedSpawnerSlot32" type="Marker3D" parent="map/PedSpawnerController/Spawners"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19, 0, -25.4145)
+script = ExtResource("7_alfe8")
+ped_spawner_type = 1
+peds_size = 3
+metadata/_custom_type_script = "uid://c8oqvjek0jr6i"
+
+[node name="PedSpawnerSlot33" type="Marker3D" parent="map/PedSpawnerController/Spawners"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 0, -25.4145)
+script = ExtResource("7_alfe8")
+ped_spawner_type = 1
+peds_size = 3
+metadata/_custom_type_script = "uid://c8oqvjek0jr6i"
+
+[node name="PedSpawnerSlot34" type="Marker3D" parent="map/PedSpawnerController/Spawners"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, -25.4145)
+script = ExtResource("7_alfe8")
+ped_spawner_type = 1
+peds_size = 3
+metadata/_custom_type_script = "uid://c8oqvjek0jr6i"
+
+[node name="PedSpawnerSlot35" type="Marker3D" parent="map/PedSpawnerController/Spawners"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 0, -20.4145)
+script = ExtResource("7_alfe8")
+ped_spawner_type = 1
+peds_size = 3
+metadata/_custom_type_script = "uid://c8oqvjek0jr6i"
+
+[node name="PedSpawnerSlot36" type="Marker3D" parent="map/PedSpawnerController/Spawners"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19, 0, -20.4145)
+script = ExtResource("7_alfe8")
+ped_spawner_type = 1
+peds_size = 3
+metadata/_custom_type_script = "uid://c8oqvjek0jr6i"
+
+[node name="PedSpawnerSlot37" type="Marker3D" parent="map/PedSpawnerController/Spawners"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 0, -20.4145)
+script = ExtResource("7_alfe8")
+ped_spawner_type = 1
+peds_size = 3
+metadata/_custom_type_script = "uid://c8oqvjek0jr6i"
+
+[node name="PedSpawnerSlot38" type="Marker3D" parent="map/PedSpawnerController/Spawners"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, -20.4145)
+script = ExtResource("7_alfe8")
+ped_spawner_type = 1
+peds_size = 3
+metadata/_custom_type_script = "uid://c8oqvjek0jr6i"
+
+[node name="PedSpawnerSlot39" type="Marker3D" parent="map/PedSpawnerController/Spawners"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 0, -13.4145)
+script = ExtResource("7_alfe8")
+ped_spawner_type = 1
+peds_size = 3
+metadata/_custom_type_script = "uid://c8oqvjek0jr6i"
+
+[node name="PedSpawnerSlot40" type="Marker3D" parent="map/PedSpawnerController/Spawners"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19, 0, -13.4145)
+script = ExtResource("7_alfe8")
+ped_spawner_type = 1
+peds_size = 3
+metadata/_custom_type_script = "uid://c8oqvjek0jr6i"
+
+[node name="PedSpawnerSlot41" type="Marker3D" parent="map/PedSpawnerController/Spawners"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 0, -13.4145)
+script = ExtResource("7_alfe8")
+ped_spawner_type = 1
+peds_size = 3
+metadata/_custom_type_script = "uid://c8oqvjek0jr6i"
+
+[node name="PedSpawnerSlot42" type="Marker3D" parent="map/PedSpawnerController/Spawners"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, -13.4145)
+script = ExtResource("7_alfe8")
+ped_spawner_type = 1
+peds_size = 3
+metadata/_custom_type_script = "uid://c8oqvjek0jr6i"
+
+[node name="PedSpawnerSlot43" type="Marker3D" parent="map/PedSpawnerController/Spawners"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, -61.3026)
+script = ExtResource("7_alfe8")
+ped_spawner_type = 1
+peds_size = 3
+metadata/_custom_type_script = "uid://c8oqvjek0jr6i"
+
+[node name="PedSpawnerSlot44" type="Marker3D" parent="map/PedSpawnerController/Spawners"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0, -61.3026)
+script = ExtResource("7_alfe8")
+ped_spawner_type = 1
+peds_size = 3
+metadata/_custom_type_script = "uid://c8oqvjek0jr6i"
+
+[node name="PedSpawnerSlot45" type="Marker3D" parent="map/PedSpawnerController/Spawners"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 0, -61.3026)
+script = ExtResource("7_alfe8")
+ped_spawner_type = 1
+peds_size = 3
+metadata/_custom_type_script = "uid://c8oqvjek0jr6i"
+
+[node name="PedSpawnerSlot46" type="Marker3D" parent="map/PedSpawnerController/Spawners"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25, 0, -62.4145)
+script = ExtResource("7_alfe8")
+ped_spawner_type = 1
+peds_size = 3
+metadata/_custom_type_script = "uid://c8oqvjek0jr6i"
+
+[node name="PedSpawnerSlot47" type="Marker3D" parent="map/PedSpawnerController/Spawners"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, -53.4145)
+script = ExtResource("7_alfe8")
+ped_spawner_type = 1
+peds_size = 3
+metadata/_custom_type_script = "uid://c8oqvjek0jr6i"
+
+[node name="PedSpawnerSlot48" type="Marker3D" parent="map/PedSpawnerController/Spawners"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0, -53.4145)
+script = ExtResource("7_alfe8")
+ped_spawner_type = 1
+peds_size = 3
+metadata/_custom_type_script = "uid://c8oqvjek0jr6i"
+
+[node name="PedSpawnerSlot49" type="Marker3D" parent="map/PedSpawnerController/Spawners"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 0, -53.4145)
+script = ExtResource("7_alfe8")
+ped_spawner_type = 1
+peds_size = 3
+metadata/_custom_type_script = "uid://c8oqvjek0jr6i"
+
+[node name="PedSpawnerSlot50" type="Marker3D" parent="map/PedSpawnerController/Spawners"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25, 0, -53.4145)
+script = ExtResource("7_alfe8")
+ped_spawner_type = 1
+peds_size = 3
+metadata/_custom_type_script = "uid://c8oqvjek0jr6i"
+
+[node name="PedSpawnerSlot51" type="Marker3D" parent="map/PedSpawnerController/Spawners"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, -46.4145)
+script = ExtResource("7_alfe8")
+ped_spawner_type = 1
+peds_size = 3
+metadata/_custom_type_script = "uid://c8oqvjek0jr6i"
+
+[node name="PedSpawnerSlot52" type="Marker3D" parent="map/PedSpawnerController/Spawners"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0, -46.4145)
+script = ExtResource("7_alfe8")
+ped_spawner_type = 1
+peds_size = 3
+metadata/_custom_type_script = "uid://c8oqvjek0jr6i"
+
+[node name="PedSpawnerSlot53" type="Marker3D" parent="map/PedSpawnerController/Spawners"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 0, -46.4145)
+script = ExtResource("7_alfe8")
+ped_spawner_type = 1
+peds_size = 3
+metadata/_custom_type_script = "uid://c8oqvjek0jr6i"
+
+[node name="PedSpawnerSlot54" type="Marker3D" parent="map/PedSpawnerController/Spawners"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25, 0, -46.4145)
+script = ExtResource("7_alfe8")
+ped_spawner_type = 1
+peds_size = 3
+metadata/_custom_type_script = "uid://c8oqvjek0jr6i"
+
+[node name="PedSpawnerSlot55" type="Marker3D" parent="map/PedSpawnerController/Spawners"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, -39.4145)
+script = ExtResource("7_alfe8")
+ped_spawner_type = 1
+peds_size = 3
+metadata/_custom_type_script = "uid://c8oqvjek0jr6i"
+
+[node name="PedSpawnerSlot56" type="Marker3D" parent="map/PedSpawnerController/Spawners"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0, -39.4145)
+script = ExtResource("7_alfe8")
+ped_spawner_type = 1
+peds_size = 3
+metadata/_custom_type_script = "uid://c8oqvjek0jr6i"
+
+[node name="PedSpawnerSlot57" type="Marker3D" parent="map/PedSpawnerController/Spawners"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 0, -39.4145)
+script = ExtResource("7_alfe8")
+ped_spawner_type = 1
+peds_size = 3
+metadata/_custom_type_script = "uid://c8oqvjek0jr6i"
+
+[node name="PedSpawnerSlot58" type="Marker3D" parent="map/PedSpawnerController/Spawners"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25, 0, -39.4145)
+script = ExtResource("7_alfe8")
+ped_spawner_type = 1
+peds_size = 3
+metadata/_custom_type_script = "uid://c8oqvjek0jr6i"
+
+[node name="PedSpawnerSlot59" type="Marker3D" parent="map/PedSpawnerController/Spawners"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, -32.4145)
+script = ExtResource("7_alfe8")
+ped_spawner_type = 1
+peds_size = 3
+metadata/_custom_type_script = "uid://c8oqvjek0jr6i"
+
+[node name="PedSpawnerSlot60" type="Marker3D" parent="map/PedSpawnerController/Spawners"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0, -32.4145)
+script = ExtResource("7_alfe8")
+ped_spawner_type = 1
+peds_size = 3
+metadata/_custom_type_script = "uid://c8oqvjek0jr6i"
+
+[node name="PedSpawnerSlot61" type="Marker3D" parent="map/PedSpawnerController/Spawners"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 0, -32.4145)
+script = ExtResource("7_alfe8")
+ped_spawner_type = 1
+peds_size = 3
+metadata/_custom_type_script = "uid://c8oqvjek0jr6i"
+
+[node name="PedSpawnerSlot62" type="Marker3D" parent="map/PedSpawnerController/Spawners"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25, 0, -32.4145)
+script = ExtResource("7_alfe8")
+ped_spawner_type = 1
+peds_size = 3
+metadata/_custom_type_script = "uid://c8oqvjek0jr6i"
+
+[node name="PedSpawnerSlot63" type="Marker3D" parent="map/PedSpawnerController/Spawners"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, -25.4145)
+script = ExtResource("7_alfe8")
+ped_spawner_type = 1
+peds_size = 3
+metadata/_custom_type_script = "uid://c8oqvjek0jr6i"
+
+[node name="PedSpawnerSlot64" type="Marker3D" parent="map/PedSpawnerController/Spawners"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0, -25.4145)
+script = ExtResource("7_alfe8")
+ped_spawner_type = 1
+peds_size = 3
+metadata/_custom_type_script = "uid://c8oqvjek0jr6i"
+
+[node name="PedSpawnerSlot65" type="Marker3D" parent="map/PedSpawnerController/Spawners"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 0, -25.4145)
+script = ExtResource("7_alfe8")
+ped_spawner_type = 1
+peds_size = 3
+metadata/_custom_type_script = "uid://c8oqvjek0jr6i"
+
+[node name="PedSpawnerSlot66" type="Marker3D" parent="map/PedSpawnerController/Spawners"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25, 0, -25.4145)
+script = ExtResource("7_alfe8")
+ped_spawner_type = 1
+peds_size = 3
+metadata/_custom_type_script = "uid://c8oqvjek0jr6i"
+
+[node name="PedSpawnerSlot67" type="Marker3D" parent="map/PedSpawnerController/Spawners"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, -20.4145)
+script = ExtResource("7_alfe8")
+ped_spawner_type = 1
+peds_size = 3
+metadata/_custom_type_script = "uid://c8oqvjek0jr6i"
+
+[node name="PedSpawnerSlot68" type="Marker3D" parent="map/PedSpawnerController/Spawners"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0, -20.4145)
+script = ExtResource("7_alfe8")
+ped_spawner_type = 1
+peds_size = 3
+metadata/_custom_type_script = "uid://c8oqvjek0jr6i"
+
+[node name="PedSpawnerSlot69" type="Marker3D" parent="map/PedSpawnerController/Spawners"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 0, -20.4145)
+script = ExtResource("7_alfe8")
+ped_spawner_type = 1
+peds_size = 3
+metadata/_custom_type_script = "uid://c8oqvjek0jr6i"
+
+[node name="PedSpawnerSlot70" type="Marker3D" parent="map/PedSpawnerController/Spawners"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25, 0, -20.4145)
+script = ExtResource("7_alfe8")
+ped_spawner_type = 1
+peds_size = 3
+metadata/_custom_type_script = "uid://c8oqvjek0jr6i"
+
+[node name="PedSpawnerSlot71" type="Marker3D" parent="map/PedSpawnerController/Spawners"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, -13.4145)
+script = ExtResource("7_alfe8")
+ped_spawner_type = 1
+peds_size = 3
+metadata/_custom_type_script = "uid://c8oqvjek0jr6i"
+
+[node name="PedSpawnerSlot72" type="Marker3D" parent="map/PedSpawnerController/Spawners"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0, -13.4145)
+script = ExtResource("7_alfe8")
+ped_spawner_type = 1
+peds_size = 3
+metadata/_custom_type_script = "uid://c8oqvjek0jr6i"
+
+[node name="PedSpawnerSlot73" type="Marker3D" parent="map/PedSpawnerController/Spawners"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 0, -13.4145)
+script = ExtResource("7_alfe8")
+ped_spawner_type = 1
+peds_size = 3
+metadata/_custom_type_script = "uid://c8oqvjek0jr6i"
+
+[node name="PedSpawnerSlot74" type="Marker3D" parent="map/PedSpawnerController/Spawners"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25, 0, -13.4145)
 script = ExtResource("7_alfe8")
 ped_spawner_type = 1
 peds_size = 3
@@ -323,57 +777,15 @@ metadata/_custom_type_script = "uid://c8oqvjek0jr6i"
 [node name="actor_player" parent="actor" instance=ExtResource("4_cv82n")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -3)
 
+[node name="FreeLookCamera" type="Camera3D" parent="actor"]
+process_mode = 4
+script = ExtResource("11_exg0k")
+metadata/_custom_type_script = "uid://bchdkode3ag7t"
+
 [node name="RuntimeCreatedBodies" type="Node" parent="."]
 
-[node name="CanvasLayer" type="CanvasLayer" parent="." node_paths=PackedStringArray("ped_spawner_controller")]
-script = ExtResource("13_t6m7v")
+[node name="CrowdAIInterface" parent="." node_paths=PackedStringArray("ped_spawner_controller") instance=ExtResource("13_exg0k")]
 ped_spawner_controller = NodePath("../map/PedSpawnerController")
-
-[node name="Interface" type="Control" parent="CanvasLayer"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Interface"]
-layout_mode = 0
-offset_left = 21.0
-offset_top = 23.0
-offset_right = 67.0
-offset_bottom = 127.0
-
-[node name="fps" type="Label" parent="CanvasLayer/Interface/VBoxContainer"]
-layout_mode = 2
-text = "NPCS:"
-
-[node name="peds" type="Label" parent="CanvasLayer/Interface/VBoxContainer"]
-layout_mode = 2
-text = "NPCS:"
-
-[node name="active_peds" type="Label" parent="CanvasLayer/Interface/VBoxContainer"]
-layout_mode = 2
-text = "NPCS:"
-
-[node name="inactive_peds" type="Label" parent="CanvasLayer/Interface/VBoxContainer"]
-layout_mode = 2
-text = "NPCS:"
-
-[node name="VBoxContainer2" type="VBoxContainer" parent="CanvasLayer/Interface"]
-layout_mode = 0
-offset_left = 21.0
-offset_top = 143.0
-offset_right = 67.0
-offset_bottom = 247.0
-
-[node name="spawn_radius" type="Label" parent="CanvasLayer/Interface/VBoxContainer2"]
-layout_mode = 2
-text = "NPCS:"
-
-[node name="despawn_radius" type="Label" parent="CanvasLayer/Interface/VBoxContainer2"]
-layout_mode = 2
-text = "NPCS:"
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_1dh4r")

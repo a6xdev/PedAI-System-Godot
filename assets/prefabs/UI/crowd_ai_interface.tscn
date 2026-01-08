@@ -1,0 +1,53 @@
+[gd_scene load_steps=2 format=3 uid="uid://bxwxflsejagit"]
+
+[ext_resource type="Script" uid="uid://c465r45f5mv57" path="res://scripts/gameplay/interface/CrowdAIInterface.gd" id="1_nnvvx"]
+
+[node name="CrowdAIInterface" type="CanvasLayer" node_paths=PackedStringArray("ped_spawner_controller")]
+script = ExtResource("1_nnvvx")
+ped_spawner_controller = NodePath("")
+
+[node name="Interface" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Interface"]
+layout_mode = 0
+offset_left = 21.0
+offset_top = 23.0
+offset_right = 67.0
+offset_bottom = 127.0
+
+[node name="fps" type="Label" parent="Interface/VBoxContainer"]
+layout_mode = 2
+text = "NPCS:"
+
+[node name="peds" type="Label" parent="Interface/VBoxContainer"]
+layout_mode = 2
+text = "NPCS:"
+
+[node name="active_peds" type="Label" parent="Interface/VBoxContainer"]
+layout_mode = 2
+text = "NPCS:"
+
+[node name="inactive_peds" type="Label" parent="Interface/VBoxContainer"]
+layout_mode = 2
+text = "NPCS:"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Interface"]
+layout_mode = 0
+offset_left = 21.0
+offset_top = 143.0
+offset_right = 67.0
+offset_bottom = 247.0
+
+[node name="spawn_radius" type="Label" parent="Interface/VBoxContainer2"]
+layout_mode = 2
+text = "NPCS:"
+
+[node name="despawn_radius" type="Label" parent="Interface/VBoxContainer2"]
+layout_mode = 2
+text = "NPCS:"

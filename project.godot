@@ -11,8 +11,8 @@ config_version=5
 [application]
 
 config/name="CrowdAI"
-run/main_scene="uid://cw0bk0h1o70ne"
-config/features=PackedStringArray("4.4", "Forward Plus")
+run/main_scene="uid://dugpcfhubpqy6"
+config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
@@ -24,7 +24,6 @@ NpcManager="*res://scripts/core/globals/NpcManager.gd"
 
 window/size/viewport_width=1920
 window/size/viewport_height=1080
-window/size/mode=3
 window/vsync/vsync_mode=0
 
 [editor_plugins]

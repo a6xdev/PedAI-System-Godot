@@ -1,0 +1,55 @@
+{
+	"areas": [
+		{
+			"area_pathnodes": [
+				1,
+				2,
+				3
+			],
+			"id": 1,
+			"position": [
+				0.0,
+				0.0,
+				0.0
+			]
+		}
+	],
+	"pathnodes": [
+		{
+			"area_id": 1,
+			"id": 1,
+			"links": [
+				2,
+				3
+			],
+			"position": [
+				0.0,
+				0.0,
+				0.0
+			],
+			"prev_pathnode": 0
+		},
+		{
+			"area_id": 1,
+			"id": 2,
+			"links": [],
+			"position": [
+				0.0,
+				0.0,
+				8.0
+			],
+			"prev_pathnode": 1
+		},
+		{
+			"area_id": 1,
+			"id": 3,
+			"links": [],
+			"position": [
+				0.0,
+				0.0,
+				-8.0
+			],
+			"prev_pathnode": 1
+		}
+	]
+}
