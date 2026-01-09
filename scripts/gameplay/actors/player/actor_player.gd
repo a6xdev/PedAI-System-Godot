@@ -1,9 +1,10 @@
 extends CharacterBody3D
 class_name Player
 
+@onready var mesh: Node3D = $mesh
 @onready var pivot: Node3D = $pivot
 @onready var spring_arm: SpringArm3D = $pivot/SpringArm3D
-@onready var mesh: Node3D = $mesh
+@onready var camera: FreeLookCamera = $pivot/SpringArm3D/camera
 @onready var trash_obj: CSGBox3D = $mesh/Rig/Skeleton3D/HandL/trash
 
 const SMALL_TRASH = preload("res://assets/prefabs/objects/small_trash.tscn")
@@ -21,8 +22,10 @@ var motion = Vector3.ZERO
 @export_subgroup("Flags")
 @export var can_move:bool = true
 @export var can_run:bool = true
+@export var can_move_camera:bool = true
 
 var game_paused:bool = false
+var flymode:bool = false
 var run_toggle:bool = false
 
 var is_animation_crouch_standing:bool = false
@@ -32,6 +35,7 @@ var is_moving:bool = false
 var is_stopped:bool = false
 var is_walking:bool = false
 var is_running:bool = false
+var in_the_air:bool = false
 var is_crouching:bool = false
 var is_dancing:bool = false
 var is_dropping:bool = false
@@ -43,14 +47,31 @@ func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 func _input(event: InputEvent) -> void:
-	if event is InputEventMouseMotion:
+	if event is InputEventMouseMotion and can_move_camera:
 		look_rot.y -= event.relative.x * mouse_sensitivity
 		look_rot.x -= event.relative.y * mouse_sensitivity
 		look_rot.x = clamp(look_rot.x, deg_to_rad(-70.0), deg_to_rad(90.0))
 	
+	if Input.is_action_just_pressed("d_flymode"):
+		flymode = !flymode
+		
+		if flymode:
+			camera.reparent(pivot)
+			camera.active = true
+			camera.top_level = true
+			can_move = false
+			can_move_camera = false
+		else:
+			camera.reparent(spring_arm)
+			camera.active = false
+			camera.top_level = false
+			camera.position = Vector3.ZERO
+			camera.rotation = Vector3.ZERO
+			can_move = true
+			can_move_camera = true
+	
 	if Input.is_action_just_pressed("ui_cancel"):
 		game_paused = !game_paused
-		
 		if game_paused:
 			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 		else:
@@ -84,7 +105,10 @@ func _physics_process(delta: float) -> void:
 	movement_controller(delta)
 	
 	if not is_on_floor():
+		in_the_air = true
 		velocity.y -= 9.8 * delta
+	else:
+		in_the_air = false
 #endregion
 
 #region CONTROLLERS
@@ -106,7 +130,7 @@ func animation_controller() -> void:
 			is_running = false
 
 func camera_controller() -> void:
-	if not game_paused:
+	if not game_paused and can_move_camera:
 		var rel_yaw = look_rot.y - rotation.y
 		
 		spring_arm.rotation = Vector3(look_rot.x, rel_yaw, 0.0)
@@ -126,12 +150,13 @@ func movement_controller(delta:float) -> void:
 		else:
 			current_speed = crouch_speed
 		
-		if move_dir != Vector3.ZERO:
+		if move_dir != Vector3.ZERO and not in_the_air:
 			var target_rot = atan2(move_dir.x, move_dir.z)
 			mesh.rotation.y = lerp_angle(mesh.rotation.y, target_rot, 0.2)
 		
-		velocity.x = lerp(velocity.x, move_dir.x * current_speed, 30.0 * delta)
-		velocity.z = lerp(velocity.z, move_dir.z * current_speed, 30.0 * delta)
+		if not in_the_air:
+			velocity.x = lerp(velocity.x, move_dir.x * current_speed, 30.0 * delta)
+			velocity.z = lerp(velocity.z, move_dir.z * current_speed, 30.0 * delta)
 		
 		move_and_slide()
 	else:

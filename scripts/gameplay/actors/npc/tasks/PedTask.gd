@@ -6,7 +6,8 @@ enum Type {
 	ROTATE_TO,
 	PLAY_ANIM,
 	WAIT,
-	TALK_WITH
+	TALK,
+	COLLISION_DISABLED
 }
 
 @export var type:Type

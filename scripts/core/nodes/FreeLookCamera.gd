@@ -4,6 +4,7 @@ class_name FreeLookCamera extends Camera3D
 const SHIFT_MULTIPLIER = 2.5
 const ALT_MULTIPLIER = 1.0 / SHIFT_MULTIPLIER
 
+@export var active:bool = false
 @export_range(0.0, 1.0) var sensitivity = 0.25
 
 # Mouse state
@@ -28,49 +29,51 @@ var _shift = false
 var _alt = false
 
 func _input(event):
-	# Receives mouse motion
-	if event is InputEventMouseMotion:
-		_mouse_position = event.relative
-	
-	# Receives mouse button input
-	if event is InputEventMouseButton:
-		match event.button_index:
-			MOUSE_BUTTON_RIGHT: # Only allows rotation if right click down
-				Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED if event.pressed else Input.MOUSE_MODE_VISIBLE)
-			MOUSE_BUTTON_WHEEL_UP: # Increases max velocity
-				_vel_multiplier = clamp(_vel_multiplier * 1.1, 0.2, 20)
-			MOUSE_BUTTON_WHEEL_DOWN: # Decereases max velocity
-				_vel_multiplier = clamp(_vel_multiplier / 1.1, 0.2, 20)
+	if active:
+		# Receives mouse motion
+		if event is InputEventMouseMotion:
+			_mouse_position = event.relative
+		
+		# Receives mouse button input
+		if event is InputEventMouseButton:
+			match event.button_index:
+				MOUSE_BUTTON_RIGHT: # Only allows rotation if right click down
+					Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED if event.pressed else Input.MOUSE_MODE_VISIBLE)
+				MOUSE_BUTTON_WHEEL_UP: # Increases max velocity
+					_vel_multiplier = clamp(_vel_multiplier * 1.1, 0.2, 1000)
+				MOUSE_BUTTON_WHEEL_DOWN: # Decereases max velocity
+					_vel_multiplier = clamp(_vel_multiplier / 1.1, 0.2, 1000)
 
-	# Receives key input
-	if event is InputEventKey:
-		match event.keycode:
-			KEY_W:
-				_w = event.pressed
-			KEY_S:
-				_s = event.pressed
-			KEY_A:
-				_a = event.pressed
-			KEY_D:
-				_d = event.pressed
-			KEY_Q:
-				_q = event.pressed
-			KEY_E:
-				_e = event.pressed
-	
-	if Input.is_action_just_pressed("ui_accept"):
-		var new_event := Event.new()
-		new_event.event_type = new_event.EventType.DANCE
-		new_event.event_lifetime = 10.0
-		add_child(new_event)
-		new_event.generate_random_slots()
-		new_event.global_rotation = Vector3.ZERO
-		new_event.global_position.y = -1.0
+		# Receives key input
+		if event is InputEventKey:
+			match event.keycode:
+				KEY_W:
+					_w = event.pressed
+				KEY_S:
+					_s = event.pressed
+				KEY_A:
+					_a = event.pressed
+				KEY_D:
+					_d = event.pressed
+				KEY_Q:
+					_q = event.pressed
+				KEY_E:
+					_e = event.pressed
+		
+		if Input.is_action_just_pressed("ui_accept"):
+			var new_event := Event.new()
+			new_event.event_type = new_event.EventType.DANCE
+			new_event.event_lifetime = 10.0
+			add_child(new_event)
+			new_event.generate_random_slots()
+			new_event.global_rotation = Vector3.ZERO
+			new_event.global_position.y = -1.0
 
 # Updates mouselook and movement every frame
 func _process(delta):
-	_update_mouselook()
-	_update_movement(delta)
+	if active:
+		_update_mouselook()
+		_update_movement(delta)
 
 # Updates camera movement
 func _update_movement(delta):

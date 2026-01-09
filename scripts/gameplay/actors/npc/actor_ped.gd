@@ -64,6 +64,7 @@ var has_movement_task:bool = false
 # Tasks:
 var task_is_moving_to_local:bool = false
 var cancel_current_task:bool = false
+var wait_timer:float = 0.0
 
 var want_socialize:bool = false
 var want_sit:bool = false
@@ -73,7 +74,9 @@ var current_event:Event = null
 var current_speed:float = 0.0
 var current_group:PedGroupManager = null
 var current_task:PedTask
+var current_smart_object:SmartObjects = null
 
+var rotation_action_target:float = 0.0
 var look_current_path_target := Vector3.ZERO
 var look_current_event_target := Vector3.ZERO
 var look_current_group_center_target := Vector3.ZERO
@@ -197,7 +200,9 @@ func orientation_controller(delta:float) -> void:
 			if to_target:
 				body_target_rot = atan2(to_target.x, to_target.z)
 		else:
-			if not is_stopped_on_event:
+			if is_stopped and is_on_action:
+				body_target_rot = rotation_action_target
+			elif not is_stopped_on_event:
 				var to_target = (look_current_path_target - global_position).normalized()
 				if to_target:
 					body_target_rot = atan2(to_target.x, to_target.z)
@@ -205,7 +210,7 @@ func orientation_controller(delta:float) -> void:
 				var to_target = (look_current_event_target - global_position).normalized()
 				if to_target:
 					body_target_rot = atan2(to_target.x, to_target.z)
-
+					
 		rotation.y = lerp_angle(rotation.y, body_target_rot, ped_rotation_speed * delta)
 	
 	if in_on_event and current_event:
@@ -235,66 +240,70 @@ func social_controller() -> void:
 		is_talking = false
 
 func process_tasks() -> void:
-	if tasks_queue.is_empty():
+	if tasks_queue.is_empty(): return
+	
+	if wait_timer > 0:
+		wait_timer -= get_physics_process_delta_time()
 		return
-		
+	
 	current_task = tasks_queue[0]
+	var task_finished:bool = false
 	
 	if current_task:
 		is_on_action = true if current_task.is_action else false
 		
 		match current_task.type:
 			PedTask.Type.MOVE_TO:
-				if task_move_to(current_task.target_value):
+				if task_move_to(current_task.target_value, is_on_action):
 					has_movement_task = false
+					task_finished = true
 			PedTask.Type.ROTATE_TO:
-				if task_rotate_to(current_task.target_value):
-					pass
+				task_finished = task_rotate_y_to(current_task.target_value)
 			PedTask.Type.PLAY_ANIM:
-				if task_play_animation(current_task.target_name, current_task.target_value):
-					pass
+				self.set(current_task.target_name, current_task.target_value)
+				task_finished = true
 			PedTask.Type.WAIT:
-				if await task_wait(current_task.target_value):
-					pass
+				wait_timer = current_task.target_value
+				task_finished = true
+			PedTask.Type.COLLISION_DISABLED:
+				collision.disabled = current_task.target_value
+				task_finished = true
+		
+		if task_finished:
+			tasks_queue.pop_front()
 #endregion
 
 #region TASKS
-func task_move_to(local:Vector3) -> bool:
+func task_move_to(local:Vector3, use_pathfinding:bool = false) -> bool:
 	var dist:float = global_position.distance_to(local)
-	var dist_min = 1.5 if not is_on_action else 1.0
+	var dist_min = 1.5
+	
+	if use_pathfinding and flow_ai_agent.target_position != local:
+		flow_ai_agent.target_position = local
 	
 	draw_debug_movement_target(local, dist)
 	
-	if dist <= dist_min or cancel_current_task:
-		tasks_queue.pop_front()
-		velocity.x = 0.0
-		velocity.z = 0.0
-		return true
-	
+	var target_pos = flow_ai_agent.get_next_path_position() if use_pathfinding else local
 	var avoidance_force:Vector3 = get_avoidance_force()
-	var direction:Vector3 = (local - global_position).normalized()
+	var direction:Vector3 = (target_pos - global_position).normalized()
 	var final_dir:Vector3 = direction
 	
-	if avoidance_force != Vector3.ZERO and not is_following_group_leader:
+	# this shit arrived
+	if dist <= dist_min or cancel_current_task:
+		# Verify if the next task is a MOVE_TO. If not, stop of moving.
+		if tasks_queue.size() > 1 and not tasks_queue[1].type == PedTask.Type.MOVE_TO: velocity = Vector3(0.0, velocity.y, 0.0)
+		if use_pathfinding: global_position = Vector3(target_pos.x, global_position.y, target_pos.z)
+		return true
+	
+	if avoidance_force != Vector3.ZERO and not is_following_group_leader and not is_on_action:
 		final_dir = (direction + avoidance_force * avoidance_side_weight).normalized()
 	
 	velocity = final_dir * current_speed
 	look_current_path_target = (global_position + final_dir)
 	return false
 
-func task_rotate_to(value:Vector3) -> bool:
-	look_current_path_target = value
-	tasks_queue.pop_front()
-	return true
-	
-func task_play_animation(target_name:String, target_value:bool) -> bool:
-	self.set(target_name, target_value)
-	tasks_queue.pop_front()
-	return true
-
-func task_wait(value:int) -> bool:
-	await get_tree().create_timer(value).timeout
-	tasks_queue.pop_front()
+func task_rotate_y_to(value:float) -> bool:
+	rotation_action_target = value
 	return true
 #endregion
 
@@ -366,13 +375,14 @@ func _on_detect_nearby_body_exited(body: Node3D) -> void:
 			nearby_bodies.erase(body)
 
 func _on_detect_player_in_front_body_entered(body: Node3D) -> void:
-	if body is Player:
-		is_sitting = false
-		is_leaning_wall_back = false
-		is_fixing_kneeling = false
-		await get_tree().create_timer(2.0).timeout
-		ped_can_move = true
-		ped_can_rotate_body = true
+	pass
+	#if body is Player:
+		#is_sitting = false
+		#is_leaning_wall_back = false
+		#is_fixing_kneeling = false
+		#await get_tree().create_timer(2.0).timeout
+		#ped_can_move = true
+		#ped_can_rotate_body = true
 
 func _on_detect_nearby_smart_objects_body_entered(body: Node3D) -> void:
 	if body is SmartObjects:

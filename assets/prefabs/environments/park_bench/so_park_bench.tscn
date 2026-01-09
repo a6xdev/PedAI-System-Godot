@@ -102,30 +102,30 @@ normal_enabled = true
 normal_texture = ExtResource("9_g1kwi")
 heightmap_texture = ExtResource("7_4qyln")
 
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_4s685"]
-points = PackedVector3Array(1.02226, 0.300571, -0.212135, 1.02226, 0.292686, -0.191842, 1.02527, 0.290332, -0.194005, 1.02527, 0.297334, -0.212135, 1.02527, 0.290391, -0.229943, 1.02226, 0.292627, -0.232428, -1.02246, 0.300571, -0.212135, 1.02226, 0.123571, 0.173389, -1.02246, 0.292686, -0.191842, 1.02527, 0.120805, 0.172101, 1.02527, 0.282094, -0.232014, 1.02226, 0.282094, -0.235051, -1.02246, 0.292627, -0.232428, -1.02527, 0.290391, -0.229943, -1.02527, 0.297334, -0.212135, -1.02527, 0.290332, -0.194005, 1.02226, 0.0975031, 0.206935, -1.02246, 0.123571, 0.173389, 1.02527, 0.0957378, 0.204358, 1.02527, -0.29757, -0.150519, 1.02226, -0.297334, -0.153602, -1.02246, 0.282094, -0.235051, -1.02527, 0.282094, -0.232014, -1.02527, 0.120805, 0.172101, 1.02226, 0.061138, 0.217657, 1.02527, 0.0609615, 0.214666, -1.02246, 0.0975031, 0.206935, 1.02527, -0.297629, -0.0999934, 1.02226, -0.300571, -0.151026, -1.02246, -0.297334, -0.153602, -1.02527, -0.29757, -0.150519, -1.02527, 0.0957378, 0.204358, 1.02226, -0.297334, 0.235051, -1.02246, 0.061138, 0.217657, 1.02527, -0.297511, 0.231876, -1.02527, 0.0609615, 0.214666, 1.02246, -0.300571, 0.190968, 1.02527, -0.297629, 0.190784, -1.02246, -0.300571, -0.151026, -1.02527, -0.297629, -0.0999934, 1.02226, -0.300571, 0.23252, -1.02246, -0.297334, 0.235051, -1.02527, -0.297511, 0.231876, -1.02266, -0.300571, 0.190968, -1.02527, -0.297629, 0.190784, -1.02246, -0.300571, 0.23252)
+[sub_resource type="BoxShape3D" id="BoxShape3D_vn3mn"]
+size = Vector3(2.4638367, 0.70007324, 0.35868835)
 
 [node name="so_park_bench" type="StaticBody3D"]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
+transform = Transform3D(1.6, 0, 0, 0, 1.6, 0, 0, 0, 1.6, 0, 0, 0)
 script = ExtResource("1_vn3mn")
 
 [node name="mesh" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.690795e-05, 0.29592, 0.10881994)
+transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 0, 0.296, 0.06825617)
 mesh = SubResource("ArrayMesh_dpf0g")
 skeleton = NodePath("")
 surface_material_override/0 = SubResource("StandardMaterial3D_wj1ql")
 surface_material_override/1 = SubResource("StandardMaterial3D_xr76i")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.690795e-05, 0.29592, 0.10881995)
-shape = SubResource("ConvexPolygonShape3D_4s685")
+[node name="collision" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.005197434, 0.2904879, -0.07182026)
+shape = SubResource("BoxShape3D_vn3mn")
 
 [node name="ParkBench_EventSlot_01" type="Marker3D" parent="."]
-transform = Transform3D(-1.0000001, 0, 8.7422784e-08, 0, 1.0000001, 0, -8.7422784e-08, 0, -1.0000001, -0.5030646, 0, 0.6013559)
+transform = Transform3D(-1.0000002, 0, 8.742279e-08, 0, 1.0000002, 0, -8.742279e-08, 0, -1.0000002, -0.67626446, 0, 0.27982345)
 script = ExtResource("12_3nqm3")
 metadata/_custom_type_script = "uid://b21ldp6ap5gbq"
 
 [node name="ParkBench_EventSlot_02" type="Marker3D" parent="."]
-transform = Transform3D(-1.0000002, 0, 8.74228e-08, 0, 1.0000002, 0, -8.74228e-08, 0, -1.0000002, 0.47587374, 0, 0.60135615)
+transform = Transform3D(-1.0000002, 0, 8.7422826e-08, 0, 1.0000002, 0, -8.7422826e-08, 0, -1.0000002, 0.6326699, 0, 0.27982372)
 script = ExtResource("12_3nqm3")
 metadata/_custom_type_script = "uid://b21ldp6ap5gbq"
