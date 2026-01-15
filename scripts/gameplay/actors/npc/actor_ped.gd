@@ -14,9 +14,8 @@ class_name actor_npc
 @onready var d_movement_target: MeshInstance3D = $debug/DMovementTarget
 
 enum PedType {
-	NORMAL,
-	RUNNER,
-	STOPPED,
+	WANDER,
+	SCENARIO,
 }
 
 enum PathType {
@@ -69,7 +68,7 @@ var wait_timer:float = 0.0
 var want_socialize:bool = false
 var want_sit:bool = false
 
-var current_ped_type:PedType = PedType.NORMAL
+var current_ped_type:PedType = PedType.WANDER
 var current_event:Event = null
 var current_speed:float = 0.0
 var current_group:PedGroupManager = null
@@ -107,11 +106,9 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	match current_ped_type:
-		PedType.NORMAL:
+		PedType.WANDER:
 			current_speed = ped_walk_speed
-		PedType.RUNNER:
-			current_speed = ped_run_speed
-		PedType.STOPPED:
+		PedType.SCENARIO:
 			current_speed = 0.0
 	
 	process_tasks()
@@ -156,12 +153,13 @@ func animation_controller() -> void:
 	
 func movement_controller(delta:float) -> void:
 	if ped_can_move and not is_stopped_on_event and not is_talking and not is_sitting and not is_leaning_wall_back:
-		if flow_ai_agent.is_navigation_finished(): # Using pathfinding
+		if flow_ai_agent.is_navigation_finished(): # Native Pathfinding
 			if is_going_to_event_slot:
 				is_going_to_event_slot = false
 				is_stopped_on_event = true
 				
-		if flow_ai_agent.is_path_complete() and not is_going_to_event_slot: # For Crowd Movement
+		if flow_ai_agent.is_path_complete() and not is_going_to_event_slot: # FlowAI
+			# TODO: Look for any action near it
 			flow_ai_agent.get_random_path()
 		
 		var crowd_target:Vector3 = flow_ai_agent.get_next_pathnode_position()

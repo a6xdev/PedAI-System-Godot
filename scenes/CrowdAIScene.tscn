@@ -1,25 +1,24 @@
-[gd_scene load_steps=24 format=3 uid="uid://cw0bk0h1o70ne"]
+[gd_scene load_steps=23 format=3 uid="uid://cw0bk0h1o70ne"]
 
 [ext_resource type="PackedScene" uid="uid://bbquwaao37aja" path="res://assets/prefabs/characters/actor_ped.tscn" id="2_1nv3g"]
 [ext_resource type="Script" uid="uid://bysxpb73lr46b" path="res://addons/FlowAI/scripts/core/FlowAIController.gd" id="2_cv82n"]
-[ext_resource type="PackedScene" uid="uid://du7vxqigbaxlm" path="res://assets/prefabs/environments/park_bench/park_bench.tscn" id="3_exg0k"]
 [ext_resource type="Texture2D" uid="uid://w45xs277sodg" path="res://assets/textures/grass/aerial_grass_rock_diff_1k.jpg" id="3_t6m7v"]
 [ext_resource type="PackedScene" uid="uid://j5nwodo50yh3" path="res://assets/prefabs/characters/actor_player.tscn" id="4_cv82n"]
 [ext_resource type="Texture2D" uid="uid://btuu6n8sqevkg" path="res://assets/textures/grass/aerial_grass_rock_nor_gl_1k.jpg" id="4_exg0k"]
 [ext_resource type="Script" uid="uid://mk0cs7tsd178" path="res://scripts/core/systems/PedSpawner/PedSpawnerController.gd" id="5_8egd3"]
 [ext_resource type="Texture2D" uid="uid://djp16kbej8g3y" path="res://assets/textures/grass/aerial_grass_rock_rough_1k.jpg" id="5_ivgad"]
 [ext_resource type="PackedScene" uid="uid://t1k3huao4kgs" path="res://assets/prefabs/environments/road_pack/road_1x_straight.tscn" id="6_alfe8"]
+[ext_resource type="PackedScene" uid="uid://c8ss606rlj773" path="res://assets/prefabs/environments/park_bench/so_park_bench.tscn" id="6_ivgad"]
 [ext_resource type="PackedScene" uid="uid://c8jl2vxh0ppio" path="res://assets/prefabs/environments/road_pack/road_l_intersection.tscn" id="7_1dh4r"]
 [ext_resource type="Texture2D" uid="uid://4pxnh1mqg4f6" path="res://assets/textures/hdri/qwantani_noon_puresky_2k.exr" id="7_72xuw"]
-[ext_resource type="Script" uid="uid://c8oqvjek0jr6i" path="res://scripts/core/systems/PedSpawner/PedSpawnerSlot.gd" id="7_alfe8"]
 [ext_resource type="Script" uid="uid://csbl3jypfxtwg" path="res://addons/FlowAI/scripts/runtime/FlowAIAreaNode.gd" id="9_51afu"]
 [ext_resource type="Script" uid="uid://i1dbg8h2x6sq" path="res://addons/FlowAI/scripts/runtime/FlowAIPathNode.gd" id="10_k6nio"]
 [ext_resource type="Script" uid="uid://bchdkode3ag7t" path="res://scripts/core/nodes/FreeLookCamera.gd" id="11_exg0k"]
 [ext_resource type="PackedScene" uid="uid://bxwxflsejagit" path="res://assets/prefabs/UI/crowd_ai_interface.tscn" id="13_exg0k"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_cv82n"]
-vertices = PackedVector3Array(-6.61917, 0.499665, -59.2128, -5.61917, 0.499665, -59.4628, -5.86917, 0.499665, -60.7128, -7.11917, 0.499665, -60.9628, -43.8692, 0.499665, -51.9628, -7.11917, 0.499665, -62.7128, -6.86917, 0.499665, -52.9628, -5.86917, 0.499665, -52.9628, -5.61917, 0.499665, -55.2128, -6.61917, 0.499665, -55.4628, -6.11917, 0.499665, -62.9628, -6.11917, 0.499665, -80.7128, -7.11917, 0.499665, -51.9628, -43.8692, 0.499665, -80.7128, -4.86917, 0.499665, -62.7128, 3.88083, 0.499665, -62.7128, 5.13083, 0.499665, -62.9628, 5.13083, 0.499665, -80.7128, 6.13083, 0.499665, -60.9628, 5.13083, 0.499665, -60.7128, 5.13083, 0.499665, -59.4628, 6.13083, 0.499665, -59.2128, 6.13083, 0.499665, -52.7128, 6.13083, 0.499665, -50.9628, 43.8808, 0.499665, -43.9628, 6.13083, 0.499665, -55.4628, 5.13083, 0.499665, -55.2128, 5.13083, 0.499665, -52.9628, 5.13083, 0.499665, -50.7128, 5.13083, 0.499665, -48.4628, 6.13083, 0.499665, -48.2128, 6.13083, 0.499665, -62.7128, 43.8808, 0.499665, -80.7128, 6.13083, 0.499665, -44.4628, 5.63083, 0.499665, -44.2128, -4.86917, 0.499665, -60.9628, -4.61917, 0.499665, -59.2128, 3.88083, 0.499665, -60.9628, 4.13083, 0.499665, -59.2128, 4.13083, 0.499665, -55.4628, -4.61917, 0.499665, -55.4628, -5.11917, 0.499665, -52.9628, 4.13083, 0.499665, -52.9628, -4.86917, 0.499665, -51.9628, 3.88083, 0.499665, -51.9628, -6.61917, 0.499665, -48.2128, -5.61917, 0.499665, -48.4628, -5.86917, 0.499665, -50.7128, -7.11917, 0.499665, -50.9628, -43.8692, 0.499665, -43.9628, -6.11917, 0.499665, -44.2128, -6.61917, 0.499665, -44.4628, -4.86917, 0.499665, -50.9628, -4.61917, 0.499665, -48.2128, 4.13083, 0.499665, -48.2128, 3.88083, 0.499665, -50.9628, 4.13083, 0.499665, -46.2128, -4.61917, 0.499665, -46.2128, 4.13083, 0.499665, -44.4628, -4.61917, 0.499665, -44.4628, -5.61917, 0.499665, -44.2128, -5.61917, 0.499665, -28.4628, 4.13083, 0.499665, -28.2128, 5.13083, 0.499665, -28.4628, 5.13083, 0.499665, -44.2128, -4.61917, 0.499665, -28.2128, -43.8692, 0.499665, -26.9628, -6.61917, 0.499665, -28.2128, -6.61917, 0.499665, -26.7128, 5.63083, 0.499665, -28.4628, 43.8808, 0.499665, -28.7128, 6.13083, 0.499665, -24.4628, 5.13083, 0.499665, -24.2128, 5.13083, 0.499665, -22.9628, 6.13083, 0.499665, -22.7128, 6.13083, 0.499665, -14.4628, 6.13083, 0.499665, -12.7128, 5.13083, 0.499665, -14.2128, 5.13083, 0.499665, -12.9628, 6.13083, 0.499665, -18.2128, 6.13083, 0.499665, -20.9628, 5.13083, 0.499665, -20.7128, 5.13083, 0.499665, -18.4628, 6.13083, 0.499665, -10.9628, 5.13083, 0.499665, -10.7128, 5.13083, 0.499665, 7.03723, 6.13083, 0.499665, -28.2128, 43.8808, 0.499665, 7.03723, -5.61917, 0.499665, -24.2128, -5.86917, 0.499665, -22.9628, -4.86917, 0.499665, -22.7128, -4.61917, 0.499665, -24.4628, -4.86917, 0.499665, -20.9628, 3.88083, 0.499665, -20.9628, 3.88083, 0.499665, -22.7128, 4.13083, 0.499665, -24.4628, -6.61917, 0.499665, -24.4628, -7.11917, 0.499665, -22.7128, -43.8692, 0.499665, -20.4628, -6.86917, 0.499665, -20.7128, -5.86917, 0.499665, -20.7128, -5.61917, 0.499665, -18.4628, 4.13083, 0.499665, -18.2128, -4.61917, 0.499665, -18.2128, -5.86917, 0.499665, -12.9628, -5.61917, 0.499665, -14.2128, -6.61917, 0.499665, -14.4628, -7.11917, 0.499665, -12.7128, -6.11917, 0.499665, 7.03723, -6.11917, 0.499665, -10.7128, -7.11917, 0.499665, -10.9628, -6.61917, 0.499665, -18.2128, -43.8692, 0.499665, 7.03723, -4.86917, 0.499665, -12.7128, -4.61917, 0.499665, -14.4628, -4.86917, 0.499665, -10.9628, 3.88083, 0.499665, -10.9628, 3.88083, 0.499665, -12.7128, 4.13083, 0.499665, -14.4628)
-polygons = [PackedInt32Array(1, 0, 2), PackedInt32Array(2, 0, 3), PackedInt32Array(5, 3, 4), PackedInt32Array(7, 6, 8), PackedInt32Array(8, 6, 9), PackedInt32Array(11, 10, 5), PackedInt32Array(6, 12, 9), PackedInt32Array(9, 12, 0), PackedInt32Array(0, 12, 3), PackedInt32Array(3, 12, 4), PackedInt32Array(11, 5, 13), PackedInt32Array(13, 5, 4), PackedInt32Array(14, 10, 15), PackedInt32Array(15, 10, 16), PackedInt32Array(16, 10, 11), PackedInt32Array(16, 11, 17), PackedInt32Array(19, 18, 20), PackedInt32Array(20, 18, 21), PackedInt32Array(24, 23, 22), PackedInt32Array(26, 25, 27), PackedInt32Array(27, 25, 22), PackedInt32Array(22, 25, 24), PackedInt32Array(28, 23, 29), PackedInt32Array(29, 23, 30), PackedInt32Array(30, 23, 24), PackedInt32Array(24, 25, 21), PackedInt32Array(18, 31, 24), PackedInt32Array(24, 31, 32), PackedInt32Array(16, 17, 31), PackedInt32Array(31, 17, 32), PackedInt32Array(24, 34, 33), PackedInt32Array(24, 33, 30), PackedInt32Array(24, 21, 18), PackedInt32Array(2, 35, 1), PackedInt32Array(1, 35, 36), PackedInt32Array(35, 14, 36), PackedInt32Array(36, 14, 37), PackedInt32Array(37, 14, 15), PackedInt32Array(20, 38, 19), PackedInt32Array(19, 38, 37), PackedInt32Array(38, 39, 37), PackedInt32Array(37, 39, 36), PackedInt32Array(36, 39, 40), PackedInt32Array(7, 8, 41), PackedInt32Array(41, 8, 40), PackedInt32Array(27, 42, 26), PackedInt32Array(26, 42, 39), PackedInt32Array(42, 44, 39), PackedInt32Array(39, 44, 40), PackedInt32Array(40, 44, 41), PackedInt32Array(41, 44, 43), PackedInt32Array(46, 45, 47), PackedInt32Array(47, 45, 48), PackedInt32Array(49, 51, 50), PackedInt32Array(45, 51, 48), PackedInt32Array(48, 51, 49), PackedInt32Array(48, 49, 4), PackedInt32Array(4, 12, 48), PackedInt32Array(47, 52, 46), PackedInt32Array(46, 52, 53), PackedInt32Array(29, 54, 28), PackedInt32Array(28, 54, 55), PackedInt32Array(54, 56, 55), PackedInt32Array(55, 56, 53), PackedInt32Array(53, 56, 57), PackedInt32Array(52, 43, 53), PackedInt32Array(53, 43, 55), PackedInt32Array(55, 43, 44), PackedInt32Array(59, 57, 58), PackedInt32Array(58, 57, 56), PackedInt32Array(59, 64, 60), PackedInt32Array(60, 64, 63), PackedInt32Array(60, 63, 62), PackedInt32Array(60, 62, 61), PackedInt32Array(62, 65, 61), PackedInt32Array(59, 58, 64), PackedInt32Array(60, 61, 50), PackedInt32Array(50, 61, 67), PackedInt32Array(50, 67, 49), PackedInt32Array(49, 67, 66), PackedInt32Array(67, 68, 66), PackedInt32Array(64, 34, 63), PackedInt32Array(63, 34, 69), PackedInt32Array(69, 34, 24), PackedInt32Array(69, 24, 70), PackedInt32Array(72, 71, 73), PackedInt32Array(73, 71, 74), PackedInt32Array(74, 71, 70), PackedInt32Array(76, 75, 70), PackedInt32Array(77, 75, 78), PackedInt32Array(78, 75, 76), PackedInt32Array(75, 79, 70), PackedInt32Array(81, 80, 82), PackedInt32Array(82, 80, 79), PackedInt32Array(79, 80, 70), PackedInt32Array(83, 76, 70), PackedInt32Array(85, 84, 83), PackedInt32Array(86, 69, 70), PackedInt32Array(71, 86, 70), PackedInt32Array(85, 83, 87), PackedInt32Array(87, 83, 70), PackedInt32Array(80, 74, 70), PackedInt32Array(89, 88, 90), PackedInt32Array(90, 88, 91), PackedInt32Array(90, 91, 92), PackedInt32Array(92, 91, 94), PackedInt32Array(92, 94, 93), PackedInt32Array(72, 73, 95), PackedInt32Array(95, 73, 94), PackedInt32Array(95, 94, 62), PackedInt32Array(62, 94, 91), PackedInt32Array(62, 91, 65), PackedInt32Array(88, 89, 96), PackedInt32Array(96, 89, 97), PackedInt32Array(97, 99, 98), PackedInt32Array(96, 97, 68), PackedInt32Array(68, 97, 66), PackedInt32Array(66, 97, 98), PackedInt32Array(92, 101, 100), PackedInt32Array(81, 82, 102), PackedInt32Array(101, 92, 103), PackedInt32Array(103, 92, 93), PackedInt32Array(103, 93, 81), PackedInt32Array(103, 81, 102), PackedInt32Array(105, 104, 106), PackedInt32Array(106, 104, 107), PackedInt32Array(110, 109, 108), PackedInt32Array(100, 101, 99), PackedInt32Array(99, 101, 111), PackedInt32Array(108, 112, 110), PackedInt32Array(110, 112, 98), PackedInt32Array(106, 107, 111), PackedInt32Array(111, 107, 99), PackedInt32Array(99, 107, 98), PackedInt32Array(98, 107, 110), PackedInt32Array(104, 105, 113), PackedInt32Array(113, 105, 114), PackedInt32Array(113, 114, 115), PackedInt32Array(115, 114, 117), PackedInt32Array(115, 117, 116), PackedInt32Array(77, 78, 118), PackedInt32Array(118, 78, 117), PackedInt32Array(118, 117, 102), PackedInt32Array(102, 117, 114), PackedInt32Array(102, 114, 103), PackedInt32Array(116, 84, 115), PackedInt32Array(115, 84, 109), PackedInt32Array(109, 84, 85), PackedInt32Array(109, 85, 108)]
+vertices = PackedVector3Array(-6.619171, 0.496, -59.21277, -5.619171, 0.496, -59.46277, -5.619171, 0.496, -80.71277, -43.86917, 0.496, -80.71277, -43.86917, 0.496, -57.96277, -6.619171, 0.496, -57.71277, -4.619171, 0.496, -59.21277, -4.619171, 0.496, -57.46277, 4.130829, 0.496, -57.46277, 4.130829, 0.496, -59.21277, 5.130829, 0.496, -59.46277, 5.130829, 0.496, -80.71277, 6.130829, 0.496, -59.21277, 43.88083, 0.496, -57.96277, 43.88083, 0.496, -80.71277, 6.130829, 0.496, -57.71277, -43.86917, 0.496, -56.71277, -6.619171, 0.496, -56.96277, 6.130829, 0.496, -56.96277, 43.88083, 0.496, -56.71277, -5.619171, 0.496, -55.21277, -5.619171, 0.496, -48.46277, -4.619171, 0.496, -48.21277, 4.130829, 0.496, -48.21277, 5.130829, 0.496, -48.46277, 5.130829, 0.496, -55.21277, 4.130829, 0.496, -55.46277, -4.619171, 0.496, -55.46277, -4.619171, 0.496, -46.21277, 4.130829, 0.496, -46.21277, -6.619171, 0.496, -48.21277, -6.619171, 0.496, -55.46277, -43.86917, 0.496, -46.96277, -6.619171, 0.496, -46.71277, 6.130829, 0.496, -48.21277, 43.88083, 0.496, -46.96277, 6.130829, 0.496, -55.46277, 6.130829, 0.496, -46.71277, -43.86917, 0.496, -45.71277, -6.619171, 0.496, -45.96277, 6.130829, 0.496, -45.96277, 43.88083, 0.496, -45.71277, -4.619171, 0.496, -28.212769, -4.619171, 0.496, -26.462769, 4.130829, 0.496, -26.462769, 4.130829, 0.496, -28.212769, -5.619171, 0.496, -44.21277, -5.619171, 0.496, -28.462769, 5.130829, 0.496, -28.462769, 5.130829, 0.496, -44.21277, -4.619171, 0.496, -44.46277, 4.130829, 0.496, -44.46277, -6.619171, 0.496, -28.212769, -6.619171, 0.496, -44.46277, -43.86917, 0.496, -26.962769, -6.619171, 0.496, -26.712769, 6.130829, 0.496, -28.212769, 43.88083, 0.496, -26.962769, 6.130829, 0.496, -44.46277, 6.130829, 0.496, -26.712769, -43.86917, 0.496, -25.712769, -6.619171, 0.496, -25.962769, 6.130829, 0.496, -25.962769, 43.88083, 0.496, -25.712769, -5.619171, 0.496, -24.212769, -5.619171, 0.496, -18.462769, -4.619171, 0.496, -18.212769, 4.130829, 0.496, -18.212769, 5.130829, 0.496, -18.462769, 5.130829, 0.496, -24.212769, 4.130829, 0.496, -24.462769, -4.619171, 0.496, -24.462769, -4.619171, 0.496, -16.212769, 4.130829, 0.496, -16.212769, -6.619171, 0.496, -18.212769, -6.619171, 0.496, -24.462769, -43.86917, 0.496, -16.962769, -6.619171, 0.496, -16.712769, 6.130829, 0.496, -18.212769, 43.88083, 0.496, -16.962769, 6.130829, 0.496, -24.462769, 6.130829, 0.496, -16.712769, -43.86917, 0.496, -15.712769, -6.619171, 0.496, -15.962769, 6.130829, 0.496, -15.962769, 43.88083, 0.496, -15.712769, 4.130829, 0.496, -14.462769, -4.619171, 0.496, -14.462769, 5.130829, 0.496, -14.212769, -5.619171, 0.496, -14.212769, -5.619171, 0.496, 7.0372314, 5.130829, 0.496, 7.0372314, -6.619171, 0.496, -14.462769, -43.86917, 0.496, 7.0372314, 6.130829, 0.496, -14.462769, 43.88083, 0.496, 7.0372314)
+polygons = [PackedInt32Array(1, 0, 2), PackedInt32Array(2, 0, 3), PackedInt32Array(3, 0, 4), PackedInt32Array(0, 5, 4), PackedInt32Array(9, 8, 6), PackedInt32Array(6, 8, 7), PackedInt32Array(6, 1, 9), PackedInt32Array(9, 1, 10), PackedInt32Array(10, 1, 2), PackedInt32Array(10, 2, 11), PackedInt32Array(10, 11, 12), PackedInt32Array(12, 11, 14), PackedInt32Array(12, 14, 13), PackedInt32Array(13, 15, 12), PackedInt32Array(17, 16, 5), PackedInt32Array(5, 16, 4), PackedInt32Array(15, 13, 18), PackedInt32Array(18, 13, 19), PackedInt32Array(22, 21, 20), PackedInt32Array(25, 24, 23), PackedInt32Array(20, 27, 22), PackedInt32Array(22, 27, 26), PackedInt32Array(22, 26, 25), PackedInt32Array(22, 25, 23), PackedInt32Array(27, 7, 26), PackedInt32Array(26, 7, 8), PackedInt32Array(23, 29, 22), PackedInt32Array(22, 29, 28), PackedInt32Array(21, 30, 20), PackedInt32Array(20, 30, 31), PackedInt32Array(31, 30, 32), PackedInt32Array(31, 32, 16), PackedInt32Array(16, 17, 31), PackedInt32Array(30, 33, 32), PackedInt32Array(25, 36, 24), PackedInt32Array(24, 36, 34), PackedInt32Array(34, 36, 19), PackedInt32Array(34, 19, 35), PackedInt32Array(36, 18, 19), PackedInt32Array(35, 37, 34), PackedInt32Array(39, 38, 33), PackedInt32Array(33, 38, 32), PackedInt32Array(37, 35, 40), PackedInt32Array(40, 35, 41), PackedInt32Array(45, 44, 42), PackedInt32Array(42, 44, 43), PackedInt32Array(50, 49, 46), PackedInt32Array(46, 49, 48), PackedInt32Array(46, 48, 45), PackedInt32Array(46, 45, 47), PackedInt32Array(50, 28, 51), PackedInt32Array(51, 28, 29), PackedInt32Array(50, 51, 49), PackedInt32Array(45, 42, 47), PackedInt32Array(47, 52, 46), PackedInt32Array(46, 52, 53), PackedInt32Array(53, 52, 54), PackedInt32Array(53, 54, 38), PackedInt32Array(38, 39, 53), PackedInt32Array(52, 55, 54), PackedInt32Array(49, 58, 48), PackedInt32Array(48, 58, 56), PackedInt32Array(56, 58, 41), PackedInt32Array(56, 41, 57), PackedInt32Array(58, 40, 41), PackedInt32Array(57, 59, 56), PackedInt32Array(61, 60, 55), PackedInt32Array(55, 60, 54), PackedInt32Array(59, 57, 62), PackedInt32Array(62, 57, 63), PackedInt32Array(66, 65, 64), PackedInt32Array(69, 68, 67), PackedInt32Array(64, 71, 66), PackedInt32Array(66, 71, 70), PackedInt32Array(66, 70, 69), PackedInt32Array(66, 69, 67), PackedInt32Array(71, 43, 70), PackedInt32Array(70, 43, 44), PackedInt32Array(67, 73, 66), PackedInt32Array(66, 73, 72), PackedInt32Array(65, 74, 64), PackedInt32Array(64, 74, 75), PackedInt32Array(75, 74, 76), PackedInt32Array(75, 76, 60), PackedInt32Array(60, 61, 75), PackedInt32Array(74, 77, 76), PackedInt32Array(69, 80, 68), PackedInt32Array(68, 80, 78), PackedInt32Array(78, 80, 63), PackedInt32Array(78, 63, 79), PackedInt32Array(80, 62, 63), PackedInt32Array(79, 81, 78), PackedInt32Array(83, 82, 77), PackedInt32Array(77, 82, 76), PackedInt32Array(81, 79, 84), PackedInt32Array(84, 79, 85), PackedInt32Array(87, 72, 86), PackedInt32Array(86, 72, 73), PackedInt32Array(86, 88, 87), PackedInt32Array(87, 88, 89), PackedInt32Array(89, 88, 91), PackedInt32Array(89, 91, 90), PackedInt32Array(89, 90, 92), PackedInt32Array(92, 90, 93), PackedInt32Array(92, 93, 82), PackedInt32Array(82, 83, 92), PackedInt32Array(88, 94, 91), PackedInt32Array(91, 94, 95), PackedInt32Array(95, 94, 85), PackedInt32Array(94, 84, 85)]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_51afu"]
 size = Vector2(60, 60)
@@ -49,6 +48,69 @@ background_mode = 2
 sky = SubResource("Sky_alfe8")
 
 [node name="CrowdAIScene" type="Node3D"]
+
+[node name="FlowAIController" type="Node" parent="." node_paths=PackedStringArray("all_areas", "all_pathnodes")]
+process_priority = 1
+process_physics_priority = 1
+process_thread_group = 1
+process_thread_group_order = 0
+process_thread_messages = 0
+script = ExtResource("2_cv82n")
+is_debug_mode = true
+DataPath = "res://data/CrowdAIScenePathnodesData.json"
+all_areas = [NodePath("area_1")]
+all_pathnodes = [NodePath("area_1/pathnode_1"), NodePath("area_1/pathnode_2"), NodePath("area_1/pathnode_3"), NodePath("area_1/pathnode_4"), NodePath("area_1/pathnode_5"), NodePath("area_1/pathnode_6"), NodePath("area_1/pathnode_7"), NodePath("area_1/pathnode_8"), NodePath("area_1/pathnode_9")]
+metadata/_custom_type_script = "uid://bysxpb73lr46b"
+
+[node name="area_1" type="Node3D" parent="FlowAIController" node_paths=PackedStringArray("flowAI_controller")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -35)
+script = ExtResource("9_51afu")
+flowAI_controller = NodePath("..")
+
+[node name="pathnode_1" type="Marker3D" parent="FlowAIController/area_1" node_paths=PackedStringArray("flowAI_controller")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.18274, 0, 0)
+script = ExtResource("10_k6nio")
+flowAI_controller = NodePath("../..")
+
+[node name="pathnode_2" type="Marker3D" parent="FlowAIController/area_1" node_paths=PackedStringArray("flowAI_controller")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.18274, 0, -32)
+script = ExtResource("10_k6nio")
+flowAI_controller = NodePath("../..")
+
+[node name="pathnode_3" type="Marker3D" parent="FlowAIController/area_1" node_paths=PackedStringArray("flowAI_controller")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.18273926, 0, -32)
+script = ExtResource("10_k6nio")
+flowAI_controller = NodePath("../..")
+
+[node name="pathnode_4" type="Marker3D" parent="FlowAIController/area_1" node_paths=PackedStringArray("flowAI_controller")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.120937, 0, -32)
+script = ExtResource("10_k6nio")
+flowAI_controller = NodePath("../..")
+
+[node name="pathnode_5" type="Marker3D" parent="FlowAIController/area_1" node_paths=PackedStringArray("flowAI_controller")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.120937, 0, -1)
+script = ExtResource("10_k6nio")
+flowAI_controller = NodePath("../..")
+
+[node name="pathnode_6" type="Marker3D" parent="FlowAIController/area_1" node_paths=PackedStringArray("flowAI_controller")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.120937, 0, 28.374788)
+script = ExtResource("10_k6nio")
+flowAI_controller = NodePath("../..")
+
+[node name="pathnode_7" type="Marker3D" parent="FlowAIController/area_1" node_paths=PackedStringArray("flowAI_controller")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.12093735, 0, 28.374788)
+script = ExtResource("10_k6nio")
+flowAI_controller = NodePath("../..")
+
+[node name="pathnode_8" type="Marker3D" parent="FlowAIController/area_1" node_paths=PackedStringArray("flowAI_controller")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.035301, 0, 28.374788)
+script = ExtResource("10_k6nio")
+flowAI_controller = NodePath("../..")
+
+[node name="pathnode_9" type="Marker3D" parent="FlowAIController/area_1" node_paths=PackedStringArray("flowAI_controller")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.18273926, 0, 0)
+script = ExtResource("10_k6nio")
+flowAI_controller = NodePath("../..")
 
 [node name="map" type="Node" parent="."]
 
@@ -83,159 +145,11 @@ transform = Transform3D(0.004, 0, 0, 0, 0.004, 0, 0, 0, 0.004, -36.786, 0.049, -
 
 [node name="park_bench" type="Node" parent="map/NavigationRegion3D"]
 
-[node name="Park Bench" parent="map/NavigationRegion3D/park_bench" instance=ExtResource("3_exg0k")]
-transform = Transform3D(-6.27258e-08, 0, -1.435, 0, 1.435, 0, 1.435, 0, -6.27258e-08, 5.254, 0.081, -16.417)
+[node name="so_park_bench" parent="map/NavigationRegion3D/park_bench" instance=ExtResource("6_ivgad")]
+transform = Transform3D(1.6, 0, 0, 0, 1.6, 0, 0, 0, 1.6, -7, 0, -9.7394085)
 
-[node name="Park Bench2" parent="map/NavigationRegion3D/park_bench" instance=ExtResource("3_exg0k")]
-transform = Transform3D(1.88178e-07, 0, 1.435, 0, 1.435, 0, -1.435, 0, 1.88178e-07, -5.746, 0.081, -16.417)
-
-[node name="Park Bench3" parent="map/NavigationRegion3D/park_bench" instance=ExtResource("3_exg0k")]
-transform = Transform3D(-6.27258e-08, 0, -1.435, 0, 1.435, 0, 1.435, 0, -6.27258e-08, 5.254, 0.081, -26.417)
-
-[node name="Park Bench4" parent="map/NavigationRegion3D/park_bench" instance=ExtResource("3_exg0k")]
-transform = Transform3D(1.88178e-07, 0, 1.435, 0, 1.435, 0, -1.435, 0, 1.88178e-07, -5.746, 0.081, -26.417)
-
-[node name="Park Bench5" parent="map/NavigationRegion3D/park_bench" instance=ExtResource("3_exg0k")]
-transform = Transform3D(-6.27258e-08, 0, -1.435, 0, 1.435, 0, 1.435, 0, -6.27258e-08, 5.254, 0.081, -46.417)
-
-[node name="Park Bench6" parent="map/NavigationRegion3D/park_bench" instance=ExtResource("3_exg0k")]
-transform = Transform3D(1.88178e-07, 0, 1.435, 0, 1.435, 0, -1.435, 0, 1.88178e-07, -5.746, 0.081, -46.417)
-
-[node name="Park Bench7" parent="map/NavigationRegion3D/park_bench" instance=ExtResource("3_exg0k")]
-transform = Transform3D(-6.27258e-08, 0, -1.435, 0, 1.435, 0, 1.435, 0, -6.27258e-08, 5.254, 0.081, -57.417)
-
-[node name="Park Bench8" parent="map/NavigationRegion3D/park_bench" instance=ExtResource("3_exg0k")]
-transform = Transform3D(1.88178e-07, 0, 1.435, 0, 1.435, 0, -1.435, 0, 1.88178e-07, -5.746, 0.081, -57.417)
-
-[node name="idk" type="Node" parent="map/NavigationRegion3D"]
-
-[node name="CSGBox3D" type="CSGBox3D" parent="map/NavigationRegion3D/idk"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.085, 1.142, -11.791)
-size = Vector3(1, 3.28467, 1)
-
-[node name="Lean2am" type="Marker3D" parent="map/NavigationRegion3D/idk/CSGBox3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.06592, 0.929206)
-script = ExtResource("7_alfe8")
-ped_spawner_type = 2
-metadata/_custom_type_script = "uid://c8oqvjek0jr6i"
-
-[node name="PedSpawnerSlot2" type="Marker3D" parent="map/NavigationRegion3D/idk/CSGBox3D"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.823558, -1.06592, -0.0707941)
-script = ExtResource("7_alfe8")
-ped_spawner_type = 2
-metadata/_custom_type_script = "uid://c8oqvjek0jr6i"
-
-[node name="CSGBox3D2" type="CSGBox3D" parent="map/NavigationRegion3D/idk"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.085, 1.142, -21.791)
-size = Vector3(1, 3.28467, 1)
-
-[node name="PedSpawnerSlot" type="Marker3D" parent="map/NavigationRegion3D/idk/CSGBox3D2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.06592, 0.929206)
-script = ExtResource("7_alfe8")
-ped_spawner_type = 2
-metadata/_custom_type_script = "uid://c8oqvjek0jr6i"
-
-[node name="PedSpawnerSlot2" type="Marker3D" parent="map/NavigationRegion3D/idk/CSGBox3D2"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.823558, -1.06592, -0.0707941)
-script = ExtResource("7_alfe8")
-ped_spawner_type = 2
-metadata/_custom_type_script = "uid://c8oqvjek0jr6i"
-
-[node name="CSGBox3D3" type="CSGBox3D" parent="map/NavigationRegion3D/idk"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.085, 1.142, -51.791)
-size = Vector3(1, 3.28467, 1)
-
-[node name="PedSpawnerSlot" type="Marker3D" parent="map/NavigationRegion3D/idk/CSGBox3D3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.06592, 0.929206)
-script = ExtResource("7_alfe8")
-ped_spawner_type = 2
-metadata/_custom_type_script = "uid://c8oqvjek0jr6i"
-
-[node name="PedSpawnerSlot2" type="Marker3D" parent="map/NavigationRegion3D/idk/CSGBox3D3"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.823558, -1.06592, -0.0707941)
-script = ExtResource("7_alfe8")
-ped_spawner_type = 2
-metadata/_custom_type_script = "uid://c8oqvjek0jr6i"
-
-[node name="CSGBox3D4" type="CSGBox3D" parent="map/NavigationRegion3D/idk"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.085, 1.142, -61.791)
-size = Vector3(1, 3.28467, 1)
-
-[node name="PedSpawnerSlot" type="Marker3D" parent="map/NavigationRegion3D/idk/CSGBox3D4"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.06592, 0.929206)
-script = ExtResource("7_alfe8")
-ped_spawner_type = 2
-metadata/_custom_type_script = "uid://c8oqvjek0jr6i"
-
-[node name="PedSpawnerSlot2" type="Marker3D" parent="map/NavigationRegion3D/idk/CSGBox3D4"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.823558, -1.06592, -0.0707941)
-script = ExtResource("7_alfe8")
-ped_spawner_type = 2
-metadata/_custom_type_script = "uid://c8oqvjek0jr6i"
-
-[node name="CSGBox3D5" type="CSGBox3D" parent="map/NavigationRegion3D/idk"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.915, 1.142, -11.791)
-size = Vector3(1, 3.28467, 1)
-
-[node name="PedSpawnerSlot" type="Marker3D" parent="map/NavigationRegion3D/idk/CSGBox3D5"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.06592, 0.929206)
-script = ExtResource("7_alfe8")
-ped_spawner_type = 2
-metadata/_custom_type_script = "uid://c8oqvjek0jr6i"
-
-[node name="PedSpawnerSlot2" type="Marker3D" parent="map/NavigationRegion3D/idk/CSGBox3D5"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.823558, -1.06592, -0.0707941)
-script = ExtResource("7_alfe8")
-ped_spawner_type = 2
-metadata/_custom_type_script = "uid://c8oqvjek0jr6i"
-
-[node name="CSGBox3D6" type="CSGBox3D" parent="map/NavigationRegion3D/idk"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.915, 1.142, -21.791)
-size = Vector3(1, 3.28467, 1)
-
-[node name="PedSpawnerSlot" type="Marker3D" parent="map/NavigationRegion3D/idk/CSGBox3D6"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.06592, 0.929206)
-script = ExtResource("7_alfe8")
-ped_spawner_type = 2
-metadata/_custom_type_script = "uid://c8oqvjek0jr6i"
-
-[node name="PedSpawnerSlot2" type="Marker3D" parent="map/NavigationRegion3D/idk/CSGBox3D6"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.823558, -1.06592, -0.0707941)
-script = ExtResource("7_alfe8")
-ped_spawner_type = 2
-metadata/_custom_type_script = "uid://c8oqvjek0jr6i"
-
-[node name="CSGBox3D7" type="CSGBox3D" parent="map/NavigationRegion3D/idk"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.915, 1.142, -51.791)
-size = Vector3(1, 3.28467, 1)
-
-[node name="PedSpawnerSlot" type="Marker3D" parent="map/NavigationRegion3D/idk/CSGBox3D7"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.06592, 0.929206)
-script = ExtResource("7_alfe8")
-ped_spawner_type = 2
-metadata/_custom_type_script = "uid://c8oqvjek0jr6i"
-
-[node name="PedSpawnerSlot2" type="Marker3D" parent="map/NavigationRegion3D/idk/CSGBox3D7"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.823558, -1.06592, -0.0707941)
-script = ExtResource("7_alfe8")
-ped_spawner_type = 2
-metadata/_custom_type_script = "uid://c8oqvjek0jr6i"
-
-[node name="CSGBox3D8" type="CSGBox3D" parent="map/NavigationRegion3D/idk"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.915, 1.142, -61.791)
-size = Vector3(1, 3.28467, 1)
-
-[node name="PedSpawnerSlot" type="Marker3D" parent="map/NavigationRegion3D/idk/CSGBox3D8"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.06592, 0.929206)
-script = ExtResource("7_alfe8")
-ped_spawner_type = 2
-metadata/_custom_type_script = "uid://c8oqvjek0jr6i"
-
-[node name="PedSpawnerSlot2" type="Marker3D" parent="map/NavigationRegion3D/idk/CSGBox3D8"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.823558, -1.06592, -0.0707941)
-script = ExtResource("7_alfe8")
-ped_spawner_type = 2
-metadata/_custom_type_script = "uid://c8oqvjek0jr6i"
+[node name="so_park_bench2" parent="map/NavigationRegion3D/park_bench" instance=ExtResource("6_ivgad")]
+transform = Transform3D(1.6, 0, 0, 0, 1.6, 0, 0, 0, 1.6, 6, 0, -9.7394085)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="map/NavigationRegion3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0760803, -36.7016)
@@ -248,74 +162,12 @@ surface_material_override/0 = SubResource("StandardMaterial3D_k6nio")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="map/NavigationRegion3D/MeshInstance3D/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_1yy8o")
 
-[node name="FlowAIController" type="Node" parent="map" node_paths=PackedStringArray("all_areas", "all_pathnodes")]
-process_priority = 1
-process_physics_priority = 1
-process_thread_group = 1
-process_thread_group_order = 0
-process_thread_messages = 0
-script = ExtResource("2_cv82n")
-DataPath = "res://data/CrowdAIScenePathnodesData.json"
-all_areas = [NodePath("area_1")]
-all_pathnodes = [NodePath("area_1/pathnode_1"), NodePath("area_1/pathnode_2"), NodePath("area_1/pathnode_3"), NodePath("area_1/pathnode_4"), NodePath("area_1/pathnode_5"), NodePath("area_1/pathnode_6"), NodePath("area_1/pathnode_7"), NodePath("area_1/pathnode_8"), NodePath("area_1/pathnode_9")]
-metadata/_custom_type_script = "uid://bysxpb73lr46b"
-
-[node name="area_1" type="Node3D" parent="map/FlowAIController" node_paths=PackedStringArray("flowAI_controller")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -37)
-script = ExtResource("9_51afu")
-flowAI_controller = NodePath("..")
-
-[node name="pathnode_1" type="Marker3D" parent="map/FlowAIController/area_1" node_paths=PackedStringArray("flowAI_controller")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.16143608, 0, 0)
-script = ExtResource("10_k6nio")
-flowAI_controller = NodePath("../..")
-
-[node name="pathnode_2" type="Marker3D" parent="map/FlowAIController/area_1" node_paths=PackedStringArray("flowAI_controller")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.16143608, 0, 30.262075)
-script = ExtResource("10_k6nio")
-flowAI_controller = NodePath("../..")
-
-[node name="pathnode_3" type="Marker3D" parent="map/FlowAIController/area_1" node_paths=PackedStringArray("flowAI_controller")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.026857, 0, 30.262075)
-script = ExtResource("10_k6nio")
-flowAI_controller = NodePath("../..")
-
-[node name="pathnode_4" type="Marker3D" parent="map/FlowAIController/area_1" node_paths=PackedStringArray("flowAI_controller")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.027, 0, 0)
-script = ExtResource("10_k6nio")
-flowAI_controller = NodePath("../..")
-
-[node name="pathnode_5" type="Marker3D" parent="map/FlowAIController/area_1" node_paths=PackedStringArray("flowAI_controller")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.027, 0, -29.89859)
-script = ExtResource("10_k6nio")
-flowAI_controller = NodePath("../..")
-
-[node name="pathnode_6" type="Marker3D" parent="map/FlowAIController/area_1" node_paths=PackedStringArray("flowAI_controller")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -29.899002)
-script = ExtResource("10_k6nio")
-flowAI_controller = NodePath("../..")
-
-[node name="pathnode_7" type="Marker3D" parent="map/FlowAIController/area_1" node_paths=PackedStringArray("flowAI_controller")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.215351, 0, -29.899002)
-script = ExtResource("10_k6nio")
-flowAI_controller = NodePath("../..")
-
-[node name="pathnode_8" type="Marker3D" parent="map/FlowAIController/area_1" node_paths=PackedStringArray("flowAI_controller")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.215, 0, 0)
-script = ExtResource("10_k6nio")
-flowAI_controller = NodePath("../..")
-
-[node name="pathnode_9" type="Marker3D" parent="map/FlowAIController/area_1" node_paths=PackedStringArray("flowAI_controller")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.215, 0, 30.262)
-script = ExtResource("10_k6nio")
-flowAI_controller = NodePath("../..")
-
 [node name="PedSpawnerController" type="Node" parent="map" node_paths=PackedStringArray("SpawnerSlotsPath", "SpawnerNpcPath", "FlowAIControllerNode", "PlayerRef")]
 process_priority = 1
 script = ExtResource("5_8egd3")
 SpawnerSlotsPath = NodePath("Spawners")
 SpawnerNpcPath = NodePath("../../actor")
-FlowAIControllerNode = NodePath("../FlowAIController")
+FlowAIControllerNode = NodePath("../../FlowAIController")
 PlayerRef = NodePath("../../actor/actor_player")
 NpcScene = ExtResource("2_1nv3g")
 peds_pool_size = 50
@@ -323,454 +175,6 @@ despawn_radius = 105.0
 metadata/_custom_type_script = "uid://mk0cs7tsd178"
 
 [node name="Spawners" type="Node" parent="map/PedSpawnerController"]
-
-[node name="PedSpawnerSlot11" type="Marker3D" parent="map/PedSpawnerController/Spawners"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 0, -61.3026)
-script = ExtResource("7_alfe8")
-ped_spawner_type = 1
-peds_size = 3
-metadata/_custom_type_script = "uid://c8oqvjek0jr6i"
-
-[node name="PedSpawnerSlot12" type="Marker3D" parent="map/PedSpawnerController/Spawners"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19, 0, -61.3026)
-script = ExtResource("7_alfe8")
-ped_spawner_type = 1
-peds_size = 3
-metadata/_custom_type_script = "uid://c8oqvjek0jr6i"
-
-[node name="PedSpawnerSlot13" type="Marker3D" parent="map/PedSpawnerController/Spawners"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 0, -61.3026)
-script = ExtResource("7_alfe8")
-ped_spawner_type = 1
-peds_size = 3
-metadata/_custom_type_script = "uid://c8oqvjek0jr6i"
-
-[node name="PedSpawnerSlot14" type="Marker3D" parent="map/PedSpawnerController/Spawners"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, -62.4145)
-script = ExtResource("7_alfe8")
-ped_spawner_type = 1
-peds_size = 3
-metadata/_custom_type_script = "uid://c8oqvjek0jr6i"
-
-[node name="PedSpawnerSlot15" type="Marker3D" parent="map/PedSpawnerController/Spawners"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 0, -53.4145)
-script = ExtResource("7_alfe8")
-ped_spawner_type = 1
-peds_size = 3
-metadata/_custom_type_script = "uid://c8oqvjek0jr6i"
-
-[node name="PedSpawnerSlot16" type="Marker3D" parent="map/PedSpawnerController/Spawners"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19, 0, -53.4145)
-script = ExtResource("7_alfe8")
-ped_spawner_type = 1
-peds_size = 3
-metadata/_custom_type_script = "uid://c8oqvjek0jr6i"
-
-[node name="PedSpawnerSlot17" type="Marker3D" parent="map/PedSpawnerController/Spawners"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 0, -53.4145)
-script = ExtResource("7_alfe8")
-ped_spawner_type = 1
-peds_size = 3
-metadata/_custom_type_script = "uid://c8oqvjek0jr6i"
-
-[node name="PedSpawnerSlot18" type="Marker3D" parent="map/PedSpawnerController/Spawners"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, -53.4145)
-script = ExtResource("7_alfe8")
-ped_spawner_type = 1
-peds_size = 3
-metadata/_custom_type_script = "uid://c8oqvjek0jr6i"
-
-[node name="PedSpawnerSlot19" type="Marker3D" parent="map/PedSpawnerController/Spawners"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 0, -46.4145)
-script = ExtResource("7_alfe8")
-ped_spawner_type = 1
-peds_size = 3
-metadata/_custom_type_script = "uid://c8oqvjek0jr6i"
-
-[node name="PedSpawnerSlot20" type="Marker3D" parent="map/PedSpawnerController/Spawners"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19, 0, -46.4145)
-script = ExtResource("7_alfe8")
-ped_spawner_type = 1
-peds_size = 3
-metadata/_custom_type_script = "uid://c8oqvjek0jr6i"
-
-[node name="PedSpawnerSlot21" type="Marker3D" parent="map/PedSpawnerController/Spawners"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 0, -46.4145)
-script = ExtResource("7_alfe8")
-ped_spawner_type = 1
-peds_size = 3
-metadata/_custom_type_script = "uid://c8oqvjek0jr6i"
-
-[node name="PedSpawnerSlot22" type="Marker3D" parent="map/PedSpawnerController/Spawners"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, -46.4145)
-script = ExtResource("7_alfe8")
-ped_spawner_type = 1
-peds_size = 3
-metadata/_custom_type_script = "uid://c8oqvjek0jr6i"
-
-[node name="PedSpawnerSlot23" type="Marker3D" parent="map/PedSpawnerController/Spawners"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 0, -39.4145)
-script = ExtResource("7_alfe8")
-ped_spawner_type = 1
-peds_size = 3
-metadata/_custom_type_script = "uid://c8oqvjek0jr6i"
-
-[node name="PedSpawnerSlot24" type="Marker3D" parent="map/PedSpawnerController/Spawners"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19, 0, -39.4145)
-script = ExtResource("7_alfe8")
-ped_spawner_type = 1
-peds_size = 3
-metadata/_custom_type_script = "uid://c8oqvjek0jr6i"
-
-[node name="PedSpawnerSlot25" type="Marker3D" parent="map/PedSpawnerController/Spawners"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 0, -39.4145)
-script = ExtResource("7_alfe8")
-ped_spawner_type = 1
-peds_size = 3
-metadata/_custom_type_script = "uid://c8oqvjek0jr6i"
-
-[node name="PedSpawnerSlot26" type="Marker3D" parent="map/PedSpawnerController/Spawners"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, -39.4145)
-script = ExtResource("7_alfe8")
-ped_spawner_type = 1
-peds_size = 3
-metadata/_custom_type_script = "uid://c8oqvjek0jr6i"
-
-[node name="PedSpawnerSlot27" type="Marker3D" parent="map/PedSpawnerController/Spawners"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 0, -32.4145)
-script = ExtResource("7_alfe8")
-ped_spawner_type = 1
-peds_size = 3
-metadata/_custom_type_script = "uid://c8oqvjek0jr6i"
-
-[node name="PedSpawnerSlot28" type="Marker3D" parent="map/PedSpawnerController/Spawners"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19, 0, -32.4145)
-script = ExtResource("7_alfe8")
-ped_spawner_type = 1
-peds_size = 3
-metadata/_custom_type_script = "uid://c8oqvjek0jr6i"
-
-[node name="PedSpawnerSlot29" type="Marker3D" parent="map/PedSpawnerController/Spawners"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 0, -32.4145)
-script = ExtResource("7_alfe8")
-ped_spawner_type = 1
-peds_size = 3
-metadata/_custom_type_script = "uid://c8oqvjek0jr6i"
-
-[node name="PedSpawnerSlot30" type="Marker3D" parent="map/PedSpawnerController/Spawners"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, -32.4145)
-script = ExtResource("7_alfe8")
-ped_spawner_type = 1
-peds_size = 3
-metadata/_custom_type_script = "uid://c8oqvjek0jr6i"
-
-[node name="PedSpawnerSlot31" type="Marker3D" parent="map/PedSpawnerController/Spawners"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 0, -25.4145)
-script = ExtResource("7_alfe8")
-ped_spawner_type = 1
-peds_size = 3
-metadata/_custom_type_script = "uid://c8oqvjek0jr6i"
-
-[node name="PedSpawnerSlot32" type="Marker3D" parent="map/PedSpawnerController/Spawners"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19, 0, -25.4145)
-script = ExtResource("7_alfe8")
-ped_spawner_type = 1
-peds_size = 3
-metadata/_custom_type_script = "uid://c8oqvjek0jr6i"
-
-[node name="PedSpawnerSlot33" type="Marker3D" parent="map/PedSpawnerController/Spawners"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 0, -25.4145)
-script = ExtResource("7_alfe8")
-ped_spawner_type = 1
-peds_size = 3
-metadata/_custom_type_script = "uid://c8oqvjek0jr6i"
-
-[node name="PedSpawnerSlot34" type="Marker3D" parent="map/PedSpawnerController/Spawners"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, -25.4145)
-script = ExtResource("7_alfe8")
-ped_spawner_type = 1
-peds_size = 3
-metadata/_custom_type_script = "uid://c8oqvjek0jr6i"
-
-[node name="PedSpawnerSlot35" type="Marker3D" parent="map/PedSpawnerController/Spawners"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 0, -20.4145)
-script = ExtResource("7_alfe8")
-ped_spawner_type = 1
-peds_size = 3
-metadata/_custom_type_script = "uid://c8oqvjek0jr6i"
-
-[node name="PedSpawnerSlot36" type="Marker3D" parent="map/PedSpawnerController/Spawners"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19, 0, -20.4145)
-script = ExtResource("7_alfe8")
-ped_spawner_type = 1
-peds_size = 3
-metadata/_custom_type_script = "uid://c8oqvjek0jr6i"
-
-[node name="PedSpawnerSlot37" type="Marker3D" parent="map/PedSpawnerController/Spawners"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 0, -20.4145)
-script = ExtResource("7_alfe8")
-ped_spawner_type = 1
-peds_size = 3
-metadata/_custom_type_script = "uid://c8oqvjek0jr6i"
-
-[node name="PedSpawnerSlot38" type="Marker3D" parent="map/PedSpawnerController/Spawners"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, -20.4145)
-script = ExtResource("7_alfe8")
-ped_spawner_type = 1
-peds_size = 3
-metadata/_custom_type_script = "uid://c8oqvjek0jr6i"
-
-[node name="PedSpawnerSlot39" type="Marker3D" parent="map/PedSpawnerController/Spawners"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 0, -13.4145)
-script = ExtResource("7_alfe8")
-ped_spawner_type = 1
-peds_size = 3
-metadata/_custom_type_script = "uid://c8oqvjek0jr6i"
-
-[node name="PedSpawnerSlot40" type="Marker3D" parent="map/PedSpawnerController/Spawners"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19, 0, -13.4145)
-script = ExtResource("7_alfe8")
-ped_spawner_type = 1
-peds_size = 3
-metadata/_custom_type_script = "uid://c8oqvjek0jr6i"
-
-[node name="PedSpawnerSlot41" type="Marker3D" parent="map/PedSpawnerController/Spawners"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 0, -13.4145)
-script = ExtResource("7_alfe8")
-ped_spawner_type = 1
-peds_size = 3
-metadata/_custom_type_script = "uid://c8oqvjek0jr6i"
-
-[node name="PedSpawnerSlot42" type="Marker3D" parent="map/PedSpawnerController/Spawners"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, -13.4145)
-script = ExtResource("7_alfe8")
-ped_spawner_type = 1
-peds_size = 3
-metadata/_custom_type_script = "uid://c8oqvjek0jr6i"
-
-[node name="PedSpawnerSlot43" type="Marker3D" parent="map/PedSpawnerController/Spawners"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, -61.3026)
-script = ExtResource("7_alfe8")
-ped_spawner_type = 1
-peds_size = 3
-metadata/_custom_type_script = "uid://c8oqvjek0jr6i"
-
-[node name="PedSpawnerSlot44" type="Marker3D" parent="map/PedSpawnerController/Spawners"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0, -61.3026)
-script = ExtResource("7_alfe8")
-ped_spawner_type = 1
-peds_size = 3
-metadata/_custom_type_script = "uid://c8oqvjek0jr6i"
-
-[node name="PedSpawnerSlot45" type="Marker3D" parent="map/PedSpawnerController/Spawners"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 0, -61.3026)
-script = ExtResource("7_alfe8")
-ped_spawner_type = 1
-peds_size = 3
-metadata/_custom_type_script = "uid://c8oqvjek0jr6i"
-
-[node name="PedSpawnerSlot46" type="Marker3D" parent="map/PedSpawnerController/Spawners"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25, 0, -62.4145)
-script = ExtResource("7_alfe8")
-ped_spawner_type = 1
-peds_size = 3
-metadata/_custom_type_script = "uid://c8oqvjek0jr6i"
-
-[node name="PedSpawnerSlot47" type="Marker3D" parent="map/PedSpawnerController/Spawners"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, -53.4145)
-script = ExtResource("7_alfe8")
-ped_spawner_type = 1
-peds_size = 3
-metadata/_custom_type_script = "uid://c8oqvjek0jr6i"
-
-[node name="PedSpawnerSlot48" type="Marker3D" parent="map/PedSpawnerController/Spawners"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0, -53.4145)
-script = ExtResource("7_alfe8")
-ped_spawner_type = 1
-peds_size = 3
-metadata/_custom_type_script = "uid://c8oqvjek0jr6i"
-
-[node name="PedSpawnerSlot49" type="Marker3D" parent="map/PedSpawnerController/Spawners"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 0, -53.4145)
-script = ExtResource("7_alfe8")
-ped_spawner_type = 1
-peds_size = 3
-metadata/_custom_type_script = "uid://c8oqvjek0jr6i"
-
-[node name="PedSpawnerSlot50" type="Marker3D" parent="map/PedSpawnerController/Spawners"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25, 0, -53.4145)
-script = ExtResource("7_alfe8")
-ped_spawner_type = 1
-peds_size = 3
-metadata/_custom_type_script = "uid://c8oqvjek0jr6i"
-
-[node name="PedSpawnerSlot51" type="Marker3D" parent="map/PedSpawnerController/Spawners"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, -46.4145)
-script = ExtResource("7_alfe8")
-ped_spawner_type = 1
-peds_size = 3
-metadata/_custom_type_script = "uid://c8oqvjek0jr6i"
-
-[node name="PedSpawnerSlot52" type="Marker3D" parent="map/PedSpawnerController/Spawners"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0, -46.4145)
-script = ExtResource("7_alfe8")
-ped_spawner_type = 1
-peds_size = 3
-metadata/_custom_type_script = "uid://c8oqvjek0jr6i"
-
-[node name="PedSpawnerSlot53" type="Marker3D" parent="map/PedSpawnerController/Spawners"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 0, -46.4145)
-script = ExtResource("7_alfe8")
-ped_spawner_type = 1
-peds_size = 3
-metadata/_custom_type_script = "uid://c8oqvjek0jr6i"
-
-[node name="PedSpawnerSlot54" type="Marker3D" parent="map/PedSpawnerController/Spawners"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25, 0, -46.4145)
-script = ExtResource("7_alfe8")
-ped_spawner_type = 1
-peds_size = 3
-metadata/_custom_type_script = "uid://c8oqvjek0jr6i"
-
-[node name="PedSpawnerSlot55" type="Marker3D" parent="map/PedSpawnerController/Spawners"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, -39.4145)
-script = ExtResource("7_alfe8")
-ped_spawner_type = 1
-peds_size = 3
-metadata/_custom_type_script = "uid://c8oqvjek0jr6i"
-
-[node name="PedSpawnerSlot56" type="Marker3D" parent="map/PedSpawnerController/Spawners"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0, -39.4145)
-script = ExtResource("7_alfe8")
-ped_spawner_type = 1
-peds_size = 3
-metadata/_custom_type_script = "uid://c8oqvjek0jr6i"
-
-[node name="PedSpawnerSlot57" type="Marker3D" parent="map/PedSpawnerController/Spawners"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 0, -39.4145)
-script = ExtResource("7_alfe8")
-ped_spawner_type = 1
-peds_size = 3
-metadata/_custom_type_script = "uid://c8oqvjek0jr6i"
-
-[node name="PedSpawnerSlot58" type="Marker3D" parent="map/PedSpawnerController/Spawners"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25, 0, -39.4145)
-script = ExtResource("7_alfe8")
-ped_spawner_type = 1
-peds_size = 3
-metadata/_custom_type_script = "uid://c8oqvjek0jr6i"
-
-[node name="PedSpawnerSlot59" type="Marker3D" parent="map/PedSpawnerController/Spawners"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, -32.4145)
-script = ExtResource("7_alfe8")
-ped_spawner_type = 1
-peds_size = 3
-metadata/_custom_type_script = "uid://c8oqvjek0jr6i"
-
-[node name="PedSpawnerSlot60" type="Marker3D" parent="map/PedSpawnerController/Spawners"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0, -32.4145)
-script = ExtResource("7_alfe8")
-ped_spawner_type = 1
-peds_size = 3
-metadata/_custom_type_script = "uid://c8oqvjek0jr6i"
-
-[node name="PedSpawnerSlot61" type="Marker3D" parent="map/PedSpawnerController/Spawners"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 0, -32.4145)
-script = ExtResource("7_alfe8")
-ped_spawner_type = 1
-peds_size = 3
-metadata/_custom_type_script = "uid://c8oqvjek0jr6i"
-
-[node name="PedSpawnerSlot62" type="Marker3D" parent="map/PedSpawnerController/Spawners"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25, 0, -32.4145)
-script = ExtResource("7_alfe8")
-ped_spawner_type = 1
-peds_size = 3
-metadata/_custom_type_script = "uid://c8oqvjek0jr6i"
-
-[node name="PedSpawnerSlot63" type="Marker3D" parent="map/PedSpawnerController/Spawners"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, -25.4145)
-script = ExtResource("7_alfe8")
-ped_spawner_type = 1
-peds_size = 3
-metadata/_custom_type_script = "uid://c8oqvjek0jr6i"
-
-[node name="PedSpawnerSlot64" type="Marker3D" parent="map/PedSpawnerController/Spawners"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0, -25.4145)
-script = ExtResource("7_alfe8")
-ped_spawner_type = 1
-peds_size = 3
-metadata/_custom_type_script = "uid://c8oqvjek0jr6i"
-
-[node name="PedSpawnerSlot65" type="Marker3D" parent="map/PedSpawnerController/Spawners"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 0, -25.4145)
-script = ExtResource("7_alfe8")
-ped_spawner_type = 1
-peds_size = 3
-metadata/_custom_type_script = "uid://c8oqvjek0jr6i"
-
-[node name="PedSpawnerSlot66" type="Marker3D" parent="map/PedSpawnerController/Spawners"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25, 0, -25.4145)
-script = ExtResource("7_alfe8")
-ped_spawner_type = 1
-peds_size = 3
-metadata/_custom_type_script = "uid://c8oqvjek0jr6i"
-
-[node name="PedSpawnerSlot67" type="Marker3D" parent="map/PedSpawnerController/Spawners"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, -20.4145)
-script = ExtResource("7_alfe8")
-ped_spawner_type = 1
-peds_size = 3
-metadata/_custom_type_script = "uid://c8oqvjek0jr6i"
-
-[node name="PedSpawnerSlot68" type="Marker3D" parent="map/PedSpawnerController/Spawners"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0, -20.4145)
-script = ExtResource("7_alfe8")
-ped_spawner_type = 1
-peds_size = 3
-metadata/_custom_type_script = "uid://c8oqvjek0jr6i"
-
-[node name="PedSpawnerSlot69" type="Marker3D" parent="map/PedSpawnerController/Spawners"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 0, -20.4145)
-script = ExtResource("7_alfe8")
-ped_spawner_type = 1
-peds_size = 3
-metadata/_custom_type_script = "uid://c8oqvjek0jr6i"
-
-[node name="PedSpawnerSlot70" type="Marker3D" parent="map/PedSpawnerController/Spawners"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25, 0, -20.4145)
-script = ExtResource("7_alfe8")
-ped_spawner_type = 1
-peds_size = 3
-metadata/_custom_type_script = "uid://c8oqvjek0jr6i"
-
-[node name="PedSpawnerSlot71" type="Marker3D" parent="map/PedSpawnerController/Spawners"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, -13.4145)
-script = ExtResource("7_alfe8")
-ped_spawner_type = 1
-peds_size = 3
-metadata/_custom_type_script = "uid://c8oqvjek0jr6i"
-
-[node name="PedSpawnerSlot72" type="Marker3D" parent="map/PedSpawnerController/Spawners"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0, -13.4145)
-script = ExtResource("7_alfe8")
-ped_spawner_type = 1
-peds_size = 3
-metadata/_custom_type_script = "uid://c8oqvjek0jr6i"
-
-[node name="PedSpawnerSlot73" type="Marker3D" parent="map/PedSpawnerController/Spawners"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 0, -13.4145)
-script = ExtResource("7_alfe8")
-ped_spawner_type = 1
-peds_size = 3
-metadata/_custom_type_script = "uid://c8oqvjek0jr6i"
-
-[node name="PedSpawnerSlot74" type="Marker3D" parent="map/PedSpawnerController/Spawners"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25, 0, -13.4145)
-script = ExtResource("7_alfe8")
-ped_spawner_type = 1
-peds_size = 3
-metadata/_custom_type_script = "uid://c8oqvjek0jr6i"
 
 [node name="actor" type="Node" parent="."]
 

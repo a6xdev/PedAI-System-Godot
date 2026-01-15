@@ -1,16 +1,23 @@
 extends SmartObjects
 class_name so_ParkBench
 
-@onready var park_bench_event_slot_01: EventSlot = $ParkBench_EventSlot_01
-@onready var park_bench_event_slot_02: EventSlot = $ParkBench_EventSlot_02
-
-var so_slots:Array[EventSlot] = []
+@onready var park_bench_event_slot_01: ActionSlot = $ParkBench_EventSlot_01
+@onready var park_bench_event_slot_02: ActionSlot = $ParkBench_EventSlot_02
 
 func _ready() -> void:
-	so_slots.append_array([park_bench_event_slot_01, park_bench_event_slot_02])
+	slots.append_array([park_bench_event_slot_01, park_bench_event_slot_02])
+
+func get_default_tasks(actor:actor_npc, slot:ActionSlot) -> Array[PedTask]:
+	var sequence:Array[PedTask] = []
+	if slot and not slot.is_taken:
+		var t1 = new_task(PedTask.Type.ROTATE_TO, -slot.global_rotation.y)
+		var t2 = new_task(PedTask.Type.PLAY_ANIM, true,  "is_sitting")
+		var t3 = new_task(PedTask.Type.COLLISION_DISABLED, true)
+		sequence.append_array([t1, t2, t3])
+	return sequence
 
 func get_interaction_tasks(actor:actor_npc) -> Array[PedTask]:
-	var slot:EventSlot = get_empty_slot()
+	var slot:ActionSlot = get_empty_slot()
 	var sequence:Array[PedTask] = []
 	
 	if slot:
@@ -26,9 +33,9 @@ func get_interaction_tasks(actor:actor_npc) -> Array[PedTask]:
 		sequence.append_array([t1, t2, t3, t4, t5])
 	return sequence
 
-func get_empty_slot() -> EventSlot:
-	var empty_slot:EventSlot = null
-	for slot in so_slots:
+func get_empty_slot() -> ActionSlot:
+	var empty_slot:ActionSlot = null
+	for slot in slots:
 		if not slot.is_taken:
 			slot.is_taken = true
 			return slot

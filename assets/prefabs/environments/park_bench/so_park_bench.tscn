@@ -11,7 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://bul5lioyv8lef" path="res://assets/models/environment/park_bench/Park Bench_Bench_Wood_Metallic.png" id="8_kyf7n"]
 [ext_resource type="Texture2D" uid="uid://bmbaj5a67lkaq" path="res://assets/models/environment/park_bench/Park Bench_Bench_Wood_Normal.png" id="9_g1kwi"]
 [ext_resource type="Texture2D" uid="uid://4u6d3f4lhbgv" path="res://assets/models/environment/park_bench/Park Bench_Bench_Wood_Roughness.png" id="10_8eruv"]
-[ext_resource type="Script" uid="uid://b21ldp6ap5gbq" path="res://scripts/core/systems/events/EventSlot.gd" id="12_3nqm3"]
+[ext_resource type="Script" uid="uid://b21ldp6ap5gbq" path="res://scripts/core/systems/actions/ActionSlot.gd" id="12_3nqm3"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0pl38"]
 resource_name = "Bench_Metal"

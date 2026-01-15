@@ -29,11 +29,12 @@ func _ready() -> void:
 	
 	pathnodes = FlowAIControllerNode.all_pathnodes
 	
-	for i in SpawnerSlotsPath.get_children():
-		if i is PedSpawnerSlot:
-			peds_spawners.append(i)
+	# If I wanna put spawner manually in the map, use it.
+	#for i in SpawnerSlotsPath.get_children():
+		#if i is PedSpawnerSlot:
+			#peds_spawners.append(i)
 	
-	# Create all Peds 
+	# Object Pooling of the NPCs
 	for i in range(peds_pool_size):
 		var actor_ped = NpcScene.instantiate()
 		SpawnerNpcPath.add_child(actor_ped)
@@ -43,7 +44,8 @@ func _ready() -> void:
 		NpcManager.all_peds.append(actor_ped)
 		NpcManager.inactive_peds.append(actor_ped)
 	
-	# Creates the PedSpawnerSlot for each Pathnode
+	# Idk a better way to spawn NPCs in appropriate locations, that was the solution.
+	# Creates the PedSpawnerSlot for each Pathnode of FlowAI System
 	for wp in pathnodes:
 		var slot = PedSpawnerSlot.new()
 		slot.ped_spawner_type = slot.SpawnerType.DEFAULT
@@ -52,8 +54,8 @@ func _ready() -> void:
 		peds_spawners.append(slot)
 
 func _input(event: InputEvent) -> void:
-	# Just for debug... reload the peds.
-	if Input.is_action_just_pressed("ui_accept"):
+	# Reload all the NPCs to show for the public.
+	if Input.is_action_just_pressed("d_reload_npcs"):
 		spawn_radius = 0.5
 		despawn_radius = 0.6
 		await get_tree().create_timer(0.5).timeout

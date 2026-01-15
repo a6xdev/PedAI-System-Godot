@@ -17,7 +17,7 @@ enum EventType {
 var event_owner:CharacterBody3D = null
 var event_origin := Vector3.ZERO
 var event_involved_npcs:Array[actor_npc] = []
-var event_stop_slots:Array[EventSlot] = []
+var event_stop_slots:Array[ActionSlot] = []
 
 var collision := CollisionShape3D.new()
 var collision_shape = SphereShape3D.new()
@@ -64,7 +64,7 @@ func generate_random_slots() -> void:
 		var angle = randf() * TAU
 		var r = sqrt(randf()) * (event_radius - inner_radius) + inner_radius
 		var pos = Vector3(cos(angle), 0, sin(angle)) * r
-		var slot = EventSlot.new()
+		var slot = ActionSlot.new()
 		slot.position = pos
 		event_stop_slots.append(slot)
 		add_child(slot)
@@ -74,12 +74,12 @@ func generate_circle_slots() -> void:
 	for i in range(event_max_slots):
 		var angle = TAU * (i / float(event_max_slots))
 		var pos = Vector3(cos(angle), 0, sin(angle)) * inner_radius
-		var slot = EventSlot.new()
+		var slot = ActionSlot.new()
 		slot.position = pos
 		event_stop_slots.append(slot)
 		add_child(slot)
 
-func get_free_slot() -> EventSlot:
+func get_free_slot() -> ActionSlot:
 	for slot in event_stop_slots:
 		if not slot.is_taken:
 			slot.is_taken = true

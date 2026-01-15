@@ -77,6 +77,7 @@ func _input(event: InputEvent) -> void:
 		else:
 			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	
+	# Lets Dance!!! 🕺💃
 	if Input.is_action_just_pressed("a_dance"):
 		var new_event := Event.new()
 		is_dancing = true

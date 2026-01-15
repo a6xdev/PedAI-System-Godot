@@ -2,9 +2,8 @@
 
 [ext_resource type="Script" uid="uid://c465r45f5mv57" path="res://scripts/gameplay/interface/CrowdAIInterface.gd" id="1_nnvvx"]
 
-[node name="CrowdAIInterface" type="CanvasLayer" node_paths=PackedStringArray("ped_spawner_controller")]
+[node name="CrowdAIInterface" type="CanvasLayer"]
 script = ExtResource("1_nnvvx")
-ped_spawner_controller = NodePath("")
 
 [node name="Interface" type="Control" parent="."]
 layout_mode = 3
@@ -26,14 +25,17 @@ layout_mode = 2
 text = "NPCS:"
 
 [node name="peds" type="Label" parent="Interface/VBoxContainer"]
+visible = false
 layout_mode = 2
 text = "NPCS:"
 
 [node name="active_peds" type="Label" parent="Interface/VBoxContainer"]
+visible = false
 layout_mode = 2
 text = "NPCS:"
 
 [node name="inactive_peds" type="Label" parent="Interface/VBoxContainer"]
+visible = false
 layout_mode = 2
 text = "NPCS:"
 
@@ -45,9 +47,11 @@ offset_right = 67.0
 offset_bottom = 247.0
 
 [node name="spawn_radius" type="Label" parent="Interface/VBoxContainer2"]
+visible = false
 layout_mode = 2
 text = "NPCS:"
 
 [node name="despawn_radius" type="Label" parent="Interface/VBoxContainer2"]
+visible = false
 layout_mode = 2
 text = "NPCS:"

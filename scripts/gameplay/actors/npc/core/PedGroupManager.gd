@@ -36,12 +36,12 @@ func generate_circle_slots(group_size:int) -> void:
 	for i in range(group_size):
 		var angle = TAU * (i / float(group_size))
 		var pos = Vector3(cos(angle), 0, sin(angle)) * 1.0
-		var slot = EventSlot.new()
+		var slot = ActionSlot.new()
 		slot.position = pos
 		peds_group_slots.append(slot)
 		add_child(slot)
 
-func get_free_slot() -> EventSlot:
+func get_free_slot() -> ActionSlot:
 	for slot in peds_group_slots:
 		if not slot.is_taken:
 			slot.is_taken = true
