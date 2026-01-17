@@ -34,6 +34,17 @@ func _ready() -> void:
 		#if i is PedSpawnerSlot:
 			#peds_spawners.append(i)
 	
+	# Spawn in SmartObjects
+	var all_smart_objects = NpcManager.smart_objects
+	for obj in all_smart_objects:
+		for action_slot in obj.slots:
+			var slot := PedSpawnerSlot.new()
+			slot.ped_spawner_type = slot.SpawnerType.ACTION
+			slot.smart_object = obj
+			SpawnerSlotsPath.add_child(slot)
+			slot.global_position = action_slot.global_position
+			peds_spawners.append(slot)
+	
 	# Object Pooling of the NPCs
 	for i in range(peds_pool_size):
 		var actor_ped = NpcScene.instantiate()
@@ -99,9 +110,7 @@ func _process(delta: float) -> void:
 func decide_spawn(slot:PedSpawnerSlot):
 	var spawn_weights = {
 		slot.SpawnerType.DEFAULT: 0.8,
-		slot.SpawnerType.SIT: 0.02,
-		slot.SpawnerType.LEAN_WALL_BACK: 0.06,
-		slot.SpawnerType.GROUP: 0.05,
+		slot.SpawnerType.ACTION: 0.02,
 	}
 
 	return randf() < spawn_weights.get(slot.ped_spawner_type, 0.0)

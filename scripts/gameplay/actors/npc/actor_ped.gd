@@ -7,8 +7,9 @@ class_name actor_npc
 @onready var head_target: Node3D = $mesh/Rig/Skeleton3D/HeadLookAt/HeadTarget
 @onready var flow_ai_agent: FlowAIAgent3D = $FlowAIAgent3D
 @onready var stimulus_controller: ped_stimulus_controller = $core/stimulus_controller
-@onready var detect_player_in_front: Area3D = $areas/DetectPlayerInFront
 @onready var mannequin_mesh: MeshInstance3D = $mesh/Rig/Skeleton3D/Mannequin
+@onready var animation_player: AnimationPlayer = $mesh/AnimationPlayer
+@onready var animation_tree: AnimationTree = $mesh/AnimationTree
 
 # Debug Meshes
 @onready var d_movement_target: MeshInstance3D = $debug/DMovementTarget
@@ -74,6 +75,7 @@ var current_speed:float = 0.0
 var current_group:PedGroupManager = null
 var current_task:PedTask
 var current_smart_object:SmartObjects = null
+var current_action_slot:ActionSlot = null
 
 var rotation_action_target:float = 0.0
 var look_current_path_target := Vector3.ZERO
@@ -94,10 +96,6 @@ func _ready() -> void:
 	var material_0 := StandardMaterial3D.new()
 	var material_1 := StandardMaterial3D.new()
 	
-	flow_ai_agent.get_random_path()
-	var task:PedTask = new_task(PedTask.Type.MOVE_TO, flow_ai_agent.get_next_pathnode_position())
-	has_movement_task = true
-	
 	material_0.albedo_color = get_random_color()
 	material_1.albedo_color = get_random_color()
 	
@@ -112,13 +110,6 @@ func _process(delta: float) -> void:
 			current_speed = 0.0
 	
 	process_tasks()
-	
-	if is_sitting or is_leaning_wall_back:
-		detect_player_in_front.show()
-		detect_player_in_front.monitoring = true
-	else:
-		detect_player_in_front.hide()
-		detect_player_in_front.monitoring = false
 
 func _physics_process(delta: float) -> void:
 	animation_controller()
@@ -133,7 +124,7 @@ func _physics_process(delta: float) -> void:
 				if task: tasks_queue.append(task)
 	
 	if not is_on_floor() and is_in_group and is_following_group_leader:
-		global_position.y = get_floor_normal().y + 1
+		velocity.y -= 9.8 * delta
 #endregion
 
 #region CONTROLLER
@@ -256,9 +247,9 @@ func process_tasks() -> void:
 					has_movement_task = false
 					task_finished = true
 			PedTask.Type.ROTATE_TO:
-				task_finished = task_rotate_y_to(current_task.target_value)
+				task_finished = task_rotate_to(current_task.target_value)
 			PedTask.Type.PLAY_ANIM:
-				self.set(current_task.target_name, current_task.target_value)
+				task_play_anim(current_task.target_name, current_task.target_value)
 				task_finished = true
 			PedTask.Type.WAIT:
 				wait_timer = current_task.target_value
@@ -300,8 +291,12 @@ func task_move_to(local:Vector3, use_pathfinding:bool = false) -> bool:
 	look_current_path_target = (global_position + final_dir)
 	return false
 
-func task_rotate_y_to(value:float) -> bool:
+func task_rotate_to(value:float) -> bool:
 	rotation_action_target = value
+	return true
+
+func task_play_anim(target_name:String, value:bool) -> bool:
+	self.set(target_name, value)
 	return true
 #endregion
 
@@ -347,15 +342,19 @@ func ped_reset():
 	look_current_path_target = Vector3.ZERO
 	look_current_group_center_target = Vector3.ZERO
 	look_current_event_target = Vector3.ZERO
+	global_rotation = Vector3.ZERO
 	current_group = null
-	is_following_group_leader = false
 	is_in_group = false
+	is_following_group_leader = false
 	ped_can_move = true
 	ped_can_rotate_body = true
 	is_sitting = false
 	is_leaning_wall_back = false
 	is_dancing = false
-	global_rotation = Vector3.ZERO
+	animation_tree.get("parameters/playback").start("Idle")
+	if current_action_slot:
+		current_action_slot.is_taken = false
+		current_action_slot.slot_owner = null
 
 func get_random_color() -> Color:
 	return Color(randf(), randf(), randf(), 1.0)
@@ -371,16 +370,6 @@ func _on_detect_nearby_body_exited(body: Node3D) -> void:
 	if body is CharacterBody3D:
 		if nearby_bodies.has(body):
 			nearby_bodies.erase(body)
-
-func _on_detect_player_in_front_body_entered(body: Node3D) -> void:
-	pass
-	#if body is Player:
-		#is_sitting = false
-		#is_leaning_wall_back = false
-		#is_fixing_kneeling = false
-		#await get_tree().create_timer(2.0).timeout
-		#ped_can_move = true
-		#ped_can_rotate_body = true
 
 func _on_detect_nearby_smart_objects_body_entered(body: Node3D) -> void:
 	if body is SmartObjects:

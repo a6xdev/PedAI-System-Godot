@@ -5,8 +5,6 @@ var is_taken:bool = false
 var slot_owner:CharacterBody3D = null
 
 func _ready() -> void:
-	NpcManager.all_actions_slots_in_scene.append(self)
-	
 	top_level = true
 	
 	if CrowdAIDebug.is_debugging:

@@ -1,18 +1,8 @@
 {
 	"areas": [
 		{
-			"area_pathnodes": [
-				1.0,
-				2.0,
-				3.0,
-				4.0,
-				5.0,
-				6.0,
-				7.0,
-				8.0,
-				9.0
-			],
-			"id": 1.0,
+			"area_pathnodes": [],
+			"id": 1,
 			"position": [
 				0.0,
 				0.0,
@@ -22,122 +12,111 @@
 	],
 	"pathnodes": [
 		{
-			"area_id": 1.0,
-			"id": 1.0,
+			"area_id": 1,
+			"id": 1,
 			"links": [
-				2.0,
-				8.0,
-				9.0
+				8
 			],
 			"position": [
 				30.1827392578125,
 				0.0,
 				-35.0
 			],
-			"prev_pathnode": 0.0
+			"prev_pathnode": 0
 		},
 		{
-			"area_id": 1.0,
-			"id": 2.0,
-			"links": [
-				3.0
-			],
+			"area_id": 1,
+			"id": 2,
+			"links": [],
 			"position": [
 				30.1827392578125,
 				0.0,
 				-67.0
 			],
-			"prev_pathnode": 1.0
+			"prev_pathnode": 1
 		},
 		{
-			"area_id": 1.0,
-			"id": 3.0,
+			"area_id": 1,
+			"id": 3,
 			"links": [
-				4.0,
-				9.0
+				9
 			],
 			"position": [
 				0.1827392578125,
 				0.0,
 				-67.0
 			],
-			"prev_pathnode": 2.0
+			"prev_pathnode": 2
 		},
 		{
-			"area_id": 1.0,
-			"id": 4.0,
-			"links": [
-				5.0
-			],
+			"area_id": 1,
+			"id": 4,
+			"links": [],
 			"position": [
-				-30.120937347412099,
+				-30.1209373474121,
 				0.0,
 				-67.0
 			],
-			"prev_pathnode": 3.0
+			"prev_pathnode": 3
 		},
 		{
-			"area_id": 1.0,
-			"id": 5.0,
+			"area_id": 1,
+			"id": 5,
 			"links": [
-				6.0,
-				9.0
+				9
 			],
 			"position": [
-				-30.120937347412099,
+				-30.1209373474121,
 				0.0,
 				-36.0
 			],
-			"prev_pathnode": 4.0
+			"prev_pathnode": 4
 		},
 		{
-			"area_id": 1.0,
-			"id": 6.0,
-			"links": [
-				7.0
-			],
+			"area_id": 1,
+			"id": 6,
+			"links": [],
 			"position": [
-				-30.120937347412099,
+				-30.1209373474121,
 				0.0,
-				-6.6252117156982404
+				-6.62521171569824
 			],
-			"prev_pathnode": 5.0
+			"prev_pathnode": 5
 		},
 		{
-			"area_id": 1.0,
-			"id": 7.0,
+			"area_id": 1,
+			"id": 7,
 			"links": [
-				8.0,
-				9.0
+				9
 			],
 			"position": [
 				-0.120937347412109,
 				0.0,
-				-6.6252117156982404
+				-6.62521171569824
 			],
-			"prev_pathnode": 6.0
+			"prev_pathnode": 6
 		},
 		{
-			"area_id": 1.0,
-			"id": 8.0,
+			"area_id": 1,
+			"id": 8,
 			"links": [],
 			"position": [
-				30.035301208496101,
+				30.0353012084961,
 				0.0,
-				-6.6252117156982404
+				-6.62521171569824
 			],
-			"prev_pathnode": 7.0
+			"prev_pathnode": 7
 		},
 		{
-			"area_id": 1.0,
-			"id": 9.0,
+			"area_id": 1,
+			"id": 9,
 			"links": [],
 			"position": [
 				0.1827392578125,
 				0.0,
 				-35.0
 			],
-			"prev_pathnode": 1.0
+			"prev_pathnode": 1
 		}
 	]
 }
