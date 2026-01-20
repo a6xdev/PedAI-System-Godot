@@ -40,13 +40,11 @@ func set_ped_spawner_slot(ped:actor_npc) -> void:
 		
 		SpawnerType.ACTION:
 			if smart_object:
-				var spawn_slot = smart_object.get_empty_slot()
-				if spawn_slot:
-					var tasks = smart_object.get_default_tasks(ped, spawn_slot)
-					ped.global_position = Vector3(spawn_slot.global_position.x, 1.0, spawn_slot.global_position.z)
-					for task in tasks:
-						if task: ped.tasks_queue.append(task)
-					return
+				var action_slot:ActionSlot = smart_object.get_empty_slot()
+				if action_slot:
+					smart_object.set_start_state(ped, action_slot)
+					ped.global_position = Vector3(action_slot.global_position.x, 1.0, action_slot.global_position.z)
+				return
 			
 		#SpawnerType.GROUP:
 			## Create the group and set the peds

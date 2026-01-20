@@ -91,9 +91,10 @@ func _process(delta: float) -> void:
 						ped.global_position = slot.global_position
 						ped.global_position.y = slot.global_position.y + 1
 						slot.set_ped_spawner_slot(ped)
-						await get_tree().create_timer(0.5).timeout
+						await get_tree().create_timer(0.3).timeout
 					else:
 						break
+				break
 			
 			if slot.all_peds_in_slot.size() > 0:
 				for ped in slot.all_peds_in_slot:
@@ -102,6 +103,7 @@ func _process(delta: float) -> void:
 						release_ped(ped)
 						slot.clean_ped_spawner_slot(ped)
 						slot.can_spawn = false
+						break
 		
 		await get_tree().create_timer(0.5).timeout
 #endregion

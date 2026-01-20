@@ -14,8 +14,8 @@ func _ready() -> void:
 func start_smart_object() -> void:
 	pass
 	
-func get_default_tasks(actor:actor_npc, slot:ActionSlot) -> Array[PedTask]:
-	return []
+func set_start_state(actor:actor_npc, slot:ActionSlot) -> void:
+	pass
 
 func get_interaction_tasks(actor:actor_npc) -> Array[PedTask]:
 	return []

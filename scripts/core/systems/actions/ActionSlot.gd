@@ -5,7 +5,7 @@ var is_taken:bool = false
 var slot_owner:CharacterBody3D = null
 
 func _ready() -> void:
-	top_level = true
+	#top_level = true
 	
 	if CrowdAIDebug.is_debugging:
 		var w_mesh := MeshInstance3D.new()
@@ -17,3 +17,6 @@ func _ready() -> void:
 		w_mesh.set_surface_override_material(0, w_mesh_material)
 		
 		add_child(w_mesh)
+
+func _process(delta: float) -> void:
+	DebugDraw3D.draw_sphere(global_position, 0.2, Color(0, 0, 1))

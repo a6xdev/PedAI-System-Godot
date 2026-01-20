@@ -20,6 +20,10 @@ config/icon="res://icon.svg"
 CrowdAIDebug="*res://scripts/core/globals/CrowdAIDebug.gd"
 NpcManager="*res://scripts/core/globals/NpcManager.gd"
 
+[debug_draw_3d]
+
+settings/addon_root_folder="res://addons/debug_draw_3d"
+
 [display]
 
 window/size/viewport_width=1920

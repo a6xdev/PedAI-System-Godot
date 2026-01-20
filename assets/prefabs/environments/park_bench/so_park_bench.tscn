@@ -106,7 +106,7 @@ heightmap_texture = ExtResource("7_4qyln")
 size = Vector3(2.4638367, 0.70007324, 0.35868835)
 
 [node name="so_park_bench" type="StaticBody3D"]
-transform = Transform3D(1.7, 0, 0, 0, 1.7, 0, 0, 0, 1.7, 0, 0, 0)
+transform = Transform3D(1.325, 0, 0, 0, 1.325, 0, 0, 0, 1.325, 0, 0, 0)
 script = ExtResource("1_vn3mn")
 
 [node name="mesh" type="MeshInstance3D" parent="."]

@@ -247,7 +247,8 @@ func process_tasks() -> void:
 					has_movement_task = false
 					task_finished = true
 			PedTask.Type.ROTATE_TO:
-				task_finished = task_rotate_to(current_task.target_value)
+				task_rotate_to(current_task.target_value)
+				task_finished = true
 			PedTask.Type.PLAY_ANIM:
 				task_play_anim(current_task.target_name, current_task.target_value)
 				task_finished = true
@@ -255,7 +256,7 @@ func process_tasks() -> void:
 				wait_timer = current_task.target_value
 				task_finished = true
 			PedTask.Type.COLLISION_DISABLED:
-				collision.disabled = current_task.target_value
+				task_disable_collision(current_task.target_value)
 				task_finished = true
 		
 		if task_finished:
@@ -279,7 +280,7 @@ func task_move_to(local:Vector3, use_pathfinding:bool = false) -> bool:
 	
 	# this shit arrived
 	if dist <= dist_min or cancel_current_task:
-		# Verify if the next task is a MOVE_TO. If not, stop of moving.
+		# Check if the next task is a MOVE_TO. If not, stop of moving.
 		if tasks_queue.size() > 1 and not tasks_queue[1].type == PedTask.Type.MOVE_TO: velocity = Vector3(0.0, velocity.y, 0.0)
 		if use_pathfinding: global_position = Vector3(target_pos.x, global_position.y, target_pos.z)
 		return true
@@ -291,12 +292,17 @@ func task_move_to(local:Vector3, use_pathfinding:bool = false) -> bool:
 	look_current_path_target = (global_position + final_dir)
 	return false
 
-func task_rotate_to(value:float) -> bool:
-	rotation_action_target = value
+func task_rotate_to(target:float) -> bool:
+	rotation_action_target = target
+	rotation_degrees.y = target
 	return true
 
 func task_play_anim(target_name:String, value:bool) -> bool:
 	self.set(target_name, value)
+	return true
+
+func task_disable_collision(value:bool) -> bool:
+	collision.disabled = value
 	return true
 #endregion
 
