@@ -10,7 +10,8 @@ enum SpawnerType {
 @export var peds_size:int = 1
 @export var can_spawn:bool = false
 
-var smart_object:SmartObjects = null
+var m_smart_object:SmartObjects = null
+var m_action_slot:ActionSlot = null
 
 var all_peds_in_slot:Array[actor_npc] = []
 var group_manager:PedGroupManager = null
@@ -39,11 +40,9 @@ func set_ped_spawner_slot(ped:actor_npc) -> void:
 			return
 		
 		SpawnerType.ACTION:
-			if smart_object:
-				var action_slot:ActionSlot = smart_object.get_empty_slot()
-				if action_slot:
-					smart_object.set_start_state(ped, action_slot)
-					ped.global_position = Vector3(action_slot.global_position.x, 1.0, action_slot.global_position.z)
+			if m_smart_object and m_action_slot:
+				m_smart_object.set_start_state(ped, m_action_slot)
+				ped.global_position = Vector3(m_action_slot.global_position.x, 1.0, m_action_slot.global_position.z)
 				return
 			
 		#SpawnerType.GROUP:

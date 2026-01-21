@@ -13,6 +13,7 @@ func set_start_state(actor:actor_npc, slot:ActionSlot) -> void:
 	if slot:
 		actor.current_smart_object = self
 		actor.current_action_slot = slot
+		slot.is_taken = true
 		slot.slot_owner = actor
 		actor.task_rotate_to(sit_rotation_y)
 		actor.task_play_anim("is_sitting", true)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://cw0bk0h1o70ne"]
+[gd_scene load_steps=22 format=3 uid="uid://cw0bk0h1o70ne"]
 
 [ext_resource type="Script" uid="uid://bysxpb73lr46b" path="res://addons/FlowAI/scripts/core/FlowAIController.gd" id="1_mtgui"]
 [ext_resource type="Script" uid="uid://csbl3jypfxtwg" path="res://addons/FlowAI/scripts/runtime/FlowAIAreaNode.gd" id="2_pm0x4"]
@@ -12,7 +12,6 @@
 [ext_resource type="Script" uid="uid://mk0cs7tsd178" path="res://scripts/core/systems/PedSpawner/PedSpawnerController.gd" id="10_mlmhb"]
 [ext_resource type="PackedScene" uid="uid://bbquwaao37aja" path="res://assets/prefabs/characters/actor_ped.tscn" id="11_bma6s"]
 [ext_resource type="PackedScene" uid="uid://j5nwodo50yh3" path="res://assets/prefabs/characters/actor_player.tscn" id="12_dhite"]
-[ext_resource type="Script" uid="uid://bchdkode3ag7t" path="res://scripts/core/nodes/FreeLookCamera.gd" id="13_g62gf"]
 [ext_resource type="PackedScene" uid="uid://bxwxflsejagit" path="res://assets/prefabs/UI/crowd_ai_interface.tscn" id="14_dex2l"]
 [ext_resource type="Texture2D" uid="uid://4pxnh1mqg4f6" path="res://assets/textures/hdri/qwantani_noon_puresky_2k.exr" id="15_ggsc2"]
 
@@ -50,16 +49,11 @@ sky = SubResource("Sky_alfe8")
 [node name="PedAIScene" type="Node3D"]
 
 [node name="FlowAIController" type="Node" parent="." node_paths=PackedStringArray("all_areas", "all_pathnodes")]
-process_priority = 1
-process_physics_priority = 1
-process_thread_group = 1
-process_thread_group_order = 0
-process_thread_messages = 0
 script = ExtResource("1_mtgui")
 is_debug_mode = true
-DataPath = "res://data/CrowdAIScenePathnodesData.json"
+DataPath = "res://data/PedAIScene_FlowAIData.json"
 all_areas = [NodePath("area_1")]
-all_pathnodes = [NodePath("area_1/pathnode_1"), NodePath("area_1/pathnode_2"), NodePath("area_1/pathnode_3"), NodePath("area_1/pathnode_4")]
+all_pathnodes = [NodePath("area_1/pathnode_1"), NodePath("area_1/pathnode_2"), NodePath("area_1/pathnode_3"), NodePath("area_1/pathnode_4"), NodePath("area_1/pathnode_5")]
 metadata/_custom_type_script = "uid://bysxpb73lr46b"
 
 [node name="area_1" type="Node3D" parent="FlowAIController" node_paths=PackedStringArray("flowAI_controller")]
@@ -81,6 +75,11 @@ script = ExtResource("3_fgoei")
 flowAI_controller = NodePath("../..")
 
 [node name="pathnode_4" type="Marker3D" parent="FlowAIController/area_1" node_paths=PackedStringArray("flowAI_controller")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, -7)
+script = ExtResource("3_fgoei")
+flowAI_controller = NodePath("../..")
+
+[node name="pathnode_5" type="Marker3D" parent="FlowAIController/area_1" node_paths=PackedStringArray("flowAI_controller")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -12)
 script = ExtResource("3_fgoei")
 flowAI_controller = NodePath("../..")
@@ -151,9 +150,9 @@ SpawnerNpcPath = NodePath("../../actor")
 FlowAIControllerNode = NodePath("../../FlowAIController")
 PlayerRef = NodePath("../../actor/actor_player")
 NpcScene = ExtResource("11_bma6s")
-peds_pool_size = 50
+peds_pool_size = 5
 spawn_radius = 5.0
-despawn_radius = 7.0
+despawn_radius = 15.0
 metadata/_custom_type_script = "uid://mk0cs7tsd178"
 
 [node name="Spawners" type="Node" parent="map/PedSpawnerController"]
@@ -162,11 +161,6 @@ metadata/_custom_type_script = "uid://mk0cs7tsd178"
 
 [node name="actor_player" parent="actor" instance=ExtResource("12_dhite")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -3)
-
-[node name="FreeLookCamera" type="Camera3D" parent="actor"]
-process_mode = 4
-script = ExtResource("13_g62gf")
-metadata/_custom_type_script = "uid://bchdkode3ag7t"
 
 [node name="RuntimeCreatedBodies" type="Node" parent="."]
 

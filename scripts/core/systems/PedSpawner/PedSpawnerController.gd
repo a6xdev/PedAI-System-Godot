@@ -40,7 +40,8 @@ func _ready() -> void:
 		for action_slot in obj.slots:
 			var slot := PedSpawnerSlot.new()
 			slot.ped_spawner_type = slot.SpawnerType.ACTION
-			slot.smart_object = obj
+			slot.m_smart_object = obj
+			slot.m_action_slot = action_slot
 			SpawnerSlotsPath.add_child(slot)
 			slot.global_position = action_slot.global_position
 			peds_spawners.append(slot)
@@ -86,10 +87,13 @@ func _process(delta: float) -> void:
 			
 			if slot.all_peds_in_slot.size() < slot.peds_size and dist <= spawn_radius and slot.can_spawn:
 				while slot.all_peds_in_slot.size() < slot.peds_size:
+					if slot.ped_spawner_type == PedSpawnerSlot.SpawnerType.ACTION and slot.m_action_slot.is_taken:
+						break
+						
 					var ped = get_ped()
 					if ped != null:
 						ped.global_position = slot.global_position
-						ped.global_position.y = slot.global_position.y + 1
+						ped.global_position.y = slot.global_position.y + 2
 						slot.set_ped_spawner_slot(ped)
 						await get_tree().create_timer(0.3).timeout
 					else:
@@ -98,6 +102,8 @@ func _process(delta: float) -> void:
 			
 			if slot.all_peds_in_slot.size() > 0:
 				for ped in slot.all_peds_in_slot:
+					if not ped.can_despawn: break
+					
 					var dist_to_ped = ped.global_position.distance_to(PlayerRef.global_position)
 					if dist_to_ped >= despawn_radius and ped:
 						release_ped(ped)

@@ -5,7 +5,8 @@
 				1,
 				2,
 				3,
-				4
+				4,
+				5
 			],
 			"id": 1,
 			"position": [
@@ -34,7 +35,8 @@
 			"id": 2,
 			"links": [
 				3,
-				4
+				4,
+				5
 			],
 			"position": [
 				0.0,
@@ -57,6 +59,17 @@
 		{
 			"area_id": 1,
 			"id": 4,
+			"links": [],
+			"position": [
+				6.0,
+				0.0,
+				-7.0
+			],
+			"prev_pathnode": 2
+		},
+		{
+			"area_id": 1,
+			"id": 5,
 			"links": [],
 			"position": [
 				0.0,

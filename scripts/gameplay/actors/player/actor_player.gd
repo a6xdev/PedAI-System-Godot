@@ -45,6 +45,7 @@ var current_speed:float = 0.0
 #region GODOT FUNCTIONS
 func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	NpcManager.PlayerRef = self
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion and can_move_camera:

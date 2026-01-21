@@ -39,6 +39,7 @@ enum TurnType {
 @export_subgroup("Flags")
 @export var ped_can_move:bool = true
 @export var ped_can_rotate_body:bool = true
+@export var can_despawn:bool = true
 
 @export_group("Avoidance")
 @export var avoidance_radius: float = 3.0
@@ -69,6 +70,8 @@ var wait_timer:float = 0.0
 var want_socialize:bool = false
 var want_sit:bool = false
 
+var dist_to_player:float = 0.0
+
 var current_ped_type:PedType = PedType.WANDER
 var current_event:Event = null
 var current_speed:float = 0.0
@@ -76,6 +79,7 @@ var current_group:PedGroupManager = null
 var current_task:PedTask
 var current_smart_object:SmartObjects = null
 var current_action_slot:ActionSlot = null
+var time_walking:float = 0.0
 
 var rotation_action_target:float = 0.0
 var look_current_path_target := Vector3.ZERO
@@ -103,6 +107,8 @@ func _ready() -> void:
 	mannequin_mesh.set_surface_override_material(1, material_1)
 
 func _process(delta: float) -> void:
+	dist_to_player = global_position.distance_to(NpcManager.PlayerRef.global_position)
+	
 	match current_ped_type:
 		PedType.WANDER:
 			current_speed = ped_walk_speed
@@ -129,6 +135,8 @@ func _physics_process(delta: float) -> void:
 
 #region CONTROLLER
 func animation_controller() -> void:
+	if velocity.length() > 1.0: time_walking += get_physics_process_delta_time()
+	
 	if velocity.length() < 0.1:
 		is_stopped = true
 		is_walking = false
@@ -150,8 +158,17 @@ func movement_controller(delta:float) -> void:
 				is_stopped_on_event = true
 				
 		if flow_ai_agent.is_path_complete() and not is_going_to_event_slot: # FlowAI
-			# TODO: Look for any action near it
-			flow_ai_agent.get_random_path()
+			# Decide Ped Actions here, when the path is complete.
+			if dist_to_player < 50.0 and time_walking > 20.0 and nearby_smart_objects.size() > 0:
+				var smart_object = nearby_smart_objects.pick_random()
+				if smart_object.get_empty_slot() != null:
+					var tasks_sequence = smart_object.get_interaction_tasks(self)
+					for task in tasks_sequence:
+						if task: tasks_queue.append(task)
+				else:
+					time_walking = 0.0
+			else:
+				flow_ai_agent.get_random_path()
 		
 		var crowd_target:Vector3 = flow_ai_agent.get_next_pathnode_position()
 		var pathfinding_target:Vector3 = flow_ai_agent.get_next_path_position()
@@ -278,6 +295,11 @@ func task_move_to(local:Vector3, use_pathfinding:bool = false) -> bool:
 	var direction:Vector3 = (target_pos - global_position).normalized()
 	var final_dir:Vector3 = direction
 	
+	if target_pos == global_position:
+		global_position = Vector3(local.x, global_position.y, local.z)
+		velocity = Vector3.ZERO
+		return true
+	
 	# this shit arrived
 	if dist <= dist_min or cancel_current_task:
 		# Check if the next task is a MOVE_TO. If not, stop of moving.
@@ -350,14 +372,18 @@ func ped_reset():
 	look_current_event_target = Vector3.ZERO
 	global_rotation = Vector3.ZERO
 	current_group = null
+	time_walking = 0.0
+	
+	ped_can_move = true
 	is_in_group = false
 	is_following_group_leader = false
-	ped_can_move = true
 	ped_can_rotate_body = true
 	is_sitting = false
 	is_leaning_wall_back = false
 	is_dancing = false
+	
 	animation_tree.get("parameters/playback").start("Idle")
+	tasks_queue.clear()
 	if current_action_slot:
 		current_action_slot.is_taken = false
 		current_action_slot.slot_owner = null
@@ -368,12 +394,12 @@ func get_random_color() -> Color:
 
 #region SIGNALS
 func _on_detect_nearby_body_entered(body: Node3D) -> void:
-	if body is CharacterBody3D:
+	if body is actor_npc:
 		if not nearby_bodies.has(body):
 			nearby_bodies.append(body)
 
 func _on_detect_nearby_body_exited(body: Node3D) -> void:
-	if body is CharacterBody3D:
+	if body is actor_npc:
 		if nearby_bodies.has(body):
 			nearby_bodies.erase(body)
 
