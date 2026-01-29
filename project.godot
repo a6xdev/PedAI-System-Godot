@@ -17,7 +17,7 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-CrowdAIDebug="*res://scripts/core/globals/CrowdAIDebug.gd"
+World="*res://scripts/core/globals/World.gd"
 NpcManager="*res://scripts/core/globals/NpcManager.gd"
 
 [debug_draw_3d]

@@ -9,7 +9,7 @@ func is_valid(actor:ActorGoapPed) -> bool:
 	return true
 
 func get_priority() -> int:
-	return 1
+	return GoalPriority
 
 func get_desired_state() -> Dictionary:
 	return {}

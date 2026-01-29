@@ -33,9 +33,10 @@ var look_dir:Vector3 = Vector3.ZERO
 var is_stopped:bool = false
 var is_walking:bool = false
 var is_running:bool = false
-var is_walking_around:bool = false
+var is_sitting:bool = false
 
 var nearby_bodies:Array[ActorGoapPed] = []
+var nearby_smart_objects:Array[SmartObject] = []
 
 var current_speed_type:SpeedType = SpeedType.WALK
 var current_target_position:Vector3 = Vector3(10.0, 0.0, 0.0)
@@ -47,23 +48,40 @@ func _ready() -> void:
 	world_state = {
 		"ai_at_target_location": false,
 		"ai_walked_around": false,
+		"ai_has_smart_object": false,
+		"ai_are_tired": false,
 		
+		"ai_target_smart_object": null,
 		"ai_target_position": Vector3(10, 0, 0)
 	}
 
 func _input(event: InputEvent) -> void:
 	if Input.is_action_just_pressed("d_action_01"):
 		goap_current_plan = action_planer.make_plan(self, goal_selector.get_best_goal(self))
+		print("goap_current_plan: ", goap_current_plan)
 
 func _physics_process(delta: float) -> void:
 	animation_controller()
 	movement_controller()
 	goap_controller()
+	
+	if not is_on_floor():
+		velocity.y -= 9.8 * delta
 #endregion
 
 #region CONTROLLERS
 func animation_controller() -> void:
-	pass
+	is_stopped = false if is_walking or is_running else true
+	
+	if velocity.length() > 3.0:
+		is_walking = false
+		is_running = true
+	elif velocity.length() > 1.0:
+		is_walking = true
+		is_running = false
+	else:
+		is_walking = false
+		is_running = false
 
 func movement_controller() -> void:
 	if ped_can_move:
@@ -90,6 +108,7 @@ func goap_controller() -> void:
 	if goap_current_action:
 		var finished = goap_current_action.execute(self)
 		if finished:
+			#print("action_finished: ", goap_current_action)
 			goap_current_action.exit(self)
 			goap_current_action = null
 		
@@ -123,4 +142,19 @@ func _get_current_speed() -> float:
 #endregion
 
 #region SIGNALS
+# Sensor to nearby bodies (PEDs)
+func _on_nearby_bodies_body_entered(body: Node3D) -> void:
+	if body is ActorGoapPed:
+		nearby_bodies.append(body)
+func _on_nearby_bodies_body_exited(body: Node3D) -> void:
+	if body is ActorGoapPed:
+		nearby_bodies.erase(body)
+
+# Sensor to nearby smart objects
+func _on_nearby_smart_objects_body_entered(body: Node3D) -> void:
+	if body is SmartObject:
+		nearby_smart_objects.append(body)
+func _on_nearby_smart_objects_body_exited(body: Node3D) -> void:
+	if body is SmartObject:
+		nearby_smart_objects.erase(body)
 #endregion

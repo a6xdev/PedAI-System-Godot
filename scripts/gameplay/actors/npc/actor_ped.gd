@@ -74,7 +74,7 @@ var current_event:Event = null
 var current_speed:float = 0.0
 var current_group:PedGroupManager = null
 var current_task:PedTask
-var current_smart_object:SmartObjects = null
+var current_smart_object:SmartObject = null
 var current_action_slot:ActionSlot = null
 var time_walking:float = 0.0
 
@@ -87,7 +87,7 @@ var look_current_target := Vector3.ZERO
 var tasks_queue:Array[PedTask] = []
 
 var nearby_bodies:Array[CharacterBody3D] = []
-var nearby_smart_objects:Array[SmartObjects] = []
+var nearby_smart_objects:Array[SmartObject] = []
 
 signal task_finished(task_type:PedTask.Type)
 
@@ -406,11 +406,11 @@ func _on_detect_nearby_body_exited(body: Node3D) -> void:
 			nearby_bodies.erase(body)
 
 func _on_detect_nearby_smart_objects_body_entered(body: Node3D) -> void:
-	if body is SmartObjects:
+	if body is SmartObject:
 		nearby_smart_objects.append(body)
 
 func _on_detect_nearby_smart_objects_body_exited(body: Node3D) -> void:
-	if body is SmartObjects:
+	if body is SmartObject:
 		nearby_smart_objects.erase(body)
 
 func _on_visible_on_screen_notifier_screen_entered() -> void:

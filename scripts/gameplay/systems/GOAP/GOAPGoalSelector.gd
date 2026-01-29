@@ -12,7 +12,7 @@ func get_best_goal(actor:ActorGoapPed) -> GOAPGoal:
 	var highest_priority:float = -1.0
 	
 	for goal in get_children():
-		if goal is GOAPGoal:
+		if goal is GOAPGoal and goal.is_valid(actor):
 			var p = goal.get_priority()
 			if p > highest_priority:
 				highest_priority = p

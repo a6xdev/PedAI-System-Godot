@@ -9,14 +9,15 @@ func make_plan(actor:ActorGoapPed, goal:GOAPGoal) -> Array:
 	if _in_state(desired_state, world_state):
 		return []
 	
-	plan = _build_path(actor, desired_state, world_state, 5)
+	plan = _build_plan(actor, desired_state, world_state, 5)
 	
 	for action in plan:
 		print(action.ActionName)
+	print("\n")
 	
 	return plan
 
-func _build_path(actor:ActorGoapPed, target_state:Dictionary, current_state:Dictionary, depth:int) -> Array:
+func _build_plan(actor:ActorGoapPed, target_state:Dictionary, current_state:Dictionary, depth:int) -> Array:
 	if depth > 10:
 		return []
 	
@@ -24,8 +25,11 @@ func _build_path(actor:ActorGoapPed, target_state:Dictionary, current_state:Dict
 	
 	for action in get_children():
 		if action is GOAPAction:
+			if not _action_satisfies_state(action.get_effects(), target_state):
+				continue
+			
 			var requirements = action.get_preconditions()
-			var sub_plan = _build_path(actor, requirements, current_state, depth + 1)
+			var sub_plan = _build_plan(actor, requirements, current_state, depth + 1)
 			
 			if sub_plan != null:
 				var full_plan = sub_plan
@@ -39,3 +43,9 @@ func _in_state(desired:Dictionary, current:Dictionary) -> bool:
 		if current.get(key) != desired[key]:
 			return false
 	return true
+
+func _action_satisfies_state(effects: Dictionary, target: Dictionary) -> bool:
+	for key in target:
+		if effects.has(key) and effects[key] == target[key]:
+			return true
+	return false

@@ -11,8 +11,8 @@
 [ext_resource type="Texture2D" uid="uid://4pxnh1mqg4f6" path="res://assets/textures/hdri/qwantani_noon_puresky_2k.exr" id="10_76qwm"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_8pae6"]
-vertices = PackedVector3Array(-29, 0.4210975, 0, -10, 0.4210975, 0, -10, 0.4210975, -2, -9, 0.4210975, -2.25, -9, 0.4210975, -24.5, -29, 0.4210975, -24.5, -8, 0.4210975, -2, 29, 0.4210975, 0, 29, 0.4210975, -24.5, -8, 0.4210975, 0, -10, 0.4210975, 2, -9, 0.4210975, 2.25, -29, 0.4210975, 24.5, -9, 0.4210975, 24.5, -8, 0.4210975, 2, 29, 0.4210975, 24.5)
-polygons = [PackedInt32Array(2, 1, 0), PackedInt32Array(2, 0, 3), PackedInt32Array(3, 0, 4), PackedInt32Array(4, 0, 5), PackedInt32Array(3, 4, 6), PackedInt32Array(6, 4, 8), PackedInt32Array(6, 8, 7), PackedInt32Array(7, 9, 6), PackedInt32Array(0, 1, 10), PackedInt32Array(10, 11, 0), PackedInt32Array(0, 11, 13), PackedInt32Array(0, 13, 12), PackedInt32Array(11, 14, 13), PackedInt32Array(13, 14, 15), PackedInt32Array(15, 14, 7), PackedInt32Array(14, 9, 7)]
+vertices = PackedVector3Array(3.75, 0.40994924, -2, 4.75, 0.40994924, -2.25, 4.75, 0.40994924, -24.5, -29, 0.40994924, -24.5, -29, 0.40994924, -0.75, 3.75, 0.40994924, -0.5, 5.75, 0.40994924, -2, 29, 0.40994924, -0.75, 29, 0.40994924, -24.5, 5.75, 0.40994924, -0.5, -29, 0.40994924, 1.25, 3.75, 0.40994924, 1, 5.75, 0.40994924, 1, 29, 0.40994924, 1.25, 4.75, 0.40994924, 24.5, 4.75, 0.40994924, 2.75, 3.75, 0.40994924, 2.5, -29, 0.40994924, 24.5, 5.75, 0.40994924, 2.5, 29, 0.40994924, 24.5)
+polygons = [PackedInt32Array(1, 0, 2), PackedInt32Array(2, 0, 3), PackedInt32Array(3, 0, 4), PackedInt32Array(0, 5, 4), PackedInt32Array(1, 2, 6), PackedInt32Array(6, 2, 8), PackedInt32Array(6, 8, 7), PackedInt32Array(7, 9, 6), PackedInt32Array(11, 10, 5), PackedInt32Array(5, 10, 4), PackedInt32Array(9, 7, 12), PackedInt32Array(12, 7, 13), PackedInt32Array(15, 14, 16), PackedInt32Array(16, 14, 17), PackedInt32Array(16, 17, 10), PackedInt32Array(10, 11, 16), PackedInt32Array(15, 18, 14), PackedInt32Array(14, 18, 19), PackedInt32Array(19, 18, 13), PackedInt32Array(18, 12, 13)]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p6fdj"]
 albedo_texture = ExtResource("5_13o5t")
@@ -48,7 +48,7 @@ metadata/_custom_type_script = "uid://bysxpb73lr46b"
 [node name="area_1" type="Node3D" parent="FlowAIController" node_paths=PackedStringArray("flow_controller")]
 script = ExtResource("2_q8l35")
 flow_controller = NodePath("..")
-area_pathnodes = Array[int]([1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 2, 3])
+area_pathnodes = Array[int]([1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 2, 3])
 
 [node name="pathnode_1" type="Marker3D" parent="FlowAIController/area_1" node_paths=PackedStringArray("flow_controller")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 0)
@@ -71,7 +71,7 @@ flow_controller = NodePath("../..")
 navigation_mesh = SubResource("NavigationMesh_8pae6")
 
 [node name="so_park_bench" parent="map/NavigationRegion3D" instance=ExtResource("4_n0ql3")]
-transform = Transform3D(-5.7917592e-08, 0, 1.325, 0, 1.325, 0, -1.325, 0, -5.7917592e-08, -9.063509, -4.172325e-07, 0.105408505)
+transform = Transform3D(-5.7917592e-08, 0, -1.325, 0, 1.325, 0, 1.325, 0, -5.7917592e-08, 4.9364905, -4.172325e-07, 0.105408505)
 
 [node name="plane" type="MeshInstance3D" parent="map/NavigationRegion3D"]
 mesh = SubResource("PlaneMesh_o75dy")
@@ -87,7 +87,7 @@ shape = SubResource("ConcavePolygonShape3D_gm40l")
 transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, -3, 1.0000019, 18.76301)
 
 [node name="actor_goap_ped" parent="actors" instance=ExtResource("4_7jmrf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.99678266, -0.38054085)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.38054085)
 
 [node name="CrowdAIInterface" parent="." instance=ExtResource("9_8ebkj")]
 

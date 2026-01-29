@@ -7,7 +7,7 @@ var slot_owner:CharacterBody3D = null
 func _ready() -> void:
 	#top_level = true
 	
-	if CrowdAIDebug.is_debugging:
+	if World.is_debugging:
 		var w_mesh := MeshInstance3D.new()
 		var w_mesh_material := StandardMaterial3D.new()
 

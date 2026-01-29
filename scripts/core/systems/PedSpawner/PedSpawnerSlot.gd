@@ -10,7 +10,7 @@ enum SpawnerType {
 @export var peds_size:int = 1
 @export var can_spawn:bool = false
 
-var m_smart_object:SmartObjects = null
+var m_smart_object:SmartObject = null
 var m_action_slot:ActionSlot = null
 
 var all_peds_in_slot:Array[actor_npc] = []
