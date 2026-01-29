@@ -6,8 +6,9 @@ func is_valid(actor:ActorGoapPed) -> bool:
 		var slot:ActionSlot = obj.get_empty_slot()
 		
 		if slot:
+			actor.current_action_slot = slot
+			actor.current_target_smart_object = obj
 			actor.world_state.set("ai_target_position", slot.global_position)
-			actor.world_state.set("ai_target_smart_object", obj)
 			actor.world_state.set("ai_has_smart_object", true)
 		
 		return actor.world_state.get("ai_are_tired", true)

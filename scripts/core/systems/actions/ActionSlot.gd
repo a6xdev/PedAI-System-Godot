@@ -20,3 +20,7 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	DebugDraw3D.draw_sphere(global_position, 0.2, Color(0, 0, 1))
+
+func reset() -> void:
+	is_taken = false
+	slot_owner = null

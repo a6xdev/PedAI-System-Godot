@@ -21,11 +21,10 @@ func execute(actor:ActorGoapPed) -> bool:
 	
 	return false
 
-func exit(actor:ActorGoapPed) -> bool:
+func exit(actor:ActorGoapPed) -> void:
 	actor.world_state.set("ai_walked_around", false)
 	actor.move_dir = Vector3.ZERO
 	walked_index = 0
-	return true
 
 #region CALLS
 func is_valid(actor:ActorGoapPed) -> bool:
@@ -37,7 +36,8 @@ func get_cost() -> int:
 # Action requirements.
 func get_preconditions() -> Dictionary:
 	return {
-		"ai_walked_around": false
+		"ai_walked_around": false,
+		"ai_is_on_action": false,
 	}
 
 # What conditions this action satisfies

@@ -15,14 +15,13 @@ func execute(actor:ActorGoapPed) -> bool:
 	if actor.flow_ai_agent.is_navigation_finished():
 		actor.world_state.set("ai_at_target_location", true)
 		actor.global_position = Vector3(location_target.x, actor.global_position.y, location_target.z)
-		
 		return true
 	
 	return false
 
-func exit(actor:ActorGoapPed) -> bool:
+func exit(actor:ActorGoapPed) -> void:
 	actor.move_dir = Vector3.ZERO
-	return true
+	actor.flow_ai_agent.set_target_position(Vector3.ZERO)
 
 #region CALLS
 func is_valid(actor:ActorGoapPed) -> bool:

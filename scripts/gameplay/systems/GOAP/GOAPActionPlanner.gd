@@ -2,6 +2,8 @@ extends Node
 class_name GOAPActionPlanner
 
 func make_plan(actor:ActorGoapPed, goal:GOAPGoal) -> Array:
+	if not goal: return []
+	
 	var plan:Array = []
 	var world_state = actor.world_state
 	var desired_state = goal.get_desired_state()
@@ -24,7 +26,7 @@ func _build_plan(actor:ActorGoapPed, target_state:Dictionary, current_state:Dict
 	if _in_state(target_state, current_state): return []
 	
 	for action in get_children():
-		if action is GOAPAction:
+		if action is GOAPAction and action.is_valid(actor):
 			if not _action_satisfies_state(action.get_effects(), target_state):
 				continue
 			

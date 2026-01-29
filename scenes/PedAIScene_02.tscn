@@ -48,7 +48,7 @@ metadata/_custom_type_script = "uid://bysxpb73lr46b"
 [node name="area_1" type="Node3D" parent="FlowAIController" node_paths=PackedStringArray("flow_controller")]
 script = ExtResource("2_q8l35")
 flow_controller = NodePath("..")
-area_pathnodes = Array[int]([1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 2, 3])
+area_pathnodes = Array[int]([1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 2, 3])
 
 [node name="pathnode_1" type="Marker3D" parent="FlowAIController/area_1" node_paths=PackedStringArray("flow_controller")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 0)

@@ -17,6 +17,10 @@ func _ready() -> void:
 #region SYSTEM CALLS
 func perform_interaction(actor:ActorGoapPed) -> bool:
 	return false
+
+# Get out of the smart objects
+func desperfom_interaction(actor:ActorGoapPed) -> bool:
+	return false
 	
 func get_empty_slot() -> ActionSlot:
 	var empty_slot:ActionSlot = null

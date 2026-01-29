@@ -11,8 +11,8 @@ func init(actor:ActorGoapPed) -> bool:
 func execute(actor:ActorGoapPed) -> bool:
 	return false
 
-func exit(actor:ActorGoapPed) -> bool:
-	return true
+func exit(actor:ActorGoapPed) -> void:
+	pass
 #endregion
 
 #region CALLS

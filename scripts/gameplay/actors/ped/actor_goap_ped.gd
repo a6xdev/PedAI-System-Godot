@@ -40,6 +40,8 @@ var nearby_smart_objects:Array[SmartObject] = []
 
 var current_speed_type:SpeedType = SpeedType.WALK
 var current_target_position:Vector3 = Vector3(10.0, 0.0, 0.0)
+var current_action_slot:ActionSlot = null
+var current_target_smart_object:SmartObject = null
 var goap_current_plan:Array = []
 var goap_current_action:GOAPAction = null
 
@@ -47,9 +49,10 @@ var goap_current_action:GOAPAction = null
 func _ready() -> void:
 	world_state = {
 		"ai_at_target_location": false,
+		"ai_is_on_action": false,
+		"ai_are_tired": false,
 		"ai_walked_around": false,
 		"ai_has_smart_object": false,
-		"ai_are_tired": false,
 		
 		"ai_target_smart_object": null,
 		"ai_target_position": Vector3(10, 0, 0)
@@ -58,7 +61,6 @@ func _ready() -> void:
 func _input(event: InputEvent) -> void:
 	if Input.is_action_just_pressed("d_action_01"):
 		goap_current_plan = action_planer.make_plan(self, goal_selector.get_best_goal(self))
-		print("goap_current_plan: ", goap_current_plan)
 
 func _physics_process(delta: float) -> void:
 	animation_controller()
