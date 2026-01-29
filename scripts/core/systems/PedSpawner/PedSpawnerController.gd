@@ -90,10 +90,10 @@ func _process(delta: float) -> void:
 					if slot.ped_spawner_type == PedSpawnerSlot.SpawnerType.ACTION and slot.m_action_slot.is_taken:
 						break
 						
-					var ped = get_ped()
+					var ped = active_ped()
 					if ped != null:
 						ped.global_position = slot.global_position
-						ped.global_position.y = slot.global_position.y + 2
+						ped.global_position.y = slot.global_position.y
 						slot.set_ped_spawner_slot(ped)
 						await get_tree().create_timer(0.3).timeout
 					else:
@@ -106,7 +106,7 @@ func _process(delta: float) -> void:
 					
 					var dist_to_ped = ped.global_position.distance_to(PlayerRef.global_position)
 					if dist_to_ped >= despawn_radius and ped:
-						release_ped(ped)
+						disable_ped(ped)
 						slot.clean_ped_spawner_slot(ped)
 						slot.can_spawn = false
 						break
@@ -124,7 +124,7 @@ func decide_spawn(slot:PedSpawnerSlot):
 	return randf() < spawn_weights.get(slot.ped_spawner_type, 0.0)
 
 ## Get and active a ped
-func get_ped() -> actor_npc:
+func active_ped() -> actor_npc:
 	if NpcManager.inactive_peds.is_empty():
 		return null
 	var actor_ped = NpcManager.inactive_peds.pop_back()
@@ -135,7 +135,7 @@ func get_ped() -> actor_npc:
 	return actor_ped
 
 ## Disable the ped
-func release_ped(ped:actor_npc) -> void:
+func disable_ped(ped:actor_npc) -> void:
 	ped.global_position =  Vector3(0.0, -10.0, 0.0)
 	ped.ped_reset()
 	ped.visible = false

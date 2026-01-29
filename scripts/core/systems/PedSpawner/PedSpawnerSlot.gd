@@ -21,9 +21,6 @@ func _ready() -> void:
 	await get_tree().create_timer(0.5).timeout
 	NpcManager.PedSpawnerControllerNode.registry_ped_spawner(self)
 
-func _process(delta: float) -> void:
-	DebugDraw3D.draw_sphere(global_position, 0.5)
-
 #region CALLS
 func set_ped_spawner_slot(ped:actor_npc) -> void:
 	if all_peds_in_slot.has(ped):
@@ -42,7 +39,7 @@ func set_ped_spawner_slot(ped:actor_npc) -> void:
 		SpawnerType.ACTION:
 			if m_smart_object and m_action_slot:
 				m_smart_object.set_start_state(ped, m_action_slot)
-				ped.global_position = Vector3(m_action_slot.global_position.x, 1.0, m_action_slot.global_position.z)
+				ped.global_position = Vector3(m_action_slot.global_position.x, ped.global_position.y, m_action_slot.global_position.z)
 				return
 			
 		#SpawnerType.GROUP:

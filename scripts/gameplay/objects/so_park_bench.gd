@@ -33,7 +33,7 @@ func get_interaction_tasks(actor:actor_npc) -> Array[PedTask]:
 		var t4 = new_task(PedTask.Type.PLAY_ANIM, true,  "is_sitting")
 		var t5 = new_task(PedTask.Type.COLLISION_DISABLED, true)
 		
-		sequence.append_array([t1, t2, t3, t4, t5])
+		sequence.append_array([t5, t1, t2, t3, t4])
 	return sequence
 
 func get_out_tasks(actor:actor_npc) -> Array[PedTask]:

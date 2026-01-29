@@ -11,9 +11,6 @@ class_name actor_npc
 @onready var animation_player: AnimationPlayer = $mesh/AnimationPlayer
 @onready var animation_tree: AnimationTree = $mesh/AnimationTree
 
-# Debug Meshes
-@onready var d_movement_target: MeshInstance3D = $debug/DMovementTarget
-
 enum PedType {
 	WANDER,
 	SCENARIO,
@@ -137,7 +134,7 @@ func _physics_process(delta: float) -> void:
 func animation_controller() -> void:
 	if velocity.length() > 1.0: time_walking += get_physics_process_delta_time()
 	
-	if velocity.length() < 0.1:
+	if velocity.length() < 1.0:
 		is_stopped = true
 		is_walking = false
 		is_running = false
@@ -159,7 +156,7 @@ func movement_controller(delta:float) -> void:
 				
 		if flow_ai_agent.is_path_complete() and not is_going_to_event_slot: # FlowAI
 			# Decide Ped Actions here, when the path is complete.
-			if dist_to_player < 50.0 and time_walking > 20.0 and nearby_smart_objects.size() > 0:
+			if dist_to_player < 50.0 and time_walking > 5.0 and nearby_smart_objects.size() > 0:
 				var smart_object = nearby_smart_objects.pick_random()
 				if smart_object.get_empty_slot() != null:
 					var tasks_sequence = smart_object.get_interaction_tasks(self)
@@ -283,12 +280,10 @@ func process_tasks() -> void:
 #region TASKS
 func task_move_to(local:Vector3, use_pathfinding:bool = false) -> bool:
 	var dist:float = global_position.distance_to(local)
-	var dist_min = 1.5
+	var dist_min = 1.0
 	
 	if use_pathfinding and flow_ai_agent.target_position != local:
-		flow_ai_agent.target_position = local
-	
-	draw_debug_movement_target(local, dist)
+		flow_ai_agent.target_position = Vector3(local.x, global_position.y, local.z)
 	
 	var target_pos = flow_ai_agent.get_next_path_position() if use_pathfinding else local
 	var avoidance_force:Vector3 = get_avoidance_force()
@@ -304,7 +299,9 @@ func task_move_to(local:Vector3, use_pathfinding:bool = false) -> bool:
 	if dist <= dist_min or cancel_current_task:
 		# Check if the next task is a MOVE_TO. If not, stop of moving.
 		if tasks_queue.size() > 1 and not tasks_queue[1].type == PedTask.Type.MOVE_TO: velocity = Vector3(0.0, velocity.y, 0.0)
-		if use_pathfinding: global_position = Vector3(target_pos.x, global_position.y, target_pos.z)
+		if use_pathfinding: 
+			global_position = Vector3(local.x, global_position.y, local.z)
+			snap_to_ground()
 		return true
 	
 	if avoidance_force != Vector3.ZERO and not is_following_group_leader and not is_on_action:
@@ -328,12 +325,6 @@ func task_disable_collision(value:bool) -> bool:
 	return true
 #endregion
 
-#region DEBUG CALLS
-func draw_debug_movement_target(pos:Vector3, dist:float) -> void:
-	d_movement_target.global_position = Vector3(pos.x, 1.0, pos.z)
-	$debug/DMovementTarget/dist_label.text = "Dist: " + str(int(dist)) + " m"
-#endregion
-
 #region CALLS
 func new_task(type:PedTask.Type, value:Variant) -> PedTask:
 	var new_task = PedTask.new()
@@ -353,8 +344,9 @@ func get_avoidance_force() -> Vector3:
 		var d: float = to_body.length()
 		var away = (global_position - body.global_position).normalized()
 		var strength = (avoidance_radius - d) / avoidance_radius
+		var side_step = away.cross(Vector3.UP) * 0.2
 		
-		avoidance_force += away * strength * avoidance_strength
+		avoidance_force += (away + side_step) * strength * avoidance_strength
 			
 	return avoidance_force
 	
@@ -365,6 +357,16 @@ func navigation_set_event_path(path_type:PathType, position:Vector3) -> void:
 			pass
 		PathType.EVENT:
 			is_going_to_event_slot = true
+
+
+func snap_to_ground() -> void:
+	var space_state = get_world_3d().direct_space_state
+	var query = PhysicsRayQueryParameters3D.create(global_position + Vector3.UP * 2, global_position + Vector3.DOWN * 10)
+	var result = space_state.intersect_ray(query)
+	if result:
+		var collider = result.get("collider")
+		if collider is StaticBody3D:
+			global_position.y = result.position.y
 
 func ped_reset():
 	look_current_path_target = Vector3.ZERO
@@ -410,4 +412,10 @@ func _on_detect_nearby_smart_objects_body_entered(body: Node3D) -> void:
 func _on_detect_nearby_smart_objects_body_exited(body: Node3D) -> void:
 	if body is SmartObjects:
 		nearby_smart_objects.erase(body)
+
+func _on_visible_on_screen_notifier_screen_entered() -> void:
+	mesh.visible = true
+
+func _on_visible_on_screen_notifier_screen_exited() -> void:
+	mesh.visible = false
 #endregion

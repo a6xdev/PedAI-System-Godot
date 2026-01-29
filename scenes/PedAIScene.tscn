@@ -16,8 +16,8 @@
 [ext_resource type="Texture2D" uid="uid://4pxnh1mqg4f6" path="res://assets/textures/hdri/qwantani_noon_puresky_2k.exr" id="15_ggsc2"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_cv82n"]
-vertices = PackedVector3Array(-4.869171, 0.496, -10.712769, 1.6308289, 0.496, -19.962769, 1.8808289, 0.496, -21.462769, -9.369171, 0.496, -10.712769, -43.86917, 0.496, 7.0372314, 3.1308289, 0.496, -80.71277, -43.86917, 0.496, -80.71277, -9.119171, 0.496, 7.0372314, -9.119171, 0.496, -8.462769, -9.619171, 0.496, -8.712769, 3.3808289, 0.496, -21.462769, 4.380829, 0.496, -21.462769, 4.630829, 0.496, -80.71277, 5.880829, 0.496, -21.462769, 6.130829, 0.496, -19.962769, 7.380829, 0.496, -18.712769, 8.880829, 0.496, -18.462769, 43.88083, 0.496, -16.462769, 43.88083, 0.496, -80.71277, 8.880829, 0.496, -16.462769, 6.880829, 0.496, -18.462769, 5.880829, 0.496, -19.462769, -4.369171, 0.496, -10.462769, 3.6308289, 0.496, -9.712769, 3.8808289, 0.496, -10.712769, 1.8808289, 0.496, -19.462769, 7.630829, 0.496, -10.712769, 7.630829, 0.496, -14.212769, 6.880829, 0.496, -14.462769, -4.369171, 0.496, -9.712769, 8.380829, 0.496, -10.462769, 8.880829, 0.496, -14.462769, 8.380829, 0.496, -9.212769, 7.880829, 0.496, -8.712769, 6.380829, 0.496, -8.712769, 6.630829, 0.496, 7.0372314, 43.88083, 0.496, 7.0372314, -4.369171, 0.496, -8.712769, 3.8808289, 0.496, -8.712769, -4.869171, 0.496, -8.462769, -4.869171, 0.496, 7.0372314)
-polygons = [PackedInt32Array(1, 0, 2), PackedInt32Array(2, 0, 3), PackedInt32Array(3, 4, 2), PackedInt32Array(2, 4, 5), PackedInt32Array(5, 4, 6), PackedInt32Array(8, 7, 9), PackedInt32Array(9, 7, 4), PackedInt32Array(5, 10, 2), PackedInt32Array(3, 9, 4), PackedInt32Array(10, 5, 11), PackedInt32Array(11, 5, 12), PackedInt32Array(15, 14, 13), PackedInt32Array(15, 13, 16), PackedInt32Array(16, 13, 17), PackedInt32Array(17, 13, 12), PackedInt32Array(17, 12, 18), PackedInt32Array(17, 19, 16), PackedInt32Array(13, 11, 12), PackedInt32Array(21, 14, 20), PackedInt32Array(20, 14, 15), PackedInt32Array(22, 0, 23), PackedInt32Array(23, 0, 24), PackedInt32Array(24, 0, 25), PackedInt32Array(25, 0, 1), PackedInt32Array(27, 26, 28), PackedInt32Array(28, 26, 24), PackedInt32Array(23, 29, 22), PackedInt32Array(20, 28, 21), PackedInt32Array(21, 28, 25), PackedInt32Array(25, 28, 24), PackedInt32Array(26, 27, 30), PackedInt32Array(30, 27, 31), PackedInt32Array(31, 19, 17), PackedInt32Array(30, 31, 32), PackedInt32Array(32, 31, 17), PackedInt32Array(35, 34, 33), PackedInt32Array(33, 32, 35), PackedInt32Array(35, 32, 36), PackedInt32Array(36, 32, 17), PackedInt32Array(37, 29, 23), PackedInt32Array(37, 23, 39), PackedInt32Array(39, 23, 38), PackedInt32Array(38, 34, 39), PackedInt32Array(39, 34, 40), PackedInt32Array(40, 34, 35), PackedInt32Array(39, 40, 8), PackedInt32Array(8, 40, 7)]
+vertices = PackedVector3Array(-4.869171, 0.476722, -10.712769, 1.6308289, 0.476722, -19.962769, 1.8808289, 0.476722, -21.462769, -9.369171, 0.476722, -10.712769, -43.86917, 0.476722, 7.0372314, 3.1308289, 0.476722, -80.71277, -43.86917, 0.476722, -80.71277, -9.119171, 0.476722, 7.0372314, -9.119171, 0.476722, -8.462769, -9.619171, 0.476722, -8.712769, 3.3808289, 0.476722, -21.462769, 4.380829, 0.476722, -21.462769, 4.630829, 0.476722, -80.71277, 5.880829, 0.476722, -21.462769, 6.130829, 0.476722, -19.962769, 7.380829, 0.476722, -18.712769, 8.880829, 0.476722, -18.462769, 43.88083, 0.476722, -16.462769, 43.88083, 0.476722, -80.71277, 8.880829, 0.476722, -16.462769, 6.880829, 0.476722, -18.462769, 5.880829, 0.476722, -19.462769, -4.369171, 0.476722, -10.462769, 3.6308289, 0.476722, -9.712769, 3.8808289, 0.476722, -10.712769, 1.8808289, 0.476722, -19.462769, 7.630829, 0.476722, -10.712769, 7.630829, 0.476722, -14.212769, 6.880829, 0.476722, -14.462769, -4.369171, 0.476722, -9.712769, 8.880829, 0.476722, -14.462769, 8.380829, 0.476722, -10.212769, 8.380829, 0.476722, -9.212769, 7.880829, 0.476722, -8.712769, 6.380829, 0.476722, -8.712769, 6.630829, 0.476722, 7.0372314, 43.88083, 0.476722, 7.0372314, -4.369171, 0.476722, -8.712769, 3.8808289, 0.476722, -8.712769, -4.869171, 0.476722, -8.462769, -4.869171, 0.476722, 7.0372314)
+polygons = [PackedInt32Array(1, 0, 2), PackedInt32Array(2, 0, 3), PackedInt32Array(3, 4, 2), PackedInt32Array(2, 4, 5), PackedInt32Array(5, 4, 6), PackedInt32Array(8, 7, 9), PackedInt32Array(9, 7, 4), PackedInt32Array(5, 10, 2), PackedInt32Array(3, 9, 4), PackedInt32Array(10, 5, 11), PackedInt32Array(11, 5, 12), PackedInt32Array(15, 14, 13), PackedInt32Array(15, 13, 16), PackedInt32Array(16, 13, 17), PackedInt32Array(17, 13, 12), PackedInt32Array(17, 12, 18), PackedInt32Array(17, 19, 16), PackedInt32Array(13, 11, 12), PackedInt32Array(21, 14, 20), PackedInt32Array(20, 14, 15), PackedInt32Array(22, 0, 23), PackedInt32Array(23, 0, 24), PackedInt32Array(24, 0, 25), PackedInt32Array(25, 0, 1), PackedInt32Array(27, 26, 28), PackedInt32Array(28, 26, 24), PackedInt32Array(23, 29, 22), PackedInt32Array(20, 28, 21), PackedInt32Array(21, 28, 25), PackedInt32Array(25, 28, 24), PackedInt32Array(26, 27, 31), PackedInt32Array(31, 27, 30), PackedInt32Array(30, 19, 17), PackedInt32Array(31, 30, 32), PackedInt32Array(32, 30, 17), PackedInt32Array(35, 34, 33), PackedInt32Array(33, 32, 35), PackedInt32Array(35, 32, 36), PackedInt32Array(36, 32, 17), PackedInt32Array(37, 29, 23), PackedInt32Array(37, 23, 39), PackedInt32Array(39, 23, 38), PackedInt32Array(38, 34, 39), PackedInt32Array(39, 34, 40), PackedInt32Array(40, 34, 35), PackedInt32Array(39, 40, 8), PackedInt32Array(8, 40, 7)]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_51afu"]
 size = Vector2(60, 60)
@@ -50,39 +50,66 @@ sky = SubResource("Sky_alfe8")
 
 [node name="FlowAIController" type="Node" parent="." node_paths=PackedStringArray("all_areas", "all_pathnodes")]
 script = ExtResource("1_mtgui")
-is_debug_mode = true
 DataPath = "res://data/PedAIScene_FlowAIData.json"
 all_areas = [NodePath("area_1")]
-all_pathnodes = [NodePath("area_1/pathnode_1"), NodePath("area_1/pathnode_2"), NodePath("area_1/pathnode_3"), NodePath("area_1/pathnode_4"), NodePath("area_1/pathnode_5")]
+all_pathnodes = [NodePath("area_1/pathnode_1"), NodePath("area_1/pathnode_2"), NodePath("area_1/pathnode_3"), NodePath("area_1/pathnode_4"), NodePath("area_1/pathnode_5"), NodePath("area_1/pathnode_6"), NodePath("area_1/pathnode_7"), NodePath("area_1/pathnode_8"), NodePath("area_1/pathnode_9"), NodePath("area_1/pathnode_10")]
+show_pathnode_shape = true
+show_pathnode_label = true
 metadata/_custom_type_script = "uid://bysxpb73lr46b"
 
-[node name="area_1" type="Node3D" parent="FlowAIController" node_paths=PackedStringArray("flowAI_controller")]
+[node name="area_1" type="Node3D" parent="FlowAIController" node_paths=PackedStringArray("flow_controller")]
 script = ExtResource("2_pm0x4")
-flowAI_controller = NodePath("..")
+flow_controller = NodePath("..")
+area_pathnodes = Array[int]([1, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
 
-[node name="pathnode_1" type="Marker3D" parent="FlowAIController/area_1" node_paths=PackedStringArray("flowAI_controller")]
+[node name="pathnode_1" type="Marker3D" parent="FlowAIController/area_1" node_paths=PackedStringArray("flow_controller")]
 script = ExtResource("3_fgoei")
-flowAI_controller = NodePath("../..")
+flow_controller = NodePath("../..")
 
-[node name="pathnode_2" type="Marker3D" parent="FlowAIController/area_1" node_paths=PackedStringArray("flowAI_controller")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -7)
+[node name="pathnode_2" type="Marker3D" parent="FlowAIController/area_1" node_paths=PackedStringArray("flow_controller")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.07778859, -6.8038177)
 script = ExtResource("3_fgoei")
-flowAI_controller = NodePath("../..")
+flow_controller = NodePath("../..")
 
-[node name="pathnode_3" type="Marker3D" parent="FlowAIController/area_1" node_paths=PackedStringArray("flowAI_controller")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, -7)
+[node name="pathnode_3" type="Marker3D" parent="FlowAIController/area_1" node_paths=PackedStringArray("flow_controller")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0.07778859, -6.8038177)
 script = ExtResource("3_fgoei")
-flowAI_controller = NodePath("../..")
+flow_controller = NodePath("../..")
 
-[node name="pathnode_4" type="Marker3D" parent="FlowAIController/area_1" node_paths=PackedStringArray("flowAI_controller")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, -7)
+[node name="pathnode_4" type="Marker3D" parent="FlowAIController/area_1" node_paths=PackedStringArray("flow_controller")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0.07778859, -6.8038177)
 script = ExtResource("3_fgoei")
-flowAI_controller = NodePath("../..")
+flow_controller = NodePath("../..")
 
-[node name="pathnode_5" type="Marker3D" parent="FlowAIController/area_1" node_paths=PackedStringArray("flowAI_controller")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -12)
+[node name="pathnode_5" type="Marker3D" parent="FlowAIController/area_1" node_paths=PackedStringArray("flow_controller")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.07778859, -14.803818)
 script = ExtResource("3_fgoei")
-flowAI_controller = NodePath("../..")
+flow_controller = NodePath("../..")
+
+[node name="pathnode_6" type="Marker3D" parent="FlowAIController/area_1" node_paths=PackedStringArray("flow_controller")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.07778859, -22.803818)
+script = ExtResource("3_fgoei")
+flow_controller = NodePath("../..")
+
+[node name="pathnode_7" type="Marker3D" parent="FlowAIController/area_1" node_paths=PackedStringArray("flow_controller")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0.07778859, -22.803818)
+script = ExtResource("3_fgoei")
+flow_controller = NodePath("../..")
+
+[node name="pathnode_8" type="Marker3D" parent="FlowAIController/area_1" node_paths=PackedStringArray("flow_controller")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0.07778859, -22.803818)
+script = ExtResource("3_fgoei")
+flow_controller = NodePath("../..")
+
+[node name="pathnode_9" type="Marker3D" parent="FlowAIController/area_1" node_paths=PackedStringArray("flow_controller")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0.07778859, -15.803818)
+script = ExtResource("3_fgoei")
+flow_controller = NodePath("../..")
+
+[node name="pathnode_10" type="Marker3D" parent="FlowAIController/area_1" node_paths=PackedStringArray("flow_controller")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0.07778859, -7.8038177)
+script = ExtResource("3_fgoei")
+flow_controller = NodePath("../..")
 
 [node name="map" type="Node" parent="."]
 
@@ -118,17 +145,17 @@ transform = Transform3D(0.004, 0, 0, 0, 0.004, 0, 0, 0, 0.004, -36.786, 0.049, -
 [node name="park_bench" type="Node" parent="map/NavigationRegion3D"]
 
 [node name="so_park_bench" parent="map/NavigationRegion3D/park_bench" instance=ExtResource("6_ry8yx")]
-transform = Transform3D(1.6, 0, 0, 0, 1.6, 0, 0, 0, 1.6, -7, 0.17135829, -9.7394085)
+transform = Transform3D(1.6, 0, 0, 0, 1.6, 0, 0, 0, 1.6, -7, 0.072, -9.7394085)
 
 [node name="so_park_bench2" parent="map/NavigationRegion3D/park_bench" instance=ExtResource("6_ry8yx")]
-transform = Transform3D(1.325, 0, 0, 0, 1.325, 0, 0, 0, 1.325, 6, 0.17135817, -9.7394085)
+transform = Transform3D(1.325, 0, 0, 0, 1.325, 0, 0, 0, 1.325, 6, 0.072, -9.7394085)
 
 [node name="so_park_bench3" parent="map/NavigationRegion3D/park_bench" instance=ExtResource("6_ry8yx")]
-transform = Transform3D(-5.7917592e-08, 0, 1.325, 0, 1.325, 0, -1.325, 0, -5.7917592e-08, 7.8664303, 0.18604535, -16.34635)
+transform = Transform3D(-5.7917592e-08, 0, 1.325, 0, 1.325, 0, -1.325, 0, -5.7917592e-08, 7.8664303, 0.072, -16.34635)
 sit_rotation_y = 90.0
 
 [node name="so_park_bench4" parent="map/NavigationRegion3D/park_bench" instance=ExtResource("6_ry8yx")]
-transform = Transform3D(-1.325, 0, -1.15835185e-07, 0, 1.325, 0, 1.15835185e-07, 0, -1.325, 3.8664303, 0.18604535, -20.34635)
+transform = Transform3D(-1.325, 0, -1.15835185e-07, 0, 1.325, 0, 1.15835185e-07, 0, -1.325, 3.8664303, 0.072, -20.34635)
 sit_rotation_y = 180.0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="map/NavigationRegion3D"]
@@ -150,9 +177,9 @@ SpawnerNpcPath = NodePath("../../actor")
 FlowAIControllerNode = NodePath("../../FlowAIController")
 PlayerRef = NodePath("../../actor/actor_player")
 NpcScene = ExtResource("11_bma6s")
-peds_pool_size = 5
-spawn_radius = 5.0
-despawn_radius = 15.0
+peds_pool_size = 1
+spawn_radius = 15.0
+despawn_radius = 20.0
 metadata/_custom_type_script = "uid://mk0cs7tsd178"
 
 [node name="Spawners" type="Node" parent="map/PedSpawnerController"]
